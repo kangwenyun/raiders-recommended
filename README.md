@@ -1,29 +1,6 @@
 # raiders-recommended
+1.安装 vue cli 3:https://cli.vuejs.org/zh/guide/installation.html
 
-## Project setup
-```
-npm install
-```
+2.更新nodejs和npm:https://blog.csdn.net/luckybuling/article/details/81319440
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+3.新建项目:https://github.com/ElementUI/vue-cli-plugin-element
