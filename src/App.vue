@@ -1,21 +1,36 @@
 <template>
   <div id="app">
+    <v-header></v-header>
     <img alt="Vue logo" src="./assets/logo.png">
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
   </div>
 </template>
 
-<!--<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import header from'./components/header.vue'
+
+// const ERR_OK =0
 
 export default {
   name: 'app',
+  data() {
+    return{
+    };
+  },
+  // created() {
+  //   this.$http.get('/api/goods').then((response) => {
+  //     response = response.body;
+  //     if(response.errno=== ERR_OK) {
+  //       this.goods= response.data;
+  //     }
+  //   },(response) => {});
+  // },
   components: {
-    HelloWorld
+    'v-header': header
   }
 }
-</script>-->
+</script>
 
 <style>
 #app {

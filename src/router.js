@@ -24,5 +24,6 @@ const router = new Router({
         }
     ]
 })
+router.push('/hello');    //设置默认打开页面
 // 5.导出路由
 export default router
