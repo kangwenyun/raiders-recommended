@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <v-header></v-header>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <v-head></v-head>
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import header from'./components/header.vue'
+import top_head from'./components/top_head.vue'
 
 // const ERR_OK =0
 
@@ -27,7 +26,7 @@ export default {
   //   },(response) => {});
   // },
   components: {
-    'v-header': header
+    'v-head': top_head
   }
 }
 </script>
@@ -39,6 +38,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: -10px;
+}
+body{
+  margin: 0px;
+  font-size: 12px;
 }
 </style>

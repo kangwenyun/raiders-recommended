@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
  
-import hello from './components/HelloWorld.vue'
+import home from './components/home.vue'
 import login from './components/login.vue'
  
 // 2.通过Vue的use方法注入Router
@@ -12,11 +12,11 @@ const router = new Router({
     routes: [
         {
             path: '/',
-            component: hello
+            component: home
         },
         {
-            path: '/hello',
-            component: hello
+            path: '/home',
+            component: home
         },
         {
             path: '/login',
@@ -24,6 +24,6 @@ const router = new Router({
         }
     ]
 })
-router.push('/hello');    //设置默认打开页面
+router.push('/');    //设置默认打开页面
 // 5.导出路由
 export default router
