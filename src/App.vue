@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import top_head from'./components/top_head.vue'
+import top_head from './components/top_head.vue'
 
 // const ERR_OK =0
 
@@ -36,12 +36,18 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: -10px;
 }
-body{
-  margin: 0px;
-  font-size: 12px;
+
+body, p, div {
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+
+img {
+    border: 0;
 }
 </style>
