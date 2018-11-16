@@ -50,4 +50,47 @@ body, p, div {
 img {
     border: 0;
 }
+
+a{
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    cursor: pointer;
+}
+
+dl{
+    height: 100px;
+}
+
+dt{
+    height: 26px;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+dt a{
+    color: #000;
+    white-space: nowrap;
+    margin-right: 100px;
+}
+
+dd{
+    margin: 0px;
+    height: 60px;
+}
+
+dd a{
+    height: 100%;
+    color: #666;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+a:hover{
+    color: #ff9d00;
+}
+
 </style>

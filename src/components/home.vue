@@ -19,8 +19,7 @@
       </el-carousel-item>
     </el-carousel>
     <div class="raiders">
-      <el-tabs v-model="status" @tab-click="handleClick">
-        <el-button icon="el-icon-search" circle></el-button>
+      <el-tabs v-model="status">
         <el-tab-pane label="热门游记" name="hot">
           <raiders-head
             v-for="item in hot_data"
@@ -38,6 +37,13 @@
           </raiders-head>
         </el-tab-pane>
       </el-tabs>
+      <div class="right_up">
+        <el-button size="small" circle class="filter" @click="filterShow">筛</el-button>
+        <raiders-filter
+          v-show="filter_show">
+        </raiders-filter>
+        <a :href="write_url" class="btn-add"><i class="el-icon-edit"></i>写游记</a>
+      </div>
     </div>
   </div>
 </template>
@@ -45,11 +51,13 @@
 <script>
 
 import raiders_head from './raiders_head.vue'
+import raiders_filter from './raiders_filter.vue'
 
 export default {
   name: 'home',
   components: {
-    "raiders-head": raiders_head
+    "raiders-head": raiders_head,
+    "raiders-filter": raiders_filter
   },
   data() {
     return {
@@ -142,7 +150,9 @@ export default {
           user_name: "摩羯座",
           nums: "162/20"
         }
-      ]
+      ],
+      write_url: "/",
+      filter_show: false
     };
   },
   methods: {
@@ -150,8 +160,8 @@ export default {
       // this.head_data.ding = vote + 1
       console.log(vote);
     },
-    handleClick(){
-      console.log("1");
+    filterShow() {
+      this.filter_show = true
     }
   }
 }
@@ -210,7 +220,7 @@ export default {
 .txt2_pos{
   position: absolute;
   left: 136px;
-  top: 40px;
+  top: 30px;
   font-size: 20px;
 }
 
@@ -237,12 +247,6 @@ export default {
   position: relative;
   top: 2px;
 }
-/*
-.form_pos .el-radio__inner{
-  background: #ff9d00 !important;
-  border-color: #ff9d00 !important;
-  border: 1px solid #ff9d00 !important;
-}*/
 
 .el-radio{
   color: #fff;
@@ -262,6 +266,35 @@ export default {
 .raiders{
   width: 1000px;
   margin: 0 auto;
+  position: relative;
+}
+
+.right_up{
+    float: right;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    right: 0px;
+    z-index: 3;
+}
+
+.filter{
+  font-size: 10px;
+  color: #666;
+  background: #fff;
+  border: 1px solid #666;
+}
+
+.btn-add{
+  width: 140px;
+  height: 41px;
+  background-color: #ff9d00;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  float: right;
+  font-size: 16px;
+  line-height: 41px;
 }
 
 </style>
