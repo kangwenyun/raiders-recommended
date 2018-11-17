@@ -33,7 +33,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Arial,"Lucida Grande","Microsoft Yahei","Hiragino Sans GB","Hiragino Sans GB W3",SimSun,"PingFang SC",STHeiti;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -44,7 +44,7 @@ body, p, div {
     margin: 0;
     padding: 0;
     word-wrap: break-word;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 img {

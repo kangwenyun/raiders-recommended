@@ -4,7 +4,7 @@
         <a class="close" href="javascript:void(0);" @click="hide">×</a>
         <div class="section">
             <div class="label">目的地</div>
-            <div class="section-cont">
+            <div class="hot-place">
                 <div class="mui-search">
                     <input v-model="place" class="mui-search-inp" type="text" placeholder="输入你想查看的目的地">
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="section">
           <div class="label">兴趣</div>
-          <div class="section-cont" v-for="item in data" 
+          <div class="hot-place" v-for="item in data" 
             :class="item.id%2==1 ? 'to-right':' '"
             :key="item.id" @click="set_place(item.id)">
             <div class="left">
@@ -148,7 +148,7 @@ export default {
     position: absolute;
     z-index: 10;
     margin: -21px 0 0 -20px;
-    width: 830px;
+    width: 780px;
     padding: 2px 0;
     border: 1px solid #e5e5e5;
     background-color: #fff;
@@ -173,20 +173,16 @@ export default {
 }
 
 .section {
-    margin: 40px 30px;
+    margin: 30px 20px;
 }
 
 .label {
     float: left;
     width: 80px;
     text-align: right;
-    font-size: 20px;
+    font-size: 18px;
     color: #333;
     line-height: 24px;
-}
-
-.section-cont {
-    margin-left: 100px;
 }
 
 .mui-search {
@@ -200,16 +196,15 @@ export default {
     padding: 0 35px 0 15px;
     border: 1px solid #efefef;
     background-color: #efefef;
-    height: 45px;
+    height: 40px;
     border-radius: 4px;
-    line-height: 45px;
-    font-size: 18px;
+    line-height: 40px;
+    font-size: 16px;
     vertical-align: top;
 }
 
 .hot-place {
-    font-size: 14px;
-    margin-left: 100px;
+    margin-left: 86px;
 }
 
 .hot-place a {
@@ -238,7 +233,7 @@ export default {
 }
 
 .right{
-    margin-left: 130px;
+    margin-left: 125px;
 }
 
 .to-right{
@@ -250,18 +245,17 @@ export default {
 }
 
 a{
-  font-size: 18px;
+  font-size: 16px;
 }
 
 dt a {
     margin-right: 110px;
-    font-size: 20px;
+    font-size: 18px;
     width: 90px;
 }
 
 img{
-  width: 130px;
-  margin-right: 15px;
+  width: 110px;
 }
 
 </style>

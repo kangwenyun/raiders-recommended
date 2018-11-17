@@ -7,12 +7,10 @@
         <p class="txt_same txt3_pos">{{ item.txt3 }}</p>
         <el-form :inline="true" :model="search" class="txt_same form_pos">
           <el-radio-group v-model="search.radio">
-            <el-radio label="1">全部</el-radio>
-            <el-radio label="2">目的地</el-radio>
-            <el-radio label="3">旅行攻略</el-radio>
+            <el-radio v-for="item in radio" :key="item.label" :label="item.label">{{ item.msg }}</el-radio>
           </el-radio-group>
           <div class="get_res">
-            <el-input v-model="search.input" placeholder="搜目的地/旅行攻略"></el-input>
+            <el-input v-model="search.input" :placeholder="ph[search.radio]"></el-input>
             <el-button icon="el-icon-search"></el-button>
           </div>
         </el-form>
@@ -94,9 +92,15 @@ export default {
         }
       ],
       search: {
-        radio: '1',
+        radio: 0,
         input: ''
       },
+      radio: [
+        {label:0, msg:"全部"},
+        {label:1, msg:"目的地"},
+        {label:2, msg:"旅游攻略"}
+      ],
+      ph: ["搜目的地/旅行攻略", "我要去...", "我想找..."],
       status: 'hot',
       tag_show: false,
       tag_name: "日本",
