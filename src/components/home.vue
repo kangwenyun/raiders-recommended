@@ -20,6 +20,9 @@
     </el-carousel>
     <div class="raiders">
       <el-tabs v-model="status">
+        <div class="selected_content">
+          <el-tag closable type="danger" @close="close_filter" v-show="tag_show"> {{tag_name}} </el-tag>
+        </div>
         <el-tab-pane label="热门游记" name="hot">
           <raiders-head
             v-for="item in hot_data"
@@ -39,8 +42,8 @@
       </el-tabs>
       <div class="right_up">
         <el-button size="small" circle class="filter" @click="filterShow">筛</el-button>
-        <raiders-filter
-          v-show="filter_show">
+        <raiders-filter v-show="filter_show"
+          @place="get_place">
         </raiders-filter>
         <a :href="write_url" class="btn-add"><i class="el-icon-edit"></i>写游记</a>
       </div>
@@ -95,6 +98,8 @@ export default {
         input: ''
       },
       status: 'hot',
+      tag_show: false,
+      tag_name: "日本",
       hot_data:[
         { id: 0, 
           raiders_url: "www.baidu.com",
@@ -162,6 +167,16 @@ export default {
     },
     filterShow() {
       this.filter_show = true
+    },
+    close_filter() {
+      this.tag_show = false
+    },
+    get_place(place) {
+      this.filter_show = false
+      if(place != -1){
+        this.tag_show = true
+        this.tag_name = place
+      }
     }
   }
 }
@@ -295,6 +310,10 @@ export default {
   float: right;
   font-size: 16px;
   line-height: 41px;
+}
+
+.selected_content{
+  margin: 0 0 5px 10px;
 }
 
 </style>

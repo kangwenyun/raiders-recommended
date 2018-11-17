@@ -1,30 +1,27 @@
 <template>
   <div class="raiders_filter">
     <div class="tn-dropdown-pop">
-        <a class="close" href="javascript:void(0);">×</a>
+        <a class="close" href="javascript:void(0);" @click="hide">×</a>
         <div class="section">
             <div class="label">目的地</div>
             <div class="section-cont">
                 <div class="mui-search">
-                    <input class="mui-search-inp" type="text" placeholder="输入你想查看的目的地">
+                    <input v-model="place" class="mui-search-inp" type="text" placeholder="输入你想查看的目的地">
                 </div>
             </div>
             <div class="hot-place">
-              <a href="javascript:void(0);">{{ hot_1 }}</a>
-              <a href="javascript:void(0);">{{ hot_2 }}</a>
-              <a href="javascript:void(0);">{{ hot_3 }}</a>
-              <a href="javascript:void(0);">{{ hot_4 }}</a>
-              <a href="javascript:void(0);">{{ hot_5 }}</a>
-              <a href="javascript:void(0);">{{ hot_6 }}</a>
-              <a href="javascript:void(0);">{{ hot_7 }}</a>
-              <a href="javascript:void(0);">{{ hot_8 }}</a>
+              <el-button v-model="place_id" style="display: none"></el-button>
+              <a href="javascript:void(0);" class="place"
+                :class="on && place_id == item.id ? 'on' : ' '"
+                v-for="item in places" :key="item.id"
+                @click="set_place(item.id)">{{ item.place }}</a>
             </div>
         </div>
         <div class="section">
           <div class="label">兴趣</div>
           <div class="section-cont" v-for="item in data" 
-            :class="item.id%2==0 ? 'to-right':' '"
-            :key="item.id">
+            :class="item.id%2==1 ? 'to-right':' '"
+            :key="item.id" @click="set_place(item.id)">
             <div class="left">
               <a href="javascript:void(0);">
                   <img :src="item.img_url" href="javascript:void(0);"/>
@@ -47,76 +44,92 @@
 </template>
 
 <script>
+  // place_id为0代表输入框，1-8代表目的地选择，9-16代表星期
 export default {
   name: 'raiders_filter',
   // props: ['data'],
   data() {
     return {
-        hot_1: "斯里兰卡",
-        hot_2: "济州岛",
-        hot_3: "香港",
-        hot_4: "北京",
-        hot_5: "云南",
-        hot_6: "泰国",
-        hot_7: "青海湖",
-        hot_8: "日本",
-        data:[
-          {
-            id: 0,
-            img_url: require('../assets/interest-2.jpeg'),
-            title: "带着对象",
-            abstract: "去虐狗",
-          },
-          {
-            id: 1,
-            img_url: require('../assets/interest-1.jpeg'),
-            title: "吃遍天下",
-            abstract: "无敌手",
-          },
-          {
-            id: 2,
-            img_url: require('../assets/interest-4.jpeg'),
-            title: "带着孩子",
-            abstract: "看世界",
-          },
-          {
-            id: 3,
-            img_url: require('../assets/interest-3.jpeg'),
-            title: "姑娘漂亮",
-            abstract: "就是美",
-          },
-          {
-            id: 4,
-            img_url: require('../assets/interest-6.jpeg'),
-            title: "带着父母",
-            abstract: "去远方",
-          },
-          {
-            id: 5,
-            img_url: require('../assets/interest-5.jpeg'),
-            title: "登山徒步",
-            abstract: "用脚走",
-          },
-          {
-            id: 6,
-            img_url: require('../assets/interest-8.jpeg'),
-            title: "短途周末",
-            abstract: "散散心",
-          },
-          {
-            id: 7,
-            img_url: require('../assets/interest-7.jpeg'),
-            title: "独自一人",
-            abstract: "最自由",
-          }
-        ]
+      place:"",
+      on: false,
+      place_id: -1,
+      places:[
+        {id: 1, place: "斯里兰卡"},
+        {id: 2, place: "济州岛"},
+        {id: 3, place: "香港"},
+        {id: 4, place: "北京"},
+        {id: 5, place: "云南"},
+        {id: 6, place: "泰国"},
+        {id: 7, place: "青海湖"},
+        {id: 8, place: "日本"},
+      ],
+      data:[
+        {
+          id: 9,
+          img_url: require('../assets/interest-2.jpeg'),
+          title: "带着对象",
+          abstract: "去虐狗",
+        },
+        {
+          id: 10,
+          img_url: require('../assets/interest-1.jpeg'),
+          title: "吃遍天下",
+          abstract: "无敌手",
+        },
+        {
+          id: 11,
+          img_url: require('../assets/interest-4.jpeg'),
+          title: "带着孩子",
+          abstract: "看世界",
+        },
+        {
+          id: 12,
+          img_url: require('../assets/interest-3.jpeg'),
+          title: "姑娘漂亮",
+          abstract: "就是美",
+        },
+        {
+          id: 13,
+          img_url: require('../assets/interest-6.jpeg'),
+          title: "带着父母",
+          abstract: "去远方",
+        },
+        {
+          id: 14,
+          img_url: require('../assets/interest-5.jpeg'),
+          title: "登山徒步",
+          abstract: "用脚走",
+        },
+        {
+          id: 15,
+          img_url: require('../assets/interest-8.jpeg'),
+          title: "短途周末",
+          abstract: "散散心",
+        },
+        {
+          id: 16,
+          img_url: require('../assets/interest-7.jpeg'),
+          title: "独自一人",
+          abstract: "最自由",
+        }
+      ]
     }
   },
   methods: {
-    // vote: function() {
-    //     this.ding = this.ding + 1
-    //     this.$emit('votes', this.ding)
-    // }
+    set_place(id) {
+        this.on = true
+        this.place_id = id
+        var place_arr = [this.place, this.places[0].place, this.places[1].place, 
+          this.places[2].place, this.places[3].place, this.places[4].place,
+          this.places[5].place, this.places[6].place, this.places[7].place, 
+          this.data[0].title, this.data[1].title, this.data[2].title,
+          this.data[3].title, this.data[4].title, this.data[5].title, 
+          this.data[6].title, this.data[7].title]
+        this.$emit('place', place_arr[id])
+    },
+    hide() {
+        this.$emit('place', -1)
+    }
   }
 }
 </script>
@@ -183,7 +196,7 @@ export default {
 }
 
 .mui-search-inp {
-    width: 450px;
+    width: 500px;
     padding: 0 35px 0 15px;
     border: 1px solid #efefef;
     background-color: #efefef;
@@ -201,12 +214,23 @@ export default {
 
 .hot-place a {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 30px;
     color: #666;
 }
 
 .hot-place a:hover {
     color: #ff4d00;
+}
+
+.place {
+  display: inline;
+}
+
+.on {
+    background-color: #ff9d00;
+    color: #fff !important;
+    border-radius: 10px;
+    padding: 0 5px;
 }
 
 .left{
@@ -238,13 +262,6 @@ dt a {
 img{
   width: 130px;
   margin-right: 15px;
-}
-
-a:active{
-  padding: 0 9px 0 12px;
-  background-color: #ff9d00;
-  color: #fff;
-  border-radius: 13px;
 }
 
 </style>
