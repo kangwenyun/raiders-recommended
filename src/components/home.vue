@@ -43,7 +43,7 @@
         <raiders-filter v-show="filter_show"
           @place="get_place">
         </raiders-filter>
-        <a :href="write_url" class="btn-add"><i class="el-icon-edit"></i>写游记</a>
+        <a :href="write_url" class="btn-add" target="_blank"><i class="el-icon-edit"></i>写游记</a>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@ export default {
         {label:1, msg:"目的地"},
         {label:2, msg:"旅游攻略"}
       ],
-      ph: ["搜目的地/旅行攻略", "我要去...", "我想找..."],
+      ph: ["搜目的地/旅行攻略...", "我要去...", "我想找..."],
       status: 'hot',
       tag_show: false,
       tag_name: "日本",
@@ -160,7 +160,7 @@ export default {
           nums: "162/20"
         }
       ],
-      write_url: "/",
+      write_url: "/write_raiders",
       filter_show: false
     };
   },

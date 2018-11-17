@@ -3,8 +3,7 @@
     <el-menu 
       :default-active="activeIndex" 
       class="el-menu-demo" 
-      mode="horizontal" 
-      @select="handleSelect"
+      mode="horizontal"
       active-text-color="#ff9d00"
       router>
       <div class="left_header">
@@ -22,6 +21,26 @@
         <el-menu-item index="quit"><i class="el-icon-d-arrow-right"></i>退出</el-menu-item>
       </el-submenu>
       <el-menu-item index="punch" class="right_header"><el-button class="daka">打卡</el-button></el-menu-item>
+      <div class="right_header find_set">
+        <div class="find_right">
+          <transition name="el-zoom-in-center">
+            <el-input
+              v-show="show"
+              placeholder="搜目的地/旅行攻略..."
+              v-model="search"
+              @blur="hide"
+              ref="inputTop"
+              suffix-icon="el-icon-search">
+            </el-input>
+          </transition>
+        </div>
+        <el-button 
+          icon="el-icon-search" 
+          circle 
+          class="btn_search" 
+          v-show="showImg" 
+          @click="showInput"></el-button>
+      </div>
     </el-menu>
   </div>
 </template>
@@ -32,10 +51,24 @@
     data() {
       return {
         activeIndex: 'home',
+        showImg: true,
+        show: false,
+        search: '',
         coin: 2
       };
     },
     methods: {
+      showInput () {
+        this.showImg = false
+        this.show = true
+        this.$nextTick(function(){
+          this.$refs['inputTop'].focus()
+        })
+      },
+      hide() {
+        this.showImg = true
+        this.show = false
+      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       }
@@ -84,5 +117,17 @@
   padding: 0px 20px;
   margin: 17px 10px;
 }
-
+.find_right{
+  width: 100%;
+  float: right;
+}
+.find_set{
+  width: 400px;
+  padding: 10px 20px;
+  position: relative;
+}
+.btn_search{
+  position: absolute;
+  right: 20px;
+}
 </style>

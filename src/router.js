@@ -3,6 +3,7 @@ import Router from 'vue-router'
  
 import home from './components/home.vue'
 import login from './components/login.vue'
+import write_raiders from './components/write_raiders.vue'
  
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)
@@ -21,9 +22,13 @@ const router = new Router({
         {
             path: '/login',
             component: login
+        },
+        {
+            path: '/write_raiders',
+            component: write_raiders
         }
     ]
 })
-router.push('/');    //设置默认打开页面
+// router.push('/');    //设置默认打开页面
 // 5.导出路由
 export default router
