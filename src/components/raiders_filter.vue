@@ -22,23 +22,23 @@
         </div>
         <div class="section">
           <div class="label">兴趣</div>
-          <div class="section-cont" v-for="item in data">
-            <div :class="item.id%2==0 ? 'to-right':' '">
-              <div class="left">
-                <a href="javascript:void(0);">
-                    <img :src="item.img_url" href="javascript:void(0);"/>
-                </a>
-              </div>
-              <div class="right">
-                  <dl>
-                      <dt>
-                          <a href="javascript:void(0);">{{ item.title }}</a>
-                      </dt>
-                      <dd>
-                          <a href="javascript:void(0);">{{ item.abstract }}</a>
-                      </dd>
-                  </dl>
-              </div>
+          <div class="section-cont" v-for="item in data" 
+            :class="item.id%2==0 ? 'to-right':' '"
+            :key="item.id">
+            <div class="left">
+              <a href="javascript:void(0);">
+                  <img :src="item.img_url" href="javascript:void(0);"/>
+              </a>
+            </div>
+            <div class="right">
+                <dl>
+                    <dt>
+                        <a href="javascript:void(0);">{{ item.title }}</a>
+                    </dt>
+                    <dd>
+                        <a href="javascript:void(0);">{{ item.abstract }}</a>
+                    </dd>
+                </dl>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default {
     position: absolute;
     z-index: 10;
     margin: -21px 0 0 -20px;
-    width: 718px;
+    width: 830px;
     padding: 2px 0;
     border: 1px solid #e5e5e5;
     background-color: #fff;
@@ -165,38 +165,38 @@ export default {
 
 .label {
     float: left;
-    width: 56px;
+    width: 80px;
     text-align: right;
-    font-size: 16px;
+    font-size: 20px;
     color: #333;
     line-height: 24px;
 }
 
 .section-cont {
-    margin-left: 86px;
+    margin-left: 100px;
 }
 
 .mui-search {
-    width: 400px;
+    width: 550px;
     position: relative;
     margin-bottom: 15px;
 }
 
 .mui-search-inp {
-    width: 348px;
+    width: 450px;
     padding: 0 35px 0 15px;
     border: 1px solid #efefef;
     background-color: #efefef;
-    height: 38px;
+    height: 45px;
     border-radius: 4px;
-    line-height: 38px;
-    font-size: 14px;
+    line-height: 45px;
+    font-size: 18px;
     vertical-align: top;
 }
 
 .hot-place {
     font-size: 14px;
-    margin-left: 86px;
+    margin-left: 100px;
 }
 
 .hot-place a {
@@ -205,12 +205,16 @@ export default {
     color: #666;
 }
 
+.hot-place a:hover {
+    color: #ff4d00;
+}
+
 .left{
     float: left;
 }
 
 .right{
-    margin-left: 120px;
+    margin-left: 130px;
 }
 
 .to-right{
@@ -221,8 +225,26 @@ export default {
     margin-top: -15px;
 }
 
+a{
+  font-size: 18px;
+}
+
+dt a {
+    margin-right: 110px;
+    font-size: 20px;
+    width: 90px;
+}
+
 img{
-  width: 110px;
+  width: 130px;
+  margin-right: 15px;
+}
+
+a:active{
+  padding: 0 9px 0 12px;
+  background-color: #ff9d00;
+  color: #fff;
+  border-radius: 13px;
 }
 
 </style>
