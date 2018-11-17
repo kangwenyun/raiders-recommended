@@ -6,3 +6,5 @@
 3.新建项目:https://github.com/ElementUI/vue-cli-plugin-element
 
 4.vue-cli安装+vue-router+vue-resource：https://blog.csdn.net/skyblacktoday/article/details/78572519
+
+5.开启本地服务：npm run serve
