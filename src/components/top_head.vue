@@ -1,5 +1,5 @@
 <template>
-  <div class="back header-wrap">
+  <div class="header-wrap">
     <el-menu 
       :default-active="activeIndex" 
       class="el-menu-demo" 
@@ -10,7 +10,7 @@
         <img src="../assets/logo.png"/>
       </div>
       <el-menu-item index="home">首页</el-menu-item>
-      <el-menu-item index="destination">目的地</el-menu-item>
+      <el-menu-item index="mdd">目的地</el-menu-item>
       <el-menu-item index="raiders">旅游攻略</el-menu-item>
       <el-submenu index="my" class="right_header">
         <template slot="title"><img src="../assets/user.png"  class="my"/></template>
@@ -78,17 +78,14 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.back{
-  font-size: 12px;
-  color: #666;
-}
 .header-wrap {
+
+
+    color: #666;
     width: 1000px;
-    height: 68px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
     margin-top: 10px;
+    background: transparent;
 }
 .left_header{
   display: inline-flex;
