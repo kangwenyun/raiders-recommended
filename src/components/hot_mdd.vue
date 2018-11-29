@@ -877,17 +877,6 @@ export default {
     vertical-align: top;
 }
 
-.divide {
-    display: inline-block;
-    margin-top: 3px;
-    width: 1px;
-    height: 15px;
-    background-color: #eee;
-    overflow: hidden;
-    line-height: 100px;
-    vertical-align: top;
-}
-
 .hot-list {
     line-height: 24px;
     font-size: 14px;
@@ -900,8 +889,8 @@ export default {
 dl {
     border-bottom: 1px dashed #eee;
     padding: 20px 0 20px 80px;
-    height: auto;
-    margin-top: -3.5px;
+    height: 35px;
+    margin-top: -1px;
 }
 
 dt {

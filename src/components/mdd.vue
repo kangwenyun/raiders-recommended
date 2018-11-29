@@ -39,12 +39,14 @@
       </div>
     </div>
     <hot-mdd></hot-mdd>
+    <now-raiders></now-raiders>
   </div>
 </template>
 
 <script>
 
 import hot_mdd from './hot_mdd.vue'
+import now_raiders from './now_raiders.vue'
 
 export default {
   name: 'mdd',
@@ -66,6 +68,7 @@ export default {
   },
   components: {
       "hot-mdd": hot_mdd,
+      "now-raiders": now_raiders,
   }
 }
 </script>
