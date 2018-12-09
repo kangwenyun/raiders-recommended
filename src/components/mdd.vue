@@ -40,6 +40,7 @@
     </div>
     <hot-mdd></hot-mdd>
     <now-raiders></now-raiders>
+    <topic-choice></topic-choice>
   </div>
 </template>
 
@@ -47,6 +48,7 @@
 
 import hot_mdd from './hot_mdd.vue'
 import now_raiders from './now_raiders.vue'
+import topic_choice from './topic_choice.vue'
 
 export default {
   name: 'mdd',
@@ -69,6 +71,7 @@ export default {
   components: {
       "hot-mdd": hot_mdd,
       "now-raiders": now_raiders,
+      "topic-choice": topic_choice,
   }
 }
 </script>
