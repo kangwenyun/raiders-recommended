@@ -294,12 +294,7 @@ export default {
 </script>
 
 <style scoped>
-.now_raiders {
-    background-color: #fafafa;
-    width: 100%;
-}
-
-.raiders {
+.topic_choice {
     padding: 40px 0;
     width: 1000px;
     margin: 0 auto;
@@ -363,7 +358,7 @@ export default {
 }
 
 .small_img{
-    width: 240px;
+    width: 241.5px;
     height: 220px;
 }
 
@@ -376,7 +371,7 @@ export default {
 a{
     display: inline;
     position: relative;
-    margin-right: 10px;
+    margin-right: 3px;
 }
 
 .name{

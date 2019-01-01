@@ -2,7 +2,7 @@
   <div class="header-wrap">
     <el-menu 
       :default-active="activeIndex" 
-      class="el-menu-demo" 
+      class="pos" 
       mode="horizontal"
       active-text-color="#ff9d00"
       router>
@@ -79,14 +79,14 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header-wrap {
-
-
-    color: #666;
-    width: 1000px;
-    margin: 0 auto;
-    margin-top: 10px;
-    background: transparent;
+  color: #666;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background: transparent;
+  position: static;
 }
+
 .left_header{
   display: inline-flex;
   float: left;
@@ -100,6 +100,12 @@
   display: flex;
   float: right;
 }
+
+.el-menu{
+  position: fixed;
+  z-index: 100;
+}
+
 .my{
   padding-right: 10px;
   color: #ff9d00;
@@ -112,19 +118,27 @@
   height: 24px;
   line-height: 24px;
   padding: 0px 20px;
-  margin: 17px 10px;
+  margin-top: 17px;
 }
 .find_right{
   width: 100%;
   float: right;
 }
 .find_set{
-  width: 400px;
-  padding: 10px 20px;
+  width: 320px;
+  padding: 10px 15px;
   position: relative;
 }
 .btn_search{
   position: absolute;
   right: 20px;
+}
+
+.el-menu-item {
+  padding: 0 15px;
+}
+
+.el-submenu__title{
+  padding: 0 15px;
 }
 </style>

@@ -5,6 +5,7 @@ import home from './components/home.vue'
 import login from './components/login.vue'
 import write_raiders from './components/write_raiders.vue'
 import mdd from './components/mdd.vue'
+import raiders from './components/raiders.vue'
 
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)
@@ -31,6 +32,10 @@ const router = new Router({
         {
             path: '/mdd',
             component: mdd
+        },
+        {
+            path: '/raiders',
+            component: raiders
         }
     ]
 })

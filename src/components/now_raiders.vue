@@ -625,7 +625,7 @@ export default {
 }
 
 .small_img{
-    width: 240px;
+    width: 241.5px;
     height: 220px;
 }
 
@@ -638,7 +638,7 @@ export default {
 a{
     display: inline;
     position: relative;
-    margin-right: 10px;
+    margin-right: 3px;
 }
 
 .name{
