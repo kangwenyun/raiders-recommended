@@ -12,8 +12,8 @@
       <el-menu-item index="home">首页</el-menu-item>
       <el-menu-item index="mdd">目的地</el-menu-item>
       <el-menu-item index="raiders">旅游攻略</el-menu-item>
-      <el-submenu index="my" class="right_header">
-        <template slot="title" class="my"><img src="../assets/user.png"/></template>
+      <el-submenu index="my" class="right_header my">
+        <template slot="title"><img src="../assets/user.png"/></template>
         <el-menu-item index="1"><i class="el-icon-loading"></i>金币 {{coin}}</el-menu-item>
         <el-menu-item index="write_raiders"><i class="el-icon-edit"></i>写游记</el-menu-item>
         <el-menu-item index="myself"><i class="el-icon-goods"></i>我的</el-menu-item>

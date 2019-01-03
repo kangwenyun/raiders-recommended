@@ -8,17 +8,20 @@
         </el-carousel-item>
       </el-carousel>
     </div>
+    <recommend-gonglve></recommend-gonglve>
   </div>
 </template>
 
 <script>
 
 import raiders_select from './raiders_select.vue'
+import recommend_gonglve from './recommend_gonglve.vue'
 
 export default {
   name: 'raiders',
   components: {
-    "raiders-select": raiders_select
+    "raiders-select": raiders_select,
+    "recommend-gonglve": recommend_gonglve
   },
   data() {
     return{
