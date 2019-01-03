@@ -39,6 +39,7 @@ export default {
     color: #2c3e50;
     margin-top: -10px;
     position: absolute;
+    width: 100%;
 }
 
 body, p, div {

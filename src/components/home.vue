@@ -194,7 +194,7 @@ export default {
 </style>
 <style scoped>
 .home{
-  margin-top: -10px;
+  margin-top: 70px;
 }
 .carousel{
   width: 100%;
@@ -231,21 +231,21 @@ export default {
 
 .txt1_pos{
   position: absolute;
-  left: 100px;
+  left: 125px;
   top: 20px;
   font-size: 30px;
 }
 
 .txt2_pos{
   position: absolute;
-  left: 136px;
+  left: 160px;
   top: 30px;
   font-size: 20px;
 }
 
 .txt3_pos{
   position: absolute;
-  left: 100px;
+  left: 125px;
   top: 60px;
   font-size: 20px;
 }

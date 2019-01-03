@@ -79,18 +79,15 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header-wrap {
-  color: #666;
-  width: 1000px;
-  margin: 0 auto;
-  margin-top: 10px;
-  background: transparent;
-  position: static;
+    margin-top: 10px;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
 }
 
 .left_header{
-  display: inline-flex;
   float: left;
-  margin: 1em 17px 0px 1em;
+  margin: 1em 10% 0px 10%;
 }
 .in_header{
   display: inline-flex;
@@ -102,8 +99,7 @@
 }
 
 .el-menu{
-  position: fixed;
-  z-index: 100;
+  width: 100%;
 }
 
 .my{

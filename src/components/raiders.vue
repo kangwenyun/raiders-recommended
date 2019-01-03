@@ -21,9 +21,15 @@ export default {
 </script>
 
 <style scoped>
+.raiders{
+  width: 84%;
+  margin-left: 5%;
+}
+
 .rselect{
     width: 400px;
     position: inherit;
-    margin-top: 60px;
+    margin-top: 70px;
+    margin-left: 10px;
 }
 </style>

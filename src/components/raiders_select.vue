@@ -42,10 +42,8 @@
                 </div>
                 <p>
                     <a style="cursor: auto;">iPhone版</a>
-                    <span>|</span>
-                    <a style="cursor: auto;">Android版</a>
-                    <span>|</span>
-                    <a style="cursor: auto;">iPad版</a>
+                    <span>|</span><a style="cursor: auto;">Android版</a>
+                    <span>|</span><a style="cursor: auto;">iPad版</a>
                 </p>
             </div>
         </div>
@@ -58,7 +56,7 @@ export default {
   data() {
     return{
         now_key : -1 ,
-        show_img : false,
+        show_img : false ,
         raiders_nav:[
             {
                 key: 1, 
@@ -536,8 +534,9 @@ li {
 
 .app_d {
     position: absolute;
-    left: 25px;
-    top: 300px;
+    width: 282px;
+    left: 97px;
+    top: 310px;
     border-bottom: 1px #E3E3E3 solid;
     padding-bottom: 14px;
     margin-top: 15px;
