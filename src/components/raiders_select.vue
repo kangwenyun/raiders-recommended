@@ -535,7 +535,7 @@ li {
 .app_d {
     position: absolute;
     width: 282px;
-    left: 97px;
+    left: 127px;
     top: 310px;
     border-bottom: 1px #E3E3E3 solid;
     padding-bottom: 14px;
