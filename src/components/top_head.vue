@@ -83,6 +83,7 @@
     position: fixed;
     z-index: 100;
     width: 100%;
+    min-width: 1155px;
 }
 
 .left_header{
