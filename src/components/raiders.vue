@@ -73,7 +73,8 @@ export default {
   width: 66%;
   height: 300px;
   margin-left: 380px;
-  margin-top: -30px;
+  position: relative;
+  top: -235px;
 }
 
 .el-carousel {

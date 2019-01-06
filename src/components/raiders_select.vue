@@ -32,9 +32,9 @@
             <input type="text" placeholder="请输入想去的地方，如:香港"/>
         </div>
         <div class="app_d">
-            <h3><a href="http://imfw.cn/l/654850" target="_blank">
-                <img src="http://images.mafengwo.net/images/app/m/logo_gonglve_v6.png?v=20150825" alt="" width="50" height="50"/>
-            </a></h3>
+            <a href="http://imfw.cn/l/654850" target="_blank">
+                <img src="http://images.mafengwo.net/images/app/m/logo_gonglve_v6.png?v=20150825" alt="" class="down_img"/>
+            </a>
             <div class="domn_in" @mouseover="show_img = true" @mouseout="show_img = false">
                 <h4><a href="http://imfw.cn/l/654850" target="_blank">马蜂窝自由行APP下载</a></h4>
                 <div class="down" v-show="show_img">
@@ -533,25 +533,22 @@ li {
 }
 
 .app_d {
-    position: absolute;
-    width: 282px;
-    left: 127px;
-    top: 310px;
+    position: relative;
+    top: 80px;
     border-bottom: 1px #E3E3E3 solid;
-    padding-bottom: 14px;
-    margin-top: 15px;
+    width: 278px;
+    margin-left: 25px;
+    padding-bottom: 30px;
 }
 
-.app_d h3 {
-    float: left;
-    height: 50px;
-    width: 50px;
-    overflow: hidden;
+a {
+    display: inline;
 }
 
 .domn_in {
     width: 200px;
     margin-left: 65px;
+    margin-top: -50px;
 }
 
 .domn_in h4 {
@@ -598,5 +595,12 @@ h4 a:hover {
     top: 20px;
     z-index: 100;
     width: 130px;
+}
+
+.down_img {
+    height: 50px;
+    width: 50px;
+    position: relative;
+    left: -40px;
 }
 </style>

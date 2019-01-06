@@ -2,12 +2,12 @@
   <div class="recommend_gonglve">
       <el-tabs v-model="status">
         <el-tab-pane label="推荐攻略" name="gonglve">
-          <raiders-head
+          <gonglve-head
             v-for="item in hot_data"
             :data="item"
             :key="item.id"
             @votes="addVote">
-          </raiders-head>
+          </gonglve-head>
         </el-tab-pane>
       </el-tabs>
   </div>
@@ -15,266 +15,78 @@
 
 <script>
 
-import raiders_head from './raiders_head.vue'
+import gonglve_head from './gonglve_head.vue'
 
 export default {
   name: 'recommend_gonglve',
   components: {
-    "raiders-head": raiders_head
+    "gonglve-head": gonglve_head
   },
   data() {
     return {
-      dataimg: [{
-          index: 1,
-          src: require('../assets/header-1.jpeg'),
-          txt1: '14',
-          txt2: ' /Nov.2018',
-          txt3: '5k走出国门！铁路爱好者的中俄蒙铁路大回环'
-        },
-        {
-          index: 2,
-          src: require('../assets/header-2.jpeg'),
-          txt1: '13',
-          txt2: ' /Nov.2018',
-          txt3: '迎面吹来南极的风，那些独行在塔州的小时光'
-        },
-        {
-          index: 3,
-          src: require('../assets/header-3.jpeg'),
-          txt1: '12',
-          txt2: ' /Nov.2018',
-          txt3: '黔东南6日漫游，这里是大山深处的世外桃源'
-        },
-        {
-          index: 4,
-          src: require('../assets/header-4.jpeg'),
-          txt1: '11',
-          txt2: ' /Nov.2018',
-          txt3: '一场惊动大使馆和公司老板的旅行，徒步小白暴走尼泊尔'
-        }
-      ],
-      search: {
-        radio: 0,
-        input: ''
-      },
-      radio: [
-        {label:0, msg:"全部"},
-        {label:1, msg:"目的地"},
-        {label:2, msg:"旅游攻略"}
-      ],
-      ph: ["搜目的地/旅行攻略...", "我要去...", "我想找..."],
       status: 'gonglve',
-      tag_show: false,
-      tag_name: "日本",
       hot_data:[
         { id: 0, 
-          raiders_url: "www.baidu.com",
-          title: "走遍东京~欢乐又充实~东京十日亲子乐园游~含迪士尼+不二雄+面超、杯面博物馆+托马斯乐园攻略~",
-          img_url: require('../assets/raiders-hot-1.jpeg'),
-          abstract: "日本 ，久负盛名的亲子游圣地，很早以前就想带娃去~每每把他提上日程，又都因为复杂的公共交通、繁多的游乐项目最终选择了放弃...”等等、再等等、等孩子再大一点吧“我的心里总是这样想，希望孩子大一些、能玩的多一些、体力充沛一些、抗病抗造能力再强一些，于是就这样终于捱到了四岁！在经历了 新加坡 、 阿联酋 两地城市游转型以后，我想应该是时候，我们该出发了！",
-          ding: 41,
-          place_url: "www.baidu.com",
-          place: "顺德",
-          user_url: "www.baidu.com",
+          icon_from: 'youji',
+          from: "游记",
+          gonglve_url: "/",
+          num_zan: 1242,
+          title: "额济纳旗的秋韵（201810自驾详细攻略）",
+          img_url1: require('../assets/gonglve-head-11.jpeg'),
+          img_url2: require('../assets/gonglve-head-11.jpeg'),
+          img_url3: require('../assets/gonglve-head-11.jpeg'),
+          // 130字+...
+          abstract: "⛳⛳序言 三千年守候，只为等你来 胡杨生而千年不死、死而千年不倒、倒而千年不朽。2018年额济纳的的胡杨早黄了一周，我们适逢其时，看到最美秋韵。因一年只有20天红叶，又恰逢国庆，人满为患，但我们巧妙错峰，从未排队，还经常景区包场，每天都很震撼...",
           user_img: require('../assets/raiders-hot-user-1.jpeg'),
           user_name: "鹿女侠爱旅行",
-          nums: "490/2"
+          num_liulan: 624,
+          num_pinglun: 32
         },
         { id: 1, 
-          raiders_url: "www.baidu.com",
-          title: "北海道 | 十二月的晴空飞雪",
-          img_url: require('../assets/raiders-hot-2.jpeg'),
-          abstract: "北海道 的十二月，气温在零度左右，还未有北方冬天本该有的寒冷，却已是一副白雪皑皑 银装素裹的景色。于是这一趟旅行的的雪/夜/阳光/还有她，成了我印象中最温暖的冬天。",
-          ding: 121,
-          place_url: "www.baidu.com",
-          place: "北海道",
-          user_url: "www.baidu.com",
+          icon_from: 'ziyouxinggonglve',
+          from: "自由行攻略",
+          gonglve_url: "/",
+          num_zan: 122,
+          title: "黄山看雪景，冬天下雪自助旅游攻略",
+          img_url1: require('../assets/gonglve-head-11.jpeg'),
+          img_url2: require('../assets/gonglve-head-12.jpeg'),
+          img_url3: require('../assets/gonglve-head-13.jpeg'),
+          abstract: "“黄山四季皆胜景，惟有冬季景更佳”，冬天的黄山，有难得一见的雪景、雾淞和云海，如果不是亲眼看到，你绝对想象不出它有多美。很多想来黄山看雪景的蜂蜂都会有这样的误解，黄山冬天会不会封山？会不会很冷？山路会不会很滑？看了这篇攻略您就知道了。",
           user_img: require('../assets/raiders-hot-user-2.jpeg'),
           user_name: "叫我王道长",
-          nums: "1020/20"
-        }
-      ],
-      new_data:[
-        { id: 0, 
-          raiders_url: "www.baidu.com",
-          title: "猴年逛自贡灯会",
-          img_url: require('../assets/raiders-new-1.jpeg'),
-          abstract: "16年猴年回老婆老家—— 自贡 ，按照惯例去看灯会。 今年来 自贡 看灯会的人太多了，多到都不让进城了，只让川C牌照的车子进城，其他车辆一律不得入城，按照交警要求停在路边，然后乘坐便民",
-          ding: 0,
-          place_url: "www.baidu.com",
-          place: "自贡",
-          user_url: "www.baidu.com",
-          user_img: require('../assets/raiders-new-user-1.jpeg'),
-          user_name: " 浮生错的人",
-          nums: "1/0"
+          num_liulan: 625,
+          num_pinglun: 3
         },
-        { id: 1, 
-          raiders_url: "www.baidu.com",
-          title: "色达——一场冒险而佛系的朝圣之旅（自助游）",
-          img_url: require('../assets/raiders-new-2.jpeg'),
-          abstract: "出游前的准备 色达 的平均海拔在4000米左右，在距 色达 县城20余公里处，有一条山沟叫喇荣沟，顺沟上行数里，就是举世闻名的五明佛学院。佛学院四面环山，空气相对来说没有平原中流通。加上",
-          ding: 4,
-          place_url: "www.baidu.com",
-          place: "色达",
-          user_url: "www.baidu.com",
-          user_img: require('../assets/raiders-new-user-2.jpeg'),
-          user_name: "摩羯座",
-          nums: "162/20"
+        { id: 2, 
+          icon_from: 'wenda',
+          from: "问答",
+          gonglve_url: "/",
+          num_zan: 972,
+          title: "如何最快地找到跟你说走就走的那个人？",
+          img_url1: require('../assets/gonglve-head-11.jpeg'),
+          img_url2: '',
+          img_url3: '',
+          abstract: "如何最快的排除那些绝对不可能跟你说走就走的人？当然，样本里都是熟悉的人，陌生人当然不会稀里糊涂就跟你说走就走（表抬杠）。先说几个答主亲身经历的失败案例。第一次是答主大一的时候，那时候懵懂少年，绝壁单纯的不会蠢蠢欲动。一次宿舍座机响了，答主隔得近就接起来，结果话筒里传来一个甜甜的妹子的声音！简单交流后原来...",
+          user_img: require('../assets/raiders-hot-user-2.jpeg'), // 随便传一个
+          user_name: '',
+          num_liulan: 265,
+          num_pinglun: 319
         }
-      ],
-      write_url: "/write_raiders",
-      filter_show: false
+      ]
     };
   },
   methods: {
     addVote(vote) {
       // this.head_data.ding = vote + 1
       console.log(vote);
-    },
-    filterShow() {
-      this.filter_show = true
-    },
-    close_filter() {
-      this.tag_show = false
-    },
-    get_place(place) {
-      this.filter_show = false
-      if(place != -1){
-        this.tag_show = true
-        this.tag_name = place
-      }
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-.el-carousel__container{
-  height: 100%;
-}
-</style>
 <style scoped>
-.home{
-  margin-top: 70px;
-}
-.carousel{
-  width: 100%;
-  height: 450px;
-}
-.el-carousel__container{
-  height: 100%;
-}
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  margin: 0;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n+1) {
-  background-color: #d3dce6;
-}
-
-.header_img{
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.txt_same{
-  z-index: 2;
-  color: #fff;
-}
-
-.txt1_pos{
-  position: absolute;
-  left: 125px;
-  top: 20px;
-  font-size: 30px;
-}
-
-.txt2_pos{
-  position: absolute;
-  left: 160px;
-  top: 30px;
-  font-size: 20px;
-}
-
-.txt3_pos{
-  position: absolute;
-  left: 125px;
-  top: 60px;
-  font-size: 20px;
-}
-
-.form_pos{
-  position: absolute;
-  left: 35%;
-  bottom: 50px;
-  color: #fff;
-  background-color: rgba(0,0,0,.6);
-  border-radius: 4px;
-  padding: 10px;
-  width: 30%;
-  min-width: 300px;
-}
-
-.search_group{
-  position: relative;
-  top: 2px;
-}
-
-.el-radio{
-  color: #fff;
-}
-
-.get_res{
-  display: flex;
-  margin-top: 10px;
-}
-
-.el-button{
-  background: #ff9d00;
-  border: 1px solid #ff9d00;
-  margin-left: 5px;
-}
-
-.raiders{
-  width: 1000px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.right_up{
-    float: right;
-    position: absolute;
-    top: 10px;
-    left: 50px;
-    right: 0px;
-    z-index: 3;
-}
-
-.filter{
-  font-size: 10px;
-  color: #666;
-  background: #fff;
-  border: 1px solid #666;
-}
-
-.btn-add{
-  width: 140px;
-  height: 41px;
-  background-color: #ff9d00;
-  color: #fff;
-  text-align: center;
-  border-radius: 4px;
-  float: right;
-  font-size: 16px;
-  line-height: 41px;
+.recommend_gonglve{
+    margin: -200px 0 0 6%;
 }
 </style>
