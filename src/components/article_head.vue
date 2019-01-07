@@ -56,21 +56,22 @@
 <script>
 export default {
   name: 'article_head',
+  props: ['data'],
   data() {
     return{
-        article_title: '还差一场雪，也许真的可以到白头。',
-        title_img_url: "http://p3-q.mafengwo.net/s12/M00/26/FF/wKgED1wmMbyARMvZAAsHdb5BJao19.jpeg?imageMogr2%2Fstrip",
-        num_ding: 324,
-        per_home_url: "http://www.mafengwo.cn/u/57633488.html",
-        per_pic_url: "http://b1-q.mafengwo.net/s12/M00/6C/2E/wKgED1we54uAdBBiAACPODu3epo99.jpeg?imageMogr2%2Fthumbnail%2F%21200x200r%2Fgravity%2FCenter%2Fcrop%2F%21200x200%2Fquality%2F90",
-        per_name: '娜娜959',
-        per_grade: 'LV.41',
-        vip_url: "http://www.mafengwo.cn/home/vip_show.php",
-        vip_img_url: "http://images.mafengwo.net/images/home/vip/vip1.gif",
-        time: '2019-01-03 21:13',
-        view: '2400/201',
-        num_share: 8,
-        num_collect: 32,
+        article_title: this.data.article_title,
+        title_img_url: this.data.title_img_url,
+        num_ding: this.data.ding,
+        per_home_url: this.data.per_home_url,
+        per_pic_url: this.data.per_pic_url,
+        per_name: this.data.per_name,
+        per_grade: this.data.per_grade,
+        vip_url: this.data.vip_url,
+        vip_img_url: this.data.vip_img_url,
+        time: this.data.time,
+        view: this.data.view,
+        num_share: this.data.num_share,
+        num_collect: this.data.num_collect,
         collect: false
     };
   },
@@ -99,7 +100,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 87px;
+    top: 295px;
     opacity: .5;
 }
 
@@ -107,7 +108,7 @@ export default {
     width: 100%;
     height: 125px;
     position: absolute;
-    bottom: 70px;
+    top: 290px;
 }
 
 .vi_con {
@@ -137,7 +138,7 @@ export default {
 .ding{
     position: absolute;
     right: 50%;
-    top: 350px;
+    top: 315px;
     margin-right: -460px;
     color: #fff;
     z-index: 4;
@@ -263,8 +264,8 @@ a.bs_btn {
     background-position: 0 0;
 }
 
-.collected{
-    background-position: -30px 0;
+.collected i{
+    background-position: -30px 0 !important;
 }
 
 .bottom_line{
