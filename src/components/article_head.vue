@@ -61,7 +61,7 @@ export default {
     return{
         article_title: this.data.article_title,
         title_img_url: this.data.title_img_url,
-        num_ding: this.data.ding,
+        num_ding: this.data.num_ding,
         per_home_url: this.data.per_home_url,
         per_pic_url: this.data.per_pic_url,
         per_name: this.data.per_name,
