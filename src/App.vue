@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-head></v-head>
+    <v-head v-show="this.$route.path != '/regist'"></v-head>
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
   </div>
@@ -17,14 +17,14 @@ export default {
     return{
     };
   },
-  // created() {
-  //   this.$http.get('/api/goods').then((response) => {
-  //     response = response.body;
-  //     if(response.errno=== ERR_OK) {
-  //       this.goods= response.data;
-  //     }
-  //   },(response) => {});
-  // },
+//   created() {
+//     this.$http.get('/api/goods').then((response) => {
+//       response = response.body;
+//       if(response.errno=== ERR_OK) {
+//         this.goods= response.data;
+//       }
+//     },(response) => {});
+//   },
   components: {
     'v-head': top_head
   }

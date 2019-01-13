@@ -2,6 +2,7 @@
   <div class="article_detail">
       <article-head :data="articleHead"></article-head>
       <article-text :data="articleText"></article-text>
+      <div></div>
   </div>
 </template>
 

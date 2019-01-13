@@ -5,7 +5,8 @@
       class="pos" 
       mode="horizontal"
       active-text-color="#ff9d00"
-      router>
+      router
+      @select="get_page">
       <div class="left_header">
         <img src="../assets/logo.png"/>
       </div>
@@ -71,6 +72,9 @@
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      get_page(index){
+        this.activeIndex = index
       }
     }
   }
