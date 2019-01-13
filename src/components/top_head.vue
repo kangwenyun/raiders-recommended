@@ -13,7 +13,7 @@
       <el-menu-item index="home">首页</el-menu-item>
       <el-menu-item index="mdd">目的地</el-menu-item>
       <el-menu-item index="raiders">旅游攻略</el-menu-item>
-      <el-submenu index="my" class="right_header my">
+      <el-submenu index="my" class="my">
         <template slot="title"><img src="../assets/user.png"/></template>
         <el-menu-item index="1"><i class="el-icon-loading"></i>金币 {{coin}}</el-menu-item>
         <el-menu-item index="write_raiders"><i class="el-icon-edit"></i>写游记</el-menu-item>
@@ -21,28 +21,27 @@
         <el-menu-item index="setting"><i class="el-icon-setting"></i>设置</el-menu-item>
         <el-menu-item index="quit"><i class="el-icon-d-arrow-right"></i>退出</el-menu-item>
       </el-submenu>
-      <el-menu-item index="punch" class="right_header"><el-button class="daka">打卡</el-button></el-menu-item>
-      <div class="right_header find_set">
-        <div class="find_right">
-          <transition name="el-zoom-in-center">
-            <el-input
-              v-show="show"
-              placeholder="搜目的地/旅行攻略..."
-              v-model="search"
-              @blur="hide"
-              ref="inputTop"
-              suffix-icon="el-icon-search">
-            </el-input>
-          </transition>
-        </div>
+    </el-menu>
+    <div class="right_header">
+      <div class="find_set">
+        <transition name="el-zoom-in-center">
+          <el-input
+            v-show="show"
+            placeholder="搜目的地/旅行攻略..."
+            v-model="search"
+            @blur="hide"
+            ref="inputTop"
+            suffix-icon="el-icon-search"/>
+        </transition>
         <el-button 
           icon="el-icon-search" 
           circle 
           class="btn_search" 
           v-show="showImg" 
-          @click="showInput"></el-button>
+          @click="showInput"/>
       </div>
-    </el-menu>
+      <el-button class="daka">打卡</el-button>
+    </div>
   </div>
 </template>
 
@@ -101,7 +100,9 @@
 .right_header{
   display: flex;
   float: right;
-  /* right: 10%; */
+  position: relative;
+  top: -60px;
+  right: 235px;
 }
 
 .daka{
@@ -122,10 +123,11 @@
   width: 320px;
   padding: 10px 15px;
   position: relative;
+  right: 20px;
 }
 .btn_search{
   position: absolute;
-  right: 20px;
+  right: 15px;
 }
 
 .el-menu-item {
@@ -138,5 +140,6 @@
 
 .my{
   margin-right: 10%;
+  float: right;
 }
 </style>

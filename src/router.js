@@ -7,7 +7,6 @@ import write_raiders from './components/write_raiders.vue'
 import mdd from './components/mdd.vue'
 import raiders from './components/raiders.vue'
 import article_detail from './components/article_detail.vue'
-import regist from './components/regist.vue'
 
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)
@@ -42,10 +41,6 @@ const router = new Router({
         {
             path: '/article_detail/*',
             component: article_detail
-        },
-        {
-            path: '/regist',
-            component: regist
         }
     ]
 })
