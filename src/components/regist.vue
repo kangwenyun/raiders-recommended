@@ -9,8 +9,11 @@
                             <el-form-item class="form-field" prop="phone">
                                 <el-input v-model="regist.phone" placeholder="您的手机号码"/>
                             </el-form-item>
+                            <el-form-item class="form-field" prop="phone1" style="display: none">
+                                <el-input v-model="regist.phone1" placeholder="您的手机号码"/>
+                            </el-form-item>
                             <el-form-item class="submit-btn">
-                                <el-button @click="regist_now('form')">立即注册</el-button>
+                                <el-button @click="regist_now('regist')">立即注册</el-button>
                             </el-form-item>
                         </el-form>
                         <div class="agreement">
@@ -27,7 +30,7 @@
                             </el-form-item>
                             <div class="form-link"><a href="/forget">忘记密码</a></div>
                             <el-form-item class="submit-btn">
-                                <el-button @click="login_now('form')">登录</el-button>
+                                <el-button @click="login_now('login')">登录</el-button>
                             </el-form-item>
                         </el-form>
                     </div>
@@ -46,10 +49,10 @@
                 </div>
             </div>
             <div class="bottom-link" v-if="page == 'regist'">
-                已经注册?<a href="#" @click="page = 'login'">马上登录</a>
+                已经注册?<a href="#" @click="regist_reset('regist')">马上登录</a>
             </div>
             <div class="bottom-link" v-else>
-                还没有账号？<a href="#" @click="page = 'regist'">马上注册</a>
+                还没有账号？<a href="#" @click="login_reset('login')">马上注册</a>
             </div>
         </div>
     </div>
@@ -80,22 +83,37 @@ export default {
             passwd: [
                 { required: true, message: '密码不能为空', trigger: 'blur'}
             ]
-        },
-        success: false
+        }
     };
   },
   methods: {
       regist_now(form){
           this.$refs[form].validate((valid) => {
             if (valid) {
-                this.success = true
                 alert('submit!');
             } else {
                 console.log('error submit!!');
-                this.success = false
                 return false;
             }
             });
+      },
+      regist_reset(form) {
+        this.$refs[form].resetFields();
+        this.page = 'login'
+      },
+      login_now(form){
+          this.$refs[form].validate((valid) => {
+            if (valid) {
+                alert('submit!');
+            } else {
+                console.log('error submit!!');
+                return false;
+            }
+            });
+      },
+      login_reset(form) {
+        this.$refs[form].resetFields();
+        this.page = 'regist'
       }
   }
 }
@@ -103,15 +121,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header-wrap{
-    display: none;
-}
-
 .regist{
     background-image: url(https://images.mafengwo.net/images/signup/wallpaper/40.jpg);
     position: relative;
     padding-top: 10px;
-    height: -webkit-fill-available;
+    height: 600px;
 }
 
 a.logo {
@@ -297,13 +311,10 @@ a.logo {
 }
 
 .form-link {
-    clear: both;
-    width: 320px;
-    margin: 0 auto;
-    padding: 8px 0 0;
     text-align: right;
     font-size: 12px;
     font-weight: 600;
+    margin-right: 25px;
 }
 
 .form-link a {
