@@ -4,16 +4,14 @@
         <div class="signup-box">
             <div class="inner">
                 <div class="inner_left">
-                    <form action="/regist" method="post">
-                        <input type="hidden" name="token" value="1cf2aec4c038f9d86e2be65bb9b23d9c" />
-                        <div class="form-field">
-                            <input name="passport" type="text" placeholder="您的手机号码" autocomplete="off" data-type="mobile" class="verification[required,maxSize[50],custom[mobile]]" value="" />
-                            <div class="err-tip"></div>
-                        </div>
-                        <div class="submit-btn">
-                            <button type="submit">立即注册</button>
-                        </div>
-                    </form>
+                    <el-form ref="form" :model="form" :rules="rules">
+                        <el-form-item class="form-field" prop="phone" :class="success ? 'is-success' : ''">
+                            <el-input v-model="form.phone" placeholder="您的手机号码"/>
+                        </el-form-item>
+                        <el-form-item class="submit-btn">
+                            <el-button @click="regist_now('form')">立即注册</el-button>
+                        </el-form-item>
+                    </el-form>
                     <div class="agreement">
                         注册视为同意<a target="_blank" href="http://www.mafengwo.cn/s/agreement.html">《马蜂窝用户使用协议》</a>
                     </div>
@@ -43,10 +41,30 @@ export default {
   name: 'regist',
   data() {
     return {
-        
+        form: {
+            phone: ''
+        },
+        rules:{
+            phone: [
+                { required: true, message: '手机号码不能为空', trigger: 'blur'}
+            ]
+        },
+        success: false
     };
   },
   methods: {
+      regist_now(form){
+          this.$refs[form].validate((valid) => {
+            if (valid) {
+                this.success = true
+                alert('submit!');
+            } else {
+                console.log('error submit!!');
+                this.success = false
+                return false;
+            }
+            });
+      }
   }
 }
 </script>
@@ -113,24 +131,10 @@ a.logo {
     -webkit-transition: box-shadow .25s linear 0s;
 }
 
-.err-tip {
-    clear: both;
-    background: url(https://css.mafengwo.net/images/signup/err_ico2.png) 0 -60px no-repeat #fff;
-    padding: 0 0 3px 22px;
-    width: 300px;
-    font-size: 12px;
-    color: #ff3c00;
-    margin-top: 10px;
-    top: 0;
-    position: absolute;
-    text-align: left;
-    display: none;
-}
-
 .submit-btn {
     width: 320px;
     margin: 0 auto;
-    padding: 12px 0 0;
+    padding: 20px 0 0;
 }
 
 .submit-btn button {
@@ -140,7 +144,6 @@ a.logo {
     background-color: #ffa800;
     border-radius: 5px;
     text-align: center;
-    line-height: 40px;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -252,4 +255,8 @@ a.logo {
     margin-left: 6px;
     display: inline;
 }
+
+/* .el-form-item.is-success .el-input__inner{
+    border-color: #ff9d00 !important
+} */
 </style>
