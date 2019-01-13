@@ -2,18 +2,34 @@
     <div class="regist">
         <a href="/home" title="返回首页" class="logo">马蜂窝</a>
         <div class="signup-box">
-            <div class="inner">
+            <div class="inner" :class="page == 'regist' ? 'height_regist' : 'height_login'">
                 <div class="inner_left">
-                    <el-form ref="form" :model="form" :rules="rules">
-                        <el-form-item class="form-field" prop="phone" :class="success ? 'is-success' : ''">
-                            <el-input v-model="form.phone" placeholder="您的手机号码"/>
-                        </el-form-item>
-                        <el-form-item class="submit-btn">
-                            <el-button @click="regist_now('form')">立即注册</el-button>
-                        </el-form-item>
-                    </el-form>
-                    <div class="agreement">
-                        注册视为同意<a target="_blank" href="http://www.mafengwo.cn/s/agreement.html">《马蜂窝用户使用协议》</a>
+                    <div v-if="page == 'regist'">
+                        <el-form ref="regist" :model="regist" :rules="regist_rules">
+                            <el-form-item class="form-field" prop="phone">
+                                <el-input v-model="regist.phone" placeholder="您的手机号码"/>
+                            </el-form-item>
+                            <el-form-item class="submit-btn">
+                                <el-button @click="regist_now('form')">立即注册</el-button>
+                            </el-form-item>
+                        </el-form>
+                        <div class="agreement">
+                            注册视为同意<a target="_blank" href="http://www.mafengwo.cn/s/agreement.html">《马蜂窝用户使用协议》</a>
+                        </div>
+                    </div>
+                    <div v-else>
+                        <el-form ref="login" :model="login" :rules="login_rules">
+                            <el-form-item class="form-field" prop="account">
+                                <el-input v-model="login.account" placeholder="您的手机号码"/>
+                            </el-form-item>
+                            <el-form-item class="form-field" prop="passwd">
+                                <el-input v-model="login.passwd" placeholder="您的密码"/>
+                            </el-form-item>
+                            <div class="form-link"><a href="/forget">忘记密码</a></div>
+                            <el-form-item class="submit-btn">
+                                <el-button @click="login_now('form')">登录</el-button>
+                            </el-form-item>
+                        </el-form>
                     </div>
                     <div class="connect">
                         <p class="hd">用合作网站账户直接登录</p>
@@ -29,8 +45,11 @@
                     <p>扫一扫<br>下载马蜂窝APP</p>
                 </div>
             </div>
-            <div class="bottom-link">
-                已经注册?<a href="#">马上登录</a>
+            <div class="bottom-link" v-if="page == 'regist'">
+                已经注册?<a href="#" @click="page = 'login'">马上登录</a>
+            </div>
+            <div class="bottom-link" v-else>
+                还没有账号？<a href="#" @click="page = 'regist'">马上注册</a>
             </div>
         </div>
     </div>
@@ -41,12 +60,25 @@ export default {
   name: 'regist',
   data() {
     return {
-        form: {
+        page: 'login',
+        regist: {
             phone: ''
         },
-        rules:{
+        regist_rules:{
             phone: [
                 { required: true, message: '手机号码不能为空', trigger: 'blur'}
+            ]
+        },
+        login: {
+            account: '',
+            passwd: ''
+        },
+        login_rules:{
+            account: [
+                { required: true, message: '账号不能为空', trigger: 'blur'}
+            ],
+            passwd: [
+                { required: true, message: '密码不能为空', trigger: 'blur'}
             ]
         },
         success: false
@@ -79,6 +111,7 @@ export default {
     background-image: url(https://images.mafengwo.net/images/signup/wallpaper/40.jpg);
     position: relative;
     padding-top: 10px;
+    height: -webkit-fill-available;
 }
 
 a.logo {
@@ -94,13 +127,20 @@ a.logo {
 }
 
 .inner {
-    height: 326px;
     padding-top: 26px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 3px 3px rgba(0,0,0,.4);
     margin: 0 auto;
     width: 600px;
+}
+
+.height_regist {
+    height: 326px;
+}
+
+.height_login {
+    height: 350px;
 }
 
 .inner_left {
@@ -111,7 +151,7 @@ a.logo {
 .form-field {
     clear: both;
     width: 320px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     padding-top: 10px;
     zoom: 1\9;
 }
@@ -134,7 +174,7 @@ a.logo {
 .submit-btn {
     width: 320px;
     margin: 0 auto;
-    padding: 20px 0 0;
+    padding: 10px 0 0;
 }
 
 .submit-btn button {
@@ -254,6 +294,20 @@ a.logo {
     color: #ffa800;
     margin-left: 6px;
     display: inline;
+}
+
+.form-link {
+    clear: both;
+    width: 320px;
+    margin: 0 auto;
+    padding: 8px 0 0;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-link a {
+    color: #ffa800;
 }
 
 /* .el-form-item.is-success .el-input__inner{
