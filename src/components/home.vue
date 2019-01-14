@@ -173,7 +173,7 @@ export default {
   methods: {
     load(){
       var vm = this
-      vm.$http.get('http://172.18.25.255:3333/home?page=')
+      vm.$http.get(this.baseUrl + '/home?page=')
               .then((response) => {
                 if (response.body.status){
                   response.body.dataimg.forEach(element => {

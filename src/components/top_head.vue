@@ -14,7 +14,7 @@
       <el-menu-item index="mdd">目的地</el-menu-item>
       <el-menu-item index="raiders">旅游攻略</el-menu-item>
       <el-submenu index="my" class="my" v-show="login">
-        <template slot="title"><img src="../assets/user.png"/></template>
+        <template slot="title"><img :src=user_img></template>
         <el-menu-item index="1"><i class="el-icon-loading"></i>金币 {{coin}}</el-menu-item>
         <el-menu-item index="write_raiders"><i class="el-icon-edit"></i>写游记</el-menu-item>
         <el-menu-item index="myself"><i class="el-icon-goods"></i>我的</el-menu-item>
@@ -46,9 +46,9 @@
       <a class="weibo-login" href="https://passport.mafengwo.cn/weibo" title="微博登录"></a>
       <a class="qq-login" href="https://passport.mafengwo.cn/qq" title="QQ登录"></a>
       <a class="weixin-login" href="https://passport.mafengwo.cn/wechat" title="微信登录"></a>
-      <a title="登录马蜂窝" href="/login" target="_blank">登录</a>
+      <a title="登录马蜂窝" href="" @click="login_now('login')">登录</a>
       <span class="split">|</span>
-      <a href="/login" title="注册帐号" target="_blank">注册</a>
+      <a href="" title="注册帐号" @click="login_now('regist')">注册</a>
     </div>
   </div>
 </template>
@@ -58,8 +58,9 @@
     name: "top_head",
     data() {
       return {
-        login: true,
-        activeIndex: 'home',
+        login: false,
+        user_img: require("../assets/user.png"),
+        activeIndex: this.$router.path,
         showImg: true,
         show: false,
         search: '',
@@ -67,6 +68,16 @@
       };
     },
     methods: {
+      get_account(){
+        console.log('000:', this.$route)
+        var account = this.$route.query.account
+        console.log("account:", account)
+        if(account){
+          this.login = true
+          //发请求
+          this.user_img = require("../assets/user.png")
+        }
+      },
       showInput () {
         this.showImg = false
         this.show = true
@@ -78,12 +89,20 @@
         this.showImg = true
         this.show = false
       },
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      },
       get_page(index){
         this.activeIndex = index
+      },
+      login_now(val){
+        this.$router.push({
+          path: '/login',
+          query: {
+            page: val
+          }
+        })
       }
+    },
+    created() {
+      this.get_account()
     }
   }
 </script>

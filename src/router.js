@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
  
 import home from './components/home.vue'
-import login from './components/login.vue'
-import write_raiders from './components/write_raiders.vue'
 import mdd from './components/mdd.vue'
 import raiders from './components/raiders.vue'
+import login from './components/login.vue'
+import write_raiders from './components/write_raiders.vue'
 import article_detail from './components/article_detail.vue'
 
 // 2.通过Vue的use方法注入Router
@@ -20,23 +20,26 @@ const router = new Router({
         },
         {
             path: '/home',
-            component: home
-        },
-        {
-            path: '/login',
-            component: login
-        },
-        {
-            path: '/write_raiders',
-            component: write_raiders
+            component: home,
+            name: home
         },
         {
             path: '/mdd',
-            component: mdd
+            component: mdd,
+            name: mdd
         },
         {
             path: '/raiders',
             component: raiders
+        },
+        {
+            path: '/login',
+            component: login,
+            name: 'login' // 用于页面间传递参数
+        },
+        {
+            path: '/write_raiders',
+            component: write_raiders
         },
         {
             path: '/article_detail/*',

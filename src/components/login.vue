@@ -1,13 +1,13 @@
 <template>
-    <div class="regist">
+    <div class="login">
         <a href="/home" title="返回首页" class="logo">马蜂窝</a>
         <div class="signup-box">
             <div class="inner" :class="page == 'regist' ? 'height_regist' : 'height_login'">
                 <div class="inner_left">
                     <div v-if="page == 'regist'">
                         <el-form ref="regist" :model="regist" :rules="regist_rules">
-                            <el-form-item class="form-field" prop="phone">
-                                <el-input v-model="regist.phone" placeholder="您的手机号码"/>
+                            <el-form-item class="form-field" prop="account">
+                                <el-input v-model="regist.account" placeholder="您的手机号码"/>
                             </el-form-item>
                             <el-form-item class="form-field" prop="phone1" style="display: none">
                                 <el-input v-model="regist.phone1" placeholder="您的手机号码"/>
@@ -60,68 +60,84 @@
 
 <script>
 export default {
-  name: 'regist',
-  data() {
-    return {
-        page: 'login',
-        regist: {
-            phone: ''
+    inject: ['reload'],
+    name: 'login',
+    data() {
+        return {
+            page: 'login',
+            regist: {
+                account: ''
+            },
+            regist_rules:{
+                account: [
+                    { required: true, message: '手机号码不能为空', trigger: 'blur'}
+                ]
+            },
+            login: {
+                account: '',
+                passwd: ''
+            },
+            login_rules:{
+                account: [
+                    { required: true, message: '账号不能为空', trigger: 'blur'}
+                ],
+                passwd: [
+                    { required: true, message: '密码不能为空', trigger: 'blur'}
+                ]
+            }
+        };
+    },
+    methods: {
+        regist_now(form){
+            this.$refs[form].validate((valid) => {
+                if (valid) {
+                    this.login.account = this.regist.account
+                    this.regist_reset(form)
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+                });
         },
-        regist_rules:{
-            phone: [
-                { required: true, message: '手机号码不能为空', trigger: 'blur'}
-            ]
+        regist_reset(form) {
+            this.$refs[form].resetFields();
+            this.page = 'login'
         },
-        login: {
-            account: '',
-            passwd: ''
+        login_now(form){
+            this.$refs[form].validate((valid) => {
+                if (valid) {
+                    this.$router.push({
+                        path: '/mdd',
+                        query: {
+                            account: this.login.account
+                        }
+                    })
+                    console.log('this.login.account:', this.login.account)
+                    this.reload()
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+                });
         },
-        login_rules:{
-            account: [
-                { required: true, message: '账号不能为空', trigger: 'blur'}
-            ],
-            passwd: [
-                { required: true, message: '密码不能为空', trigger: 'blur'}
-            ]
+        login_reset(form) {
+            this.$refs[form].resetFields();
+            this.page = 'regist'
+        },
+        getParams() {
+            // 取到路由带过来的参数,放在当前组件的数据内
+            this.page = this.$route.query.page
         }
-    };
-  },
-  methods: {
-      regist_now(form){
-          this.$refs[form].validate((valid) => {
-            if (valid) {
-                alert('submit!');
-            } else {
-                console.log('error submit!!');
-                return false;
-            }
-            });
-      },
-      regist_reset(form) {
-        this.$refs[form].resetFields();
-        this.page = 'login'
-      },
-      login_now(form){
-          this.$refs[form].validate((valid) => {
-            if (valid) {
-                alert('submit!');
-            } else {
-                console.log('error submit!!');
-                return false;
-            }
-            });
-      },
-      login_reset(form) {
-        this.$refs[form].resetFields();
-        this.page = 'regist'
-      }
-  }
+    },
+    created(){
+        this.getParams()
+    }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.regist{
+.login{
     background-image: url(https://images.mafengwo.net/images/signup/wallpaper/40.jpg);
     position: relative;
     padding-top: 10px;

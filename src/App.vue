@@ -1,32 +1,37 @@
 <template>
   <div id="app">
-    <v-head v-show="this.$route.path != '/regist'"></v-head>
+    <v-head v-show="this.$route.path != '/login'"></v-head>
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view></router-view>
+    <router-view v-if="isRouterAlive"></router-view>
   </div>
 </template>
 
 <script>
 import top_head from './components/top_head.vue'
 
-// const ERR_OK =0
-
 export default {
   name: 'app',
+  provide() { // 目的：页面跳转后刷新
+      return{
+          reload: this.reload
+      }
+  },
   data() {
     return{
+        isRouterAlive: true
     };
   },
-//   created() {
-//     this.$http.get('/api/goods').then((response) => {
-//       response = response.body;
-//       if(response.errno=== ERR_OK) {
-//         this.goods= response.data;
-//       }
-//     },(response) => {});
-//   },
   components: {
     'v-head': top_head
+  },
+  methods: {
+      // 通过声明reload方法，控制router-view的显示或隐藏，从而控制页面的再次加载
+      reload() {
+          this.isRouterAlive = false
+          this.$nextTick(function(){
+              this.isRouterAlive = true
+          })
+      }
   }
 }
 </script>
