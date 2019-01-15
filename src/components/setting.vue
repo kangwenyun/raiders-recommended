@@ -12,6 +12,13 @@
                 <span slot="title">{{ item.title }}</span>
             </el-menu-item>
         </el-menu>
+        <setting-info v-if="active_index == '1'"></setting-info>
+        <setting-mg v-else-if="active_index == '2'"></setting-mg>
+        <setting-bangding v-else-if="active_index == '3'"></setting-bangding>
+        <setting-secure v-else-if="active_index == '4'"></setting-secure>
+        <setting-nest v-else-if="active_index == '5'"></setting-nest>
+        <setting-blacklist v-else-if="active_index == '6'"></setting-blacklist>
+        <setting-money v-else></setting-money>
     </div>
 </template>
 

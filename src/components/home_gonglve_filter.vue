@@ -1,5 +1,5 @@
 <template>
-  <div class="gonglve_filter">
+  <div class="home_home_gonglve_filter">
     <div class="tn-dropdown-pop">
         <a class="close" href="javascript:void(0);" @click="hide">×</a>
         <div class="section">
@@ -44,16 +44,16 @@
 </template>
 
 <script>
-  // place_id为0代表输入框，1-8代表目的地选择，9-16代表星期
+  // place_id为0代表输入框，1-8代表目的地选择，9-16代表兴趣
 export default {
-  name: 'gonglve_filter',
+  name: 'home_gonglve_filter',
   // props: ['data'],
   data() {
     return {
       place:"",
       on: false,
       place_id: -1,
-      places:[
+      places:[ //目的地
         {id: 1, place: "斯里兰卡"},
         {id: 2, place: "济州岛"},
         {id: 3, place: "香港"},
@@ -63,12 +63,12 @@ export default {
         {id: 7, place: "青海湖"},
         {id: 8, place: "日本"},
       ],
-      data:[
+      data:[ //兴趣
         {
           id: 9,
-          img_url: require('../assets/interest-2.jpeg'),
-          title: "带着对象",
-          abstract: "去虐狗",
+          img_url: require('../assets/interest-2.jpeg'), //图片
+          title: "带着对象", //标题
+          abstract: "去虐狗",  //标题下面的小字
         },
         {
           id: 10,
@@ -136,7 +136,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.gonglve_filter{
+.home_gonglve_filter{
   z-index: 3;
   float: left;
   position: absolute;

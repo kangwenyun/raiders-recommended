@@ -115,6 +115,7 @@
     z-index: 100;
     width: 100%;
     min-width: 1155px;
+    height: 61px;
 }
 
 .left_header{

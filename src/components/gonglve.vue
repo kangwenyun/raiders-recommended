@@ -25,10 +25,10 @@ export default {
   },
   data() {
     return{
-      dataimg: [{
-          index: 1,
-          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
-          src: require('../assets/gonglve-1.jpeg')
+      dataimg: [{  // 右上角的轮播图
+          index: 1,  //// 从0还是1开始都行
+          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html', //轮播图跳转地址
+          src: require('../assets/gonglve-1.jpeg')  //轮播图图片地址
         },
         {
           index: 2,
