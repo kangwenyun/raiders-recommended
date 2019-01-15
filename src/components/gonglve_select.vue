@@ -1,7 +1,7 @@
 <template>
-    <div class="raiders_select">
+    <div class="gonglve_select">
         <div class="gonglve-nav">
-            <div class="nav-item" v-for="item in raiders_nav" :key="item.key">
+            <div class="nav-item" v-for="item in gonglve_nav" :key="item.key">
                 <div class="nav-title" @mouseover="now_key = item.key" 
                     @mouseout="now_key = -1">
                     <h3 :class="now_key == item.key ? 'h3-active' : ''">{{ item.title }}</h3>
@@ -52,12 +52,12 @@
 
 <script>
 export default {
-  name: 'raiders_select',
+  name: 'gonglve_select',
   data() {
     return{
         now_key : -1 ,
         show_img : false ,
-        raiders_nav:[
+        gonglve_nav:[
             {
                 key: 1, 
                 title: '海外冬季目的地精选',

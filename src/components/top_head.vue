@@ -1,5 +1,5 @@
 <template>
-  <div class="header-wrap">
+  <div class="top_head">
     <el-menu 
       :default-active="activeIndex" 
       class="pos" 
@@ -12,11 +12,11 @@
       </div>
       <el-menu-item index="home">首页</el-menu-item>
       <el-menu-item index="mdd">目的地</el-menu-item>
-      <el-menu-item index="raiders">旅游攻略</el-menu-item>
+      <el-menu-item index="gonglve">旅游攻略</el-menu-item>
       <el-submenu index="my" class="my" v-show="login">
         <template slot="title"><img :src=user_img></template>
         <el-menu-item index="1"><i class="el-icon-loading"></i>金币 {{coin}}</el-menu-item>
-        <el-menu-item index="write_raiders"><i class="el-icon-edit"></i>写游记</el-menu-item>
+        <el-menu-item index="write_gonglve"><i class="el-icon-edit"></i>写游记</el-menu-item>
         <el-menu-item index="myself"><i class="el-icon-goods"></i>我的</el-menu-item>
         <el-menu-item index="setting"><i class="el-icon-setting"></i>设置</el-menu-item>
         <el-menu-item index="quit"><i class="el-icon-d-arrow-right"></i>退出</el-menu-item>
@@ -58,7 +58,7 @@
     name: "top_head",
     data() {
       return {
-        login: false,
+        login: true,
         user_img: require("../assets/user.png"),
         activeIndex: this.$router.path,
         showImg: true,
@@ -69,14 +69,14 @@
     },
     methods: {
       get_account(){
-        console.log('000:', this.$route)
-        var account = this.$route.query.account
-        console.log("account:", account)
-        if(account){
-          this.login = true
-          //发请求
-          this.user_img = require("../assets/user.png")
-        }
+        // console.log('000:', this.$route)
+        // var account = this.$route.query.account
+        // console.log("account:", account)
+        // if(account){
+        //   this.login = true
+        //   //发请求
+        //   this.user_img = require("../assets/user.png")
+        // }
       },
       showInput () {
         this.showImg = false
@@ -109,7 +109,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header-wrap {
+.top_head {
     margin-top: 10px;
     position: fixed;
     z-index: 100;

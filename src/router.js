@@ -3,10 +3,11 @@ import Router from 'vue-router'
  
 import home from './components/home.vue'
 import mdd from './components/mdd.vue'
-import raiders from './components/raiders.vue'
+import gonglve from './components/gonglve.vue'
 import login from './components/login.vue'
-import write_raiders from './components/write_raiders.vue'
+import write_gonglve from './components/write_gonglve.vue'
 import article_detail from './components/article_detail.vue'
+import setting from './components/setting.vue'
 
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)
@@ -29,8 +30,8 @@ const router = new Router({
             name: mdd
         },
         {
-            path: '/raiders',
-            component: raiders
+            path: '/gonglve',
+            component: gonglve
         },
         {
             path: '/login',
@@ -38,12 +39,16 @@ const router = new Router({
             name: 'login' // 用于页面间传递参数
         },
         {
-            path: '/write_raiders',
-            component: write_raiders
+            path: '/write_gonglve',
+            component: write_gonglve
         },
         {
             path: '/article_detail/*',
             component: article_detail
+        },
+        {
+            path: '/setting',
+            component: setting
         }
     ]
 })

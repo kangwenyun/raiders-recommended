@@ -16,33 +16,33 @@
         </el-form>
       </el-carousel-item>
     </el-carousel>
-    <div class="raiders">
+    <div class="gonglve">
       <el-tabs v-model="status" @tab-click="home_new(status)">
         <div class="selected_content">
           <el-tag closable type="danger" @close="close_filter" v-show="tag_show"> {{tag_name}} </el-tag>
         </div>
         <el-tab-pane label="热门游记" name="hot">
-          <raiders-head
+          <gonglve-head
             v-for="item in hot_data"
             :data="item"
             :key="item.index"
             @votes="addVote">
-          </raiders-head>
+          </gonglve-head>
         </el-tab-pane>
         <el-tab-pane label="最新发表" name="new">
-          <raiders-head
+          <gonglve-head
             v-for="item in new_data"
             :data="item"
             :key="item.index"
             @votes="addVote">
-          </raiders-head>
+          </gonglve-head>
         </el-tab-pane>
       </el-tabs>
       <div class="right_up">
         <el-button size="small" circle class="filter" @click="filterShow">筛</el-button>
-        <raiders-filter v-show="filter_show"
+        <gonglve-filter v-show="filter_show"
           @place="get_place">
-        </raiders-filter>
+        </gonglve-filter>
         <a :href="write_url" class="btn-add" target="_blank"><i class="el-icon-edit"></i>写游记</a>
       </div>
     </div>
@@ -51,14 +51,14 @@
 
 <script>
 
-import raiders_head from './raiders_head.vue'
-import raiders_filter from './raiders_filter.vue'
+import gonglve_head from './gonglve_head.vue'
+import gonglve_filter from './gonglve_filter.vue'
 
 export default {
   name: 'home',
   components: {
-    "raiders-head": raiders_head,
-    "raiders-filter": raiders_filter
+    "gonglve-head": gonglve_head,
+    "gonglve-filter": gonglve_filter
   },
   data() {
     return {
@@ -109,61 +109,61 @@ export default {
       new_data: [],
       // hot_data:[
       //   { id: 0, 
-      //     raiders_url: "./article_detail/111",
+      //     gonglve_url: "./article_detail/111",
       //     title: "走遍东京~欢乐又充实~东京十日亲子乐园游~含迪士尼+不二雄+面超、杯面博物馆+托马斯乐园攻略~",
-      //     img_url: require('../assets/raiders-hot-1.jpeg'),
+      //     img_url: require('../assets/gonglve-hot-1.jpeg'),
       //     abstract: "日本 ，久负盛名的亲子游圣地，很早以前就想带娃去~每每把他提上日程，又都因为复杂的公共交通、繁多的游乐项目最终选择了放弃...”等等、再等等、等孩子再大一点吧“我的心里总是这样想，希望孩子大一些、能玩的多一些、体力充沛一些、抗病抗造能力再强一些，于是就这样终于捱到了四岁！在经历了 新加坡 、 阿联酋 两地城市游转型以后，我想应该是时候，我们该出发了！",
       //     ding: 41,
       //     place_url: "www.baidu.com",
       //     place: "顺德",
       //     user_url: "www.baidu.com",
-      //     user_img: require('../assets/raiders-hot-user-1.jpeg'),
+      //     user_img: require('../assets/gonglve-hot-user-1.jpeg'),
       //     user_name: "鹿女侠爱旅行",
       //     nums: "490/2"
       //   },
       //   { id: 1, 
-      //     raiders_url: "www.baidu.com",
+      //     gonglve_url: "www.baidu.com",
       //     title: "北海道 | 十二月的晴空飞雪",
-      //     img_url: require('../assets/raiders-hot-2.jpeg'),
+      //     img_url: require('../assets/gonglve-hot-2.jpeg'),
       //     abstract: "北海道 的十二月，气温在零度左右，还未有北方冬天本该有的寒冷，却已是一副白雪皑皑 银装素裹的景色。于是这一趟旅行的的雪/夜/阳光/还有她，成了我印象中最温暖的冬天。",
       //     ding: 121,
       //     place_url: "www.baidu.com",
       //     place: "北海道",
       //     user_url: "www.baidu.com",
-      //     user_img: require('../assets/raiders-hot-user-2.jpeg'),
+      //     user_img: require('../assets/gonglve-hot-user-2.jpeg'),
       //     user_name: "叫我王道长",
       //     nums: "1020/20"
       //   }
       // ],
       // new_data:[
       //   { id: 0, 
-      //     raiders_url: "www.baidu.com",
+      //     gonglve_url: "www.baidu.com",
       //     title: "猴年逛自贡灯会",
-      //     img_url: require('../assets/raiders-new-1.jpeg'),
+      //     img_url: require('../assets/gonglve-new-1.jpeg'),
       //     abstract: "16年猴年回老婆老家—— 自贡 ，按照惯例去看灯会。 今年来 自贡 看灯会的人太多了，多到都不让进城了，只让川C牌照的车子进城，其他车辆一律不得入城，按照交警要求停在路边，然后乘坐便民",
       //     ding: 0,
       //     place_url: "www.baidu.com",
       //     place: "自贡",
       //     user_url: "www.baidu.com",
-      //     user_img: require('../assets/raiders-new-user-1.jpeg'),
+      //     user_img: require('../assets/gonglve-new-user-1.jpeg'),
       //     user_name: " 浮生错的人",
       //     nums: "1/0"
       //   },
       //   { id: 1, 
-      //     raiders_url: "www.baidu.com",
+      //     gonglve_url: "www.baidu.com",
       //     title: "色达——一场冒险而佛系的朝圣之旅（自助游）",
-      //     img_url: require('../assets/raiders-new-2.jpeg'),
+      //     img_url: require('../assets/gonglve-new-2.jpeg'),
       //     abstract: "出游前的准备 色达 的平均海拔在4000米左右，在距 色达 县城20余公里处，有一条山沟叫喇荣沟，顺沟上行数里，就是举世闻名的五明佛学院。佛学院四面环山，空气相对来说没有平原中流通。加上",
       //     ding: 4,
       //     place_url: "www.baidu.com",
       //     place: "色达",
       //     user_url: "www.baidu.com",
-      //     user_img: require('../assets/raiders-new-user-2.jpeg'),
+      //     user_img: require('../assets/gonglve-new-user-2.jpeg'),
       //     user_name: "摩羯座",
       //     nums: "162/20"
       //   }
       // ],
-      write_url: "/write_raiders",
+      write_url: "/write_gonglve",
       filter_show: false
     };
   },
@@ -189,7 +189,7 @@ export default {
                   response.body.hot_data.forEach(element => {
                     var data = {
                       index: element.index, 
-                      raiders_url: element.raiders_url,
+                      gonglve_url: element.gonglve_url,
                       title: element.title,
                       img_url: element.img_url,
                       abstract: element.abstract,
@@ -220,7 +220,7 @@ export default {
                     response.body.new_data.forEach(element => {
                       var data = {
                         index: element.index, 
-                        raiders_url: element.raiders_url,
+                        gonglve_url: element.gonglve_url,
                         title: element.title,
                         img_url: element.img_url,
                         abstract: element.abstract,
@@ -360,7 +360,7 @@ export default {
   margin-left: 5px;
 }
 
-.raiders{
+.gonglve{
   width: 1000px;
   margin: 0 auto;
   position: relative;

@@ -2,7 +2,7 @@
   <div id="app">
     <v-head v-show="this.$route.path != '/login'"></v-head>
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view v-if="isRouterAlive"></router-view>
+    <router-view class="view"></router-view>
   </div>
 </template>
 
@@ -45,6 +45,10 @@ export default {
     margin-top: -10px;
     position: absolute;
     width: 100%;
+}
+
+.view{
+    margin: 70px auto;
 }
 
 body, p, div {

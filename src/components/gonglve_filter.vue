@@ -1,5 +1,5 @@
 <template>
-  <div class="raiders_filter">
+  <div class="gonglve_filter">
     <div class="tn-dropdown-pop">
         <a class="close" href="javascript:void(0);" @click="hide">×</a>
         <div class="section">
@@ -46,7 +46,7 @@
 <script>
   // place_id为0代表输入框，1-8代表目的地选择，9-16代表星期
 export default {
-  name: 'raiders_filter',
+  name: 'gonglve_filter',
   // props: ['data'],
   data() {
     return {
@@ -136,7 +136,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.raiders_filter{
+.gonglve_filter{
   z-index: 3;
   float: left;
   position: absolute;

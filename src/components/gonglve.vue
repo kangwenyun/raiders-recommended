@@ -1,6 +1,6 @@
 <template>
-  <div class="raiders">
-    <raiders-select class="rselect"></raiders-select>
+  <div class="gonglve">
+    <gonglve-select class="rselect"></gonglve-select>
     <div class="carousel">
       <el-carousel :interval="5000" trigger="click">
         <el-carousel-item v-for="item in dataimg" :key="item.index">
@@ -14,13 +14,13 @@
 
 <script>
 
-import raiders_select from './raiders_select.vue'
+import gonglve_select from './gonglve_select.vue'
 import gonglve_recommend from './gonglve_recommend.vue'
 
 export default {
-  name: 'raiders',
+  name: 'gonglve',
   components: {
-    "raiders-select": raiders_select,
+    "gonglve-select": gonglve_select,
     "gonglve-recommend": gonglve_recommend
   },
   data() {
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.raiders{
+.gonglve{
   width: 84%;
   margin-left: 5%;
 }
