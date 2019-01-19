@@ -8,6 +8,13 @@ import login from './components/login.vue'
 import write_gonglve from './components/write_gonglve.vue'
 import article_detail from './components/article_detail.vue'
 import setting from './components/setting.vue'
+import settingInfo from './components/setting_info.vue'
+import settingBangding from './components/setting_bangding.vue'
+import settingBlacklist from './components/setting_blacklist.vue'
+import settingImg from './components/setting_img.vue'
+import settingMoney from './components/setting_money.vue'
+import settingNest from './components/setting_nest.vue'
+import settingSecure from './components/setting_secure.vue'
 
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)

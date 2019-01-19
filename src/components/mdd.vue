@@ -52,26 +52,59 @@ import topic_choice from './topic_choice.vue'
 
 export default {
   name: 'mdd',
-  data() {
-    return{
-        ziyouxing: '/', //大图的跳转链接
-        bgr_url: require("../assets/mdd_wallpaper.jpeg"), //大图图片url地址
-        title: "活动 | 马蜂窝攻略征集大赛，你跟万元户之间只差一篇攻略！",  //活动名
-        abstract: "报名参加“马蜂窝第一届攻略征集大赛”＋用心介绍你最熟悉的地方＝10w高额奖金＋近百个名额的抽奖＋让你猝不及防暴露在聚光灯下的巨大曝光！戳阅读原文了解详情。",  //活动介绍
-        search_input:" ", //不需要
-        place_hot:[ //"输入框"下面的五个地点
-            {index: 0, href: '/', place:"成都"}, // index从0还是1开始都行,href地点对应的跳转链接,place地点汉字
-            {index: 1, href: '/', place:"香港"},
-            {index: 2, href: '/', place:"苏州"},
-            {index: 3, href: '/', place:"长沙"},
-            {index: 4, href: '/', place:"新加坡"},
-        ]
-    };
-  },
   components: {
       "hot-mdd": hot_mdd,
       "now-gonglve": now_gonglve,
       "topic-choice": topic_choice,
+  },
+  data() {
+    return{
+        ziyouxing: '/', //大图的跳转链接
+        bgr_url: '',//require("../assets/mdd_wallpaper.jpeg"), //大图图片url地址
+        title: '',//"活动 | 马蜂窝攻略征集大赛，你跟万元户之间只差一篇攻略！",  //活动名
+        abstract: '',//"报名参加“马蜂窝第一届攻略征集大赛”＋用心介绍你最熟悉的地方＝10w高额奖金＋近百个名额的抽奖＋让你猝不及防暴露在聚光灯下的巨大曝光！戳阅读原文了解详情。",  //活动介绍
+        search_input:" ", //不需要
+        place_hot:[ //"输入框"下面的五个地点
+            // {index: 0, href: '/', place:"成都"}, // index从0还是1开始都行,href地点对应的跳转链接,place地点汉字
+            // {index: 1, href: '/', place:"香港"},
+            // {index: 2, href: '/', place:"苏州"},
+            // {index: 3, href: '/', place:"长沙"},
+            // {index: 4, href: '/', place:"新加坡"},
+        ]
+    };
+  },
+  created() {
+    this.load()
+  },
+  methods: {
+    load(){
+      var vm = this
+      vm.$http.get(this.GLOBAL.baseUrl + '/mdd')
+        .then((response) => {
+            if (response.body.status){
+                console.log(response.body)
+                var head = response.body.head
+                this.ziyouxing = head.ziyouxing
+                this.bgr_url = head.bgr_url
+                this.title = head.title
+                this.abstract = head.abstract
+                this.search_input = head.search_input
+                head.place_hot.forEach(element => {
+                var data = {
+                    index: element.index,
+                    href: element.href,
+                    place: element.place
+                }
+                this.place_hot.push(data)
+                }, this);
+            } else {
+                this.$message({
+                message: response.body.msg,
+                type: 'error'
+                })
+            }
+      },(response) => {});
+    }
   }
 }
 </script>

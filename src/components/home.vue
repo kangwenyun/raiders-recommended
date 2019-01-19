@@ -16,82 +16,85 @@
         </el-form>
       </el-carousel-item>
     </el-carousel>
-    <div class="gonglve">
+    <div class="raiders">
       <el-tabs v-model="status" @tab-click="home_new(status)">
         <div class="selected_content">
           <el-tag closable type="danger" @close="close_filter" v-show="tag_show"> {{tag_name}} </el-tag>
         </div>
-        <el-tab-pane label="热门游记" name="hot">
-          <gonglve-head
+        <el-tab-pane style="font-size:20px;" label="热门游记" name="hot">
+          <raiders-head
             v-for="item in hot_data"
             :data="item"
             :key="item.index"
             @votes="addVote">
-          </gonglve-head>
+          </raiders-head>
         </el-tab-pane>
         <el-tab-pane label="最新发表" name="new">
-          <gonglve-head
+          <raiders-head
             v-for="item in new_data"
             :data="item"
             :key="item.index"
             @votes="addVote">
-          </gonglve-head>
+          </raiders-head>
         </el-tab-pane>
       </el-tabs>
-      <div class="right_up">
+      <div class="filterContainer">
         <el-button size="small" circle class="filter" @click="filterShow">筛</el-button>
-        <gonglve-filter v-show="filter_show"
-          @place="get_place">
-        </gonglve-filter>
-        <a :href="write_url" class="btn-add" target="_blank"><i class="el-icon-edit"></i>写游记</a>
+        <home-gonglve-filter 
+          v-show="filter_show"
+          @place="get_place"
+          class="home-gonglve_show"
+        >
+        </home-gonglve-filter>
       </div>
+      <a :href="write_url" class="btn-add" target="_blank"><i class="el-icon-edit"></i>写游记</a>
     </div>
   </div>
 </template>
 
 <script>
 
-import gonglve_head from './gonglve_head.vue'
-import gonglve_filter from './gonglve_filter.vue'
+import raiders_head from './raiders_head.vue'
+import home_gonglve_filter from './home_gonglve_filter.vue'
 
 export default {
   name: 'home',
   components: {
-    "gonglve-head": gonglve_head,
-    "gonglve-filter": gonglve_filter
+    "raiders-head": raiders_head,
+    "home-gonglve-filter": home_gonglve_filter
   },
   data() {
     return {
-      dataimg: [],
-      // dataimg: [{
-      //     index: 1,
-      //     src: require('../assets/header-1.jpeg'),
-      //     txt1: '14',
-      //     txt2: ' /Nov.2018',
-      //     txt3: '5k走出国门！铁路爱好者的中俄蒙铁路大回环'
-      //   },
-      //   {
-      //     index: 2,
-      //     src: require('../assets/header-2.jpeg'),
-      //     txt1: '13',
-      //     txt2: ' /Nov.2018',
-      //     txt3: '迎面吹来南极的风，那些独行在塔州的小时光'
-      //   },
-      //   {
-      //     index: 3,
-      //     src: require('../assets/header-3.jpeg'),
-      //     txt1: '12',
-      //     txt2: ' /Nov.2018',
-      //     txt3: '黔东南6日漫游，这里是大山深处的世外桃源'
-      //   },
-      //   {
-      //     index: 4,
-      //     src: require('../assets/header-4.jpeg'),
-      //     txt1: '11',
-      //     txt2: ' /Nov.2018',
-      //     txt3: '一场惊动大使馆和公司老板的旅行，徒步小白暴走尼泊尔'
-      //   }
-      // ],
+      dataimg: [
+        // {
+        //   index: 1,
+        //   src: require('../assets/header-1.jpeg'),
+        //   txt1: '14',
+        //   txt2: ' /Nov.2018',
+        //   txt3: '5k走出国门！铁路爱好者的中俄蒙铁路大回环'
+        // },
+        // {
+        //   index: 2,
+        //   src: require('../assets/header-2.jpeg'),
+        //   txt1: '13',
+        //   txt2: ' /Nov.2018',
+        //   txt3: '迎面吹来南极的风，那些独行在塔州的小时光'
+        // },
+        // {
+        //   index: 3,
+        //   src: require('../assets/header-3.jpeg'),
+        //   txt1: '12',
+        //   txt2: ' /Nov.2018',
+        //   txt3: '黔东南6日漫游，这里是大山深处的世外桃源'
+        // },
+        // {
+        //   index: 4,
+        //   src: require('../assets/header-4.jpeg'),
+        //   txt1: '11',
+        //   txt2: ' /Nov.2018',
+        //   txt3: '一场惊动大使馆和公司老板的旅行，徒步小白暴走尼泊尔'
+        // }
+      ],
       search: {
         radio: 0,
         input: ''
@@ -105,9 +108,8 @@ export default {
       status: 'hot',
       tag_show: false,
       tag_name: "日本",
-      hot_data: [],
       new_data: [],
-      // hot_data:[
+      hot_data: [
       //   { id: 0, 
       //     gonglve_url: "./article_detail/111",
       //     title: "走遍东京~欢乐又充实~东京十日亲子乐园游~含迪士尼+不二雄+面超、杯面博物馆+托马斯乐园攻略~",
@@ -162,7 +164,7 @@ export default {
       //     user_name: "摩羯座",
       //     nums: "162/20"
       //   }
-      // ],
+      ],
       write_url: "/write_gonglve",
       filter_show: false
     };
@@ -173,7 +175,7 @@ export default {
   methods: {
     load(){
       var vm = this
-      vm.$http.get(this.baseUrl + '/home?page=')
+      vm.$http.get(this.GLOBAL.baseUrl + '/home?page=')
               .then((response) => {
                 if (response.body.status){
                   response.body.dataimg.forEach(element => {
@@ -189,7 +191,7 @@ export default {
                   response.body.hot_data.forEach(element => {
                     var data = {
                       index: element.index, 
-                      gonglve_url: element.gonglve_url,
+                      raiders_url: 'content?id=' + element.raiders_url.split('/')[2].split('.')[0],
                       title: element.title,
                       img_url: element.img_url,
                       abstract: element.abstract,
@@ -220,7 +222,7 @@ export default {
                     response.body.new_data.forEach(element => {
                       var data = {
                         index: element.index, 
-                        gonglve_url: element.gonglve_url,
+                        raiders_url: element.raiders_url,
                         title: element.title,
                         img_url: element.img_url,
                         abstract: element.abstract,
@@ -270,7 +272,7 @@ export default {
   height: 100%;
 }
 </style>
-<style scoped>
+<style scoped lang="less">
 .home{
   margin-top: 70px;
 }
@@ -360,42 +362,63 @@ export default {
   margin-left: 5px;
 }
 
-.gonglve{
+.raiders{
   width: 1000px;
   margin: 0 auto;
+  padding-top: 15px;
   position: relative;
-}
-
-.right_up{
-    float: right;
+  .el-tabs {
+    div.el-tabs__header,.is-top{
+      font-size:20px;
+    }
+  }
+  .filterContainer {
     position: absolute;
-    top: 10px;
-    left: 50px;
-    right: 0px;
-    z-index: 3;
+    top: 20px;
+    left: 55px;
+    z-index: 2;
+    .filter{
+      font-size: 10px;
+      color: #666;
+      background: #fff;
+      border: 1px solid #666;
+    }
+    .home-gonglve_show {
+      position: absolute;
+      top:70px;
+    }
+  }
+  .btn-add{
+    width: 140px;
+    height: 41px;
+    position: absolute;
+    top:5px;
+    right:0px;
+    background-color: #ff9d00;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    float: right;
+    font-size: 16px;
+    line-height: 41px; 
+  } 
 }
 
-.filter{
-  font-size: 10px;
-  color: #666;
-  background: #fff;
-  border: 1px solid #666;
-}
 
-.btn-add{
-  width: 140px;
-  height: 41px;
-  background-color: #ff9d00;
-  color: #fff;
-  text-align: center;
-  border-radius: 4px;
-  float: right;
-  font-size: 16px;
-  line-height: 41px;
-}
 
 .selected_content{
   margin: 0 0 5px 10px;
 }
 
+    .el-tabs__item {
+      font-size:20px !important; 
+    }
+#tab-hot {
+  font-size:20px !important; 
+}
+.el-tabs__item {
+ .is-active {
+   background: red;
+ }
+}
 </style>

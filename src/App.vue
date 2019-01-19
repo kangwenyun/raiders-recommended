@@ -47,10 +47,6 @@ export default {
     width: 100%;
 }
 
-.view{
-    margin: 70px auto;
-}
-
 body, p, div {
     margin: 0;
     padding: 0;

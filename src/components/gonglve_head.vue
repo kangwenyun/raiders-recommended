@@ -2,15 +2,15 @@
   <div class="gonglve_head">
     <a :href="gonglve_url" target="_blank">
         <div class="from">
-            <i :class="'icon-' + icon_from"></i>来自 <span class="from_detail">{{ from }}</span>
+            <i :class="'icon-' + from_pinyin"></i>来自 <span class="from_detail">{{ from_hanzi }}</span>
         </div>
         <div class="bt-ding">
             <span style="color:#ff9d00"> {{num_zan}} </span> 
-            <span> {{ m(icon_from)}} </span>
-            <i :class=" icon_from == 'ziyouxinggonglve' ? 'icon-cart' : 'icon-hand'" @click="vote"></i>
+            <span> {{ m(from_pinyin)}} </span>
+            <i :class=" from_pinyin == 'ziyouxinggonglve' ? 'icon-cart' : 'icon-hand'" @click="vote"></i>
         </div>
         <div class="title">{{ title }}</div>
-        <div v-show="icon_from != 'ziyouxinggonglve'" style="height:130px">
+        <div v-show="from_pinyin != 'ziyouxinggonglve'" style="height:130px">
            <div class="left">
                 <img :src="img_url1" :href="gonglve_url" target="_blank"/>
             </div> 
@@ -18,7 +18,7 @@
                 {{ abstract }}
             </div>
         </div>
-        <div v-show="icon_from == 'ziyouxinggonglve'">
+        <div v-show="from_pinyin == 'ziyouxinggonglve'">
             <div class="abstract">
                 {{ abstract }}
             </div>
@@ -29,12 +29,12 @@
             </div>
         </div>
         <div class="tn-extra">
-            <span class="tn-user" v-show="icon_from == 'youji'">
+            <span class="tn-user" v-show="from_pinyin == 'youji'">
                 <img :src="user_img"/>{{ user_name }}
             </span>
-            <span class="tn-liulan">{{ num_liulan }}浏览
+            <span class="tn-liulan">{{ num_liulan }}
             </span>
-            <span class="tn-pinglun" v-show="icon_from != 'ziyouxinggonglve'">{{ num_pinglun }}评论
+            <span class="tn-pinglun" v-show="from_pinyin != 'ziyouxinggonglve'">{{ num_pinglun }}
             </span>
         </div>
     </a>
@@ -48,8 +48,8 @@ export default {
   props: ['data'],
   data() {
     return {
-        icon_from: this.data.icon_from,
-        from: this.data.from,
+        from_pinyin: this.data.from_pinyin,
+        from_hanzi: this.data.from_hanzi,
         gonglve_url: this.data.gonglve_url,
         num_zan: this.data.num_zan,
         title: this.data.title,

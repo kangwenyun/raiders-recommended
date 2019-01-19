@@ -1,24 +1,35 @@
 <template>
     <div class="setting">
-        <el-menu
-        :default-active="active_index"
-        class="el-menu-vertical-demo aside"
-        active-text-color="#000"
-        @select="selectPage">
-            <el-menu-item v-for="item in my" 
-            :index=item.index :key=item.index
-            :class="active_index == item.index ? 'on' : ''">
-                <i :class="item.class"></i>
-                <span slot="title">{{ item.title }}</span>
-            </el-menu-item>
-        </el-menu>
-        <setting-info v-if="active_index == '1'"></setting-info>
-        <setting-mg v-else-if="active_index == '2'"></setting-mg>
-        <setting-bangding v-else-if="active_index == '3'"></setting-bangding>
-        <setting-secure v-else-if="active_index == '4'"></setting-secure>
-        <setting-nest v-else-if="active_index == '5'"></setting-nest>
-        <setting-blacklist v-else-if="active_index == '6'"></setting-blacklist>
-        <setting-money v-else></setting-money>
+        <el-col :span="6">
+            <el-menu
+            :default-active="active_index"
+            class="el-menu-vertical-demo aside"
+            active-text-color="#000"
+            @select="selectPage">
+                <el-menu-item v-for="item in my" 
+                :index=item.index :key=item.index
+                :class="active_index == item.index ? 'on' : ''">
+                    <i :class="item.class"></i>
+                    <span slot="title">{{ item.title }}</span>
+                </el-menu-item>
+            </el-menu>
+        </el-col>
+        <el-col :span="18">
+            <div class="hd">
+                <strong>{{ title[active_index] }}</strong>
+                <span>资料完善度
+                <el-progress class="progress" :text-inside="true" :stroke-width="18" 
+                :percentage="percentage" color="#bddf7d"></el-progress>
+                </span>
+            </div>
+            <setting-info v-if="active_index == 'info'"></setting-info>
+            <setting-img v-else-if="active_index == 'img'"></setting-img>
+            <setting-bangding v-else-if="active_index == 'bangding'"></setting-bangding>
+            <setting-secure v-else-if="active_index == 'secure'"></setting-secure>
+            <setting-nest v-else-if="active_index == 'nest'"></setting-nest>
+            <setting-blacklist v-else-if="active_index == 'blacklist'"></setting-blacklist>
+            <setting-money v-else></setting-money>
+        </el-col>
     </div>
 </template>
 
@@ -45,22 +56,49 @@ export default {
   },
   data() {
     return{
-        active_index: '1',
+        title: {
+            'info': '我的信息',
+            'img': '我的头像',
+            'bangding': '绑定设置',
+            'secure': '账号安全',
+            'nest': '我的窝设置',
+            'blacklist': '黑名单管理',
+            'money': '我的钱包',
+        },
+        percentage: 80,
+        active_index: 'info',
         my: [
-            { index: '1', class: 'i1', title: '我的信息' },
-            { index: '2', class: 'i2', title: '我的头像' },
-            { index: '3', class: 'i3', title: '绑定设置' },
-            { index: '4', class: 'i4', title: '账号安全' },
-            { index: '5', class: 'i5', title: '我的窝设置' },
-            { index: '6', class: 'i6', title: '黑名单管理' },
-            { index: '7', class: 'i7', title: '我的钱包' },
+            { index: 'info', class: 'i1', title: '我的信息' },
+            { index: 'img', class: 'i2', title: '我的头像' },
+            { index: 'bangding', class: 'i3', title: '绑定设置' },
+            { index: 'secure', class: 'i4', title: '账号安全' },
+            { index: 'nest', class: 'i5', title: '我的窝设置' },
+            { index: 'blacklist', class: 'i6', title: '黑名单管理' },
+            { index: 'money', class: 'i7', title: '我的钱包' },
         ]
     };
   },
+  created() {
+    this.load()
+  },
   methods:{
-      selectPage(index){
-          this.active_index = index
-      }
+    load(){
+        var vm = this
+        vm.$http.get(this.GLOBAL.baseUrl + '/option')
+            .then((response) => {
+                if (response.body.status){
+                    this.percentage = response.body.percentage
+                } else {
+                    this.$message({
+                        message: response.body.msg,
+                        type: 'error'
+                    })
+                }
+        },(response) => {});
+    },
+    selectPage(index) {
+        this.active_index = index
+    } 
   }
 }
 </script>
@@ -71,20 +109,42 @@ export default {
     width: 1000px;
 }
 
-.el-menu{
+.setting .hd {
+    padding-bottom: 18px;
+    margin: 0 0 20px 0;
+    *position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.setting .hd strong {
+    font-size: 24px;
+    color: #444;
+    font-weight: normal;
+}
+
+.setting .hd span {
+    margin-left: 18px;
+    color: #999;
+}
+
+.progress {
+    margin: -25px 0 0 200px;
+}
+
+.setting .el-menu{
     border-right: none;
 }
 
-.on {
+.setting .on {
     background-color: #ffa800 !important;
     color: #fff !important;
 }
 
-.aside {
+.setting .aside {
     width: 220px;
 }
 
-.aside li {
+.setting .aside li {
     display: block;
     line-height: 55px;
     color: #666;
@@ -92,7 +152,7 @@ export default {
     margin-bottom: 8px;
 }
 
-.aside i {
+.setting .aside i {
     background: url(https://css.mafengwo.net/images/isettings/i_left2_@2x.png) no-repeat;
     background-size: 44px;
     width: 22px;
@@ -103,59 +163,59 @@ export default {
     vertical-align: middle;
 }
 
-.i1 {
+.setting .i1 {
     background-position: 0 0;
 }
 
-li.on .i1 {
+.setting li.on .i1 {
     background-position: -22px 0;
 }
 
-.i2 {
+.setting .i2 {
     background-position: 0 -22px !important;
 }
 
-li.on .i2 {
+.setting li.on .i2 {
     background-position: -22px -22px !important;
 }
 
-.i3 {
+.setting .i3 {
     background-position: 0 -44px !important;
 }
 
-li.on .i3 {
+.setting li.on .i3 {
     background-position: -22px -44px !important;
 }
 
-.i4 {
+.setting .i4 {
     background-position: 0 -66px !important;
 }
 
-li.on .i4 {
+.setting li.on .i4 {
     background-position: -22px -66px !important;
 }
 
-.i5 {
+.setting .i5 {
     background-position: 0 -154px !important;
 }
 
-li.on .i5 {
+.setting li.on .i5 {
     background-position: -22px -154px !important;
 }
 
-.i6 {
+.setting .i6 {
     background-position: 0 -176px !important;
 }
 
-li.on .i6 {
+.setting li.on .i6 {
     background-position: -22px -176px !important;
 }
 
-.i7 {
+.setting .i7 {
     background-position: 0 -198px !important;
 }
 
-li.on .i7 {
+.setting li.on .i7 {
     background-position: -22px -198px !important;
 }
 

@@ -47,75 +47,110 @@
   // place_id为0代表输入框，1-8代表目的地选择，9-16代表兴趣
 export default {
   name: 'home_gonglve_filter',
-  // props: ['data'],
   data() {
     return {
       place:"",
       on: false,
       place_id: -1,
-      places:[ //目的地
-        {id: 1, place: "斯里兰卡"},
-        {id: 2, place: "济州岛"},
-        {id: 3, place: "香港"},
-        {id: 4, place: "北京"},
-        {id: 5, place: "云南"},
-        {id: 6, place: "泰国"},
-        {id: 7, place: "青海湖"},
-        {id: 8, place: "日本"},
-      ],
-      data:[ //兴趣
-        {
-          id: 9,
-          img_url: require('../assets/interest-2.jpeg'), //图片
-          title: "带着对象", //标题
-          abstract: "去虐狗",  //标题下面的小字
-        },
-        {
-          id: 10,
-          img_url: require('../assets/interest-1.jpeg'),
-          title: "吃遍天下",
-          abstract: "无敌手",
-        },
-        {
-          id: 11,
-          img_url: require('../assets/interest-4.jpeg'),
-          title: "带着孩子",
-          abstract: "看世界",
-        },
-        {
-          id: 12,
-          img_url: require('../assets/interest-3.jpeg'),
-          title: "姑娘漂亮",
-          abstract: "就是美",
-        },
-        {
-          id: 13,
-          img_url: require('../assets/interest-6.jpeg'),
-          title: "带着父母",
-          abstract: "去远方",
-        },
-        {
-          id: 14,
-          img_url: require('../assets/interest-5.jpeg'),
-          title: "登山徒步",
-          abstract: "用脚走",
-        },
-        {
-          id: 15,
-          img_url: require('../assets/interest-8.jpeg'),
-          title: "短途周末",
-          abstract: "散散心",
-        },
-        {
-          id: 16,
-          img_url: require('../assets/interest-7.jpeg'),
-          title: "独自一人",
-          abstract: "最自由",
-        }
-      ]
+      places: [],
+      // [ //目的地
+      //   {id: 1, place: "斯里兰卡"},
+      //   {id: 2, place: "济州岛"},
+      //   {id: 3, place: "香港"},
+      //   {id: 4, place: "北京"},
+      //   {id: 5, place: "云南"},
+      //   {id: 6, place: "泰国"},
+      //   {id: 7, place: "青海湖"},
+      //   {id: 8, place: "日本"},
+      // ],
+      data: [],
+      // [ //兴趣
+      //   {
+      //     id: 9,
+      //     img_url: require('../assets/interest-2.jpeg'), //图片
+      //     title: "带着对象", //标题
+      //     abstract: "去虐狗",  //标题下面的小字
+      //   },
+      //   {
+      //     id: 10,
+      //     img_url: require('../assets/interest-1.jpeg'),
+      //     title: "吃遍天下",
+      //     abstract: "无敌手",
+      //   },
+      //   {
+      //     id: 11,
+      //     img_url: require('../assets/interest-4.jpeg'),
+      //     title: "带着孩子",
+      //     abstract: "看世界",
+      //   },
+      //   {
+      //     id: 12,
+      //     img_url: require('../assets/interest-3.jpeg'),
+      //     title: "姑娘漂亮",
+      //     abstract: "就是美",
+      //   },
+      //   {
+      //     id: 13,
+      //     img_url: require('../assets/interest-6.jpeg'),
+      //     title: "带着父母",
+      //     abstract: "去远方",
+      //   },
+      //   {
+      //     id: 14,
+      //     img_url: require('../assets/interest-5.jpeg'),
+      //     title: "登山徒步",
+      //     abstract: "用脚走",
+      //   },
+      //   {
+      //     id: 15,
+      //     img_url: require('../assets/interest-8.jpeg'),
+      //     title: "短途周末",
+      //     abstract: "散散心",
+      //   },
+      //   {
+      //     id: 16,
+      //     img_url: require('../assets/interest-7.jpeg'),
+      //     title: "独自一人",
+      //     abstract: "最自由",
+      //   }
+      // ]
     }
   },
+  created() {
+    this.load()
+  },
   methods: {
+    load(){
+      var vm = this
+      vm.$http.get(this.GLOBAL.baseUrl + '/home?page=')
+              .then((response) => {
+                if (response.body.status){
+                  var fav = response.body.filter['fav']
+                  var places = response.body.filter['places']
+                  fav.forEach(element => {
+                    var ele = {
+                      id: element.id,
+                      img_url: element.img_url,
+                      title: element.title,
+                      abstract: element.abstract,
+                    }
+                    this.data.push(ele)
+                  }, this);
+                  places.forEach(element => {
+                    var data = {
+                      id: element.id,
+                      place: element.place
+                    }
+                    this.places.push(data)
+                  }, this);
+                } else {
+                  this.$message({
+                    message: response.body.msg,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    },
     set_place(id) {
         this.on = true
         this.place_id = id
@@ -137,10 +172,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .home_gonglve_filter{
-  z-index: 3;
-  float: left;
+  z-index: 9999;
   position: absolute;
-  top: 60px;
+  top: 120px;
   left: 0px;
 }
 

@@ -104,16 +104,32 @@ export default {
             this.page = 'login'
         },
         login_now(form){
-            this.$refs[form].validate((valid) => {
-                if (valid) {
-                    this.$router.push({
-                        path: '/mdd',
-                        query: {
-                            account: this.login.account
+            this.$refs[form].validate((valid, {}) => {
+            if (valid) {
+                var vm = this
+                var item = {
+                    'account': vm.login.account,
+                    'passwd': vm.login.passwd
+                }
+                vm.$http.post(this.GLOBAL.baseUrl + '/user_login', item)
+                    .then((response) => {
+                        if (response.body.status){
+                            console.log('login success')
+                            this.$router.push({
+                                path: '/home',
+                                query: {
+                                    account: this.login.account
+                                }
+                            })
+                        } else {
+                            this.$message({
+                            message: response.body.msg,
+                            type: 'error'
+                            })
                         }
-                    })
-                    console.log('this.login.account:', this.login.account)
-                    this.reload()
+                },(response) => {
+                    console.log("没通过验证")
+                });
                 } else {
                     console.log('error submit!!');
                     return false;
@@ -141,7 +157,7 @@ export default {
     background-image: url(https://images.mafengwo.net/images/signup/wallpaper/40.jpg);
     position: relative;
     padding-top: 10px;
-    height: 600px;
+    height: 800px;
 }
 
 a.logo {

@@ -1,5 +1,5 @@
 {
-  "name": "raiders-recommended",
+  "name": "gonglve-recommended",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "element-ui": "^2.4.9",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
     "vue": "^2.5.17",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"

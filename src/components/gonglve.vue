@@ -25,33 +25,62 @@ export default {
   },
   data() {
     return{
-      dataimg: [{  // 右上角的轮播图
-          index: 1,  //// 从0还是1开始都行
-          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html', //轮播图跳转地址
-          src: require('../assets/gonglve-1.jpeg')  //轮播图图片地址
-        },
-        {
-          index: 2,
-          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
-          src: require('../assets/gonglve-2.jpeg'),
-        },
-        {
-          index: 3,
-          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
-          src: require('../assets/gonglve-3.jpeg'),
-        },
-        {
-          index: 4,
-          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
-          src: require('../assets/gonglve-4.jpeg'),
-        },
-        {
-          index: 5,
-          href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
-          src: require('../assets/gonglve-5.jpeg'),
-        }
+      dataimg: [
+        // {  // 右上角的轮播图
+        //   index: 1,  //// 从0还是1开始都行
+        //   href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html', //轮播图跳转地址
+        //   src: require('../assets/gonglve-1.jpeg')  //轮播图图片地址
+        // },
+        // {
+        //   index: 2,
+        //   href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
+        //   src: require('../assets/gonglve-2.jpeg'),
+        // },
+        // {
+        //   index: 3,
+        //   href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
+        //   src: require('../assets/gonglve-3.jpeg'),
+        // },
+        // {
+        //   index: 4,
+        //   href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
+        //   src: require('../assets/gonglve-4.jpeg'),
+        // },
+        // {
+        //   index: 5,
+        //   href: 'http://www.mafengwo.cn/travel-scenic-spot/mafengwo/10068.html',
+        //   src: require('../assets/gonglve-5.jpeg'),
+        // }
       ],
     };
+  },
+  created() {
+    this.load()
+  },
+  methods: {
+    load(){
+      var vm = this
+      vm.$http.get(this.GLOBAL.baseUrl + '/gong_lve')
+        .then((response) => {
+            if (response.body.status){
+              var i = 1
+              response.body.dataimg.forEach(element => {
+                var data = {
+                    index: i,
+                    href: element.href,
+                    src: element.src
+                }
+                this.dataimg.push(data)
+                i += 1
+              }, this);
+            } else {
+                this.$message({
+                  message: response.body.msg,
+                  type: 'error'
+                })
+            }
+      },(response) => {});
+    }
   }
 }
 </script>

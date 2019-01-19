@@ -18,7 +18,7 @@
         <el-menu-item index="1"><i class="el-icon-loading"></i>金币 {{coin}}</el-menu-item>
         <el-menu-item index="write_gonglve"><i class="el-icon-edit"></i>写游记</el-menu-item>
         <el-menu-item index="myself"><i class="el-icon-goods"></i>我的</el-menu-item>
-        <el-menu-item index="setting"><i class="el-icon-setting"></i>设置</el-menu-item>
+        <el-menu-item index="setting/info"><i class="el-icon-setting"></i>设置</el-menu-item>
         <el-menu-item index="quit"><i class="el-icon-d-arrow-right"></i>退出</el-menu-item>
       </el-submenu>
     </el-menu>
@@ -58,7 +58,7 @@
     name: "top_head",
     data() {
       return {
-        login: true,
+        login: false,
         user_img: require("../assets/user.png"),
         activeIndex: this.$router.path,
         showImg: true,
