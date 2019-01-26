@@ -5,16 +5,11 @@ import home from './components/home.vue'
 import mdd from './components/mdd.vue'
 import gonglve from './components/gonglve.vue'
 import login from './components/login.vue'
+import regist from './components/regist.vue'
 import write_gonglve from './components/write_gonglve.vue'
 import article_detail from './components/article_detail.vue'
 import setting from './components/setting.vue'
-import settingInfo from './components/setting_info.vue'
-import settingBangding from './components/setting_bangding.vue'
-import settingBlacklist from './components/setting_blacklist.vue'
-import settingImg from './components/setting_img.vue'
-import settingMoney from './components/setting_money.vue'
-import settingNest from './components/setting_nest.vue'
-import settingSecure from './components/setting_secure.vue'
+import reset from './components/reset_passwd.vue'
 
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)
@@ -46,6 +41,11 @@ const router = new Router({
             name: 'login' // 用于页面间传递参数
         },
         {
+            path: '/regist',
+            component: regist,
+            name: 'regist'
+        },
+        {
             path: '/write_gonglve',
             component: write_gonglve
         },
@@ -56,6 +56,10 @@ const router = new Router({
         {
             path: '/setting',
             component: setting
+        },
+        {
+            path: '/reset',
+            component: reset
         }
     ]
 })

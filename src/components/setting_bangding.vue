@@ -36,8 +36,8 @@ export default {
   data() {
     return{
         share_percent: '97%',
-        weibo_percent: '',
-        qq_percent: ''
+        weibo_percent: '93%',
+        qq_percent: '95%'
     };
   },
   methods:{
@@ -45,140 +45,129 @@ export default {
 }
 </script>
 
-<style scope>
+<style lang="less">
 .bangding {
     position: relative;
-}
 
-.bangding .weixin {
-    width: 132px;
-    padding: 20px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 6px #ccc;
-    border: 1px solid #ccc;
-    color: #999;
-}
+    .weixin {
+        width: 132px;
+        padding: 20px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #fff;
+        box-shadow: 0 2px 6px #ccc;
+        border: 1px solid #ccc;
+        color: #999;
 
-.bangding .weixin img {
-    border: 3px solid #ffa800;
-}
+        img {
+            border: 3px solid #ffa800;
+        }
+    }
 
-.bangding .t1 {
-    font-size: 14px;
-    padding: 10px 0 15px;
-}
+    .t1 {
+        font-size: 14px;
+        padding: 10px 0 15px;
+    }
 
-.bangding .t2 {
-    font-size: 12px;
-    line-height: 1.6em;
-}
+    .t2 {
+        font-size: 12px;
+        line-height: 1.6em;
+    }
 
-.bangding .t3 {
-    font-size: 16px;
-    padding-top: 8px;
-}
+    .t3 {
+        font-size: 16px;
+        padding-top: 8px;
+    }
 
-.bangding .title {
-    font-size: 14px;
-    color: #999;
-    padding: 10px 0 20px;
-}
+    .title {
+        font-size: 14px;
+        color: #999;
+        padding: 10px 0 20px;
+    }
 
-.bangding dl {
-    width: 470px;
-    border-bottom: 1px dashed #d7d7d7;
-    padding: 25px 0 40px;
-}
+    dl {
+        width: 470px;
+        border-bottom: 1px dashed #d7d7d7;
+        padding: 25px 0 40px;
+    }
 
-.bangding dt {
-    width: 57px;
-    float: left;
-    padding-top: 4px;
-}
+    dt {
+        width: 57px;
+        float: left;
+        padding-top: 4px;
 
-.bangding .content dt {
-    width: 85px;
-    float: left;
-    padding: 6px 10px 0 0;
-    text-align: right;
-    color: #a1a1a1;
-    font-size: 16px;
-}
+        i {
+            width: 37px;
+            height: 37px;
+            display: block;
+            background: url(https://css.mafengwo.net/images/isettings/i_connect.png) no-repeat;
+            border-radius: 4px;
+        }
 
-.bangding dt i {
-    width: 37px;
-    height: 37px;
-    display: block;
-    background: url(https://css.mafengwo.net/images/isettings/i_connect.png) no-repeat;
-    border-radius: 4px;
-}
+        i.qzone {
+            background-position: 0 -37px;
+        }
+    }
 
-.bangding i.weibo {
-    background-position: 0 0;
-}
+    dd {
+        width: 385px;
+        float: left;
+    }
 
-.bangding dd {
-    width: 385px;
-    float: left;
-}
+    dl:last-child {
+        border: none;
+    }
 
-.bangding h3 {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.5em;
-    margin: 0;
-}
+    h3 {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.5em;
+        margin: 0;
 
-.bangding h3 span {
-    color: #444;
-    margin-left: 6px;
-}
+        span {
+            color: #444;
+            margin-left: 6px;
+        }
 
-.bangding h3 strong {
-    font-size: 18px;
-    font-weight: normal;
-    margin-right: 6px;
-}
+        strong {
+            font-size: 18px;
+            font-weight: normal;
+            margin-right: 6px;
+        }
+    }
 
-.bangding .btns {
-    padding: 22px 0 0;
-}
+    .content dt {
+        width: 85px;
+        float: left;
+        padding: 6px 10px 0 0;
+        text-align: right;
+        color: #a1a1a1;
+        font-size: 16px;
+    }
 
-.bangding .btn1 {
-    background-color: #ffa800;
-}
+    i.weibo {
+        background-position: 0 0;
+    }
 
-.bangding .btns a {
-    width: 145px;
-    height: 36px;
-    display: inline-block;
-    line-height: 36px;
-    text-align: center;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 5px;
-}
+    .btns {
+        padding: 22px 0 0;
 
-.bangding dl:last-child {
-    border: none;
-}
+        a {
+            width: 145px;
+            height: 36px;
+            display: inline-block;
+            line-height: 36px;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            border-radius: 5px;
+        }
+    }
 
-.bangding dt {
-    width: 57px;
-    float: left;
-    padding-top: 4px;
-}
-
-.bangding dt i.qzone {
-    background-position: 0 -37px;
-}
-
-.bangding dd {
-    width: 385px;
-    float: left;
+    .btn1 {
+        background-color: #ffa800;
+    }
 }
 
 </style>

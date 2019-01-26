@@ -6,7 +6,11 @@ import App from './App.vue'
 import router from './router.js'
 import  VueResource  from  'vue-resource'
 import global_ from './components/Global'//引用文件
+import axios from 'axios'
+
 Vue.prototype.GLOBAL = global_//挂载到Vue实例上面
+Vue.prototype.$axios = axios;
+axios.defaults.withCredentials = true;//让ajax携带cookie
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)

@@ -2,7 +2,7 @@
   <div id="app">
     <v-head v-show="this.$route.path != '/login'"></v-head>
     <!-- 路由匹配到的组件将渲染在这里 -->
-    <router-view class="view"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 

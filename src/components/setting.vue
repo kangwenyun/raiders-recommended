@@ -56,6 +56,7 @@ export default {
   },
   data() {
     return{
+        account: 'pu971954596@qq.com',
         title: {
             'info': '我的信息',
             'img': '我的头像',
@@ -65,7 +66,7 @@ export default {
             'blacklist': '黑名单管理',
             'money': '我的钱包',
         },
-        percentage: 80,
+        percentage: 0,
         active_index: 'info',
         my: [
             { index: 'info', class: 'i1', title: '我的信息' },
@@ -84,8 +85,9 @@ export default {
   methods:{
     load(){
         var vm = this
-        vm.$http.get(this.GLOBAL.baseUrl + '/option')
+        vm.$http.get(this.GLOBAL.baseUrl + '/percentage?account=' + this.account)
             .then((response) => {
+                console.log(response)
                 if (response.body.status){
                     this.percentage = response.body.percentage
                 } else {
@@ -110,9 +112,8 @@ export default {
 }
 
 .setting .hd {
-    padding-bottom: 18px;
-    margin: 0 0 20px 0;
-    *position: relative;
+    margin: 15px 0 20px 0;
+    position: relative;
     border-bottom: 1px solid #eee;
 }
 
@@ -128,7 +129,7 @@ export default {
 }
 
 .progress {
-    margin: -25px 0 0 200px;
+    margin: -25px 0 0 220px;
 }
 
 .setting .el-menu{
@@ -217,6 +218,10 @@ export default {
 
 .setting li.on .i7 {
     background-position: -22px -198px !important;
+}
+
+.el-progress--text-inside .el-progress-bar {
+    padding-right: 250px;
 }
 
 </style>

@@ -67,6 +67,9 @@
         coin: 2
       };
     },
+    created() {
+      this.get_account()
+    },
     methods: {
       get_account(){
         // console.log('000:', this.$route)
@@ -100,9 +103,6 @@
           }
         })
       }
-    },
-    created() {
-      this.get_account()
     }
   }
 </script>

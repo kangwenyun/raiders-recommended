@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="bottom-link" v-if="page == 'regist'">
-                已经注册?<a href="#" @click="regist_reset('regist')">马上登录</a>
+                已经注册?<a href="" @click="regist_reset('regist')">马上登录</a>
             </div>
             <div class="bottom-link" v-else>
                 还没有账号？<a href="#" @click="login_reset('login')">马上注册</a>
@@ -60,11 +60,10 @@
 
 <script>
 export default {
-    inject: ['reload'],
     name: 'login',
     data() {
         return {
-            page: 'login',
+            page: 'regist',
             regist: {
                 account: ''
             },
@@ -91,8 +90,37 @@ export default {
         regist_now(form){
             this.$refs[form].validate((valid) => {
                 if (valid) {
-                    this.login.account = this.regist.account
-                    this.regist_reset(form)
+                    var vm = this
+                    var item = {
+                        'account': vm.regist.account
+                    }
+                    vm.$http.post(this.GLOBAL.baseUrl + '/account_ver', item)
+                        .then((response) => {
+                            console.log(response)
+                        if (response.body.status == 200){
+                            if (response.body.args == 1){
+                                console.log('regist success')
+                                this.$router.push({
+                                    path: '/regist'
+                                })
+                            }else{
+                                this.$message({
+                                    message: response.body.message,
+                                    type: 'error'
+                                })
+                            }
+                        } else {
+                            this.$message({
+                                message: response.body.message,
+                                type: 'error'
+                            })
+                        }
+                    },(response) => {
+                        this.$message({
+                            message: "没通过验证",
+                            type: 'error'
+                        })
+                    });
                 } else {
                     console.log('error submit!!');
                     return false;
@@ -105,36 +133,36 @@ export default {
         },
         login_now(form){
             this.$refs[form].validate((valid, {}) => {
-            if (valid) {
-                var vm = this
-                var item = {
-                    'account': vm.login.account,
-                    'passwd': vm.login.passwd
-                }
-                vm.$http.post(this.GLOBAL.baseUrl + '/user_login', item)
-                    .then((response) => {
-                        if (response.body.status){
-                            console.log('login success')
-                            this.$router.push({
-                                path: '/home',
-                                query: {
-                                    account: this.login.account
-                                }
-                            })
-                        } else {
-                            this.$message({
-                            message: response.body.msg,
-                            type: 'error'
-                            })
-                        }
-                },(response) => {
-                    console.log("没通过验证")
-                });
-                } else {
-                    console.log('error submit!!');
-                    return false;
-                }
-                });
+                if (valid) {
+                    var vm = this
+                    var item = {
+                        'account': vm.login.account,
+                        'passwd': vm.login.passwd
+                    }
+                    vm.$http.post(this.GLOBAL.baseUrl + '/user_login', item)
+                        .then((response) => {
+                            if (response.body.status == 200){
+                                console.log('login success')
+                                this.$router.push({
+                                    path: '/home',
+                                    query: {
+                                        account: this.login.account
+                                    }
+                                })
+                            } else {
+                                this.$message({
+                                message: response.body.msg,
+                                type: 'error'
+                                })
+                            }
+                        },(response) => {
+                            console.log("没通过验证")
+                        });
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+            });
         },
         login_reset(form) {
             this.$refs[form].resetFields();

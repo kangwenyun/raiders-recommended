@@ -36,6 +36,7 @@ export default {
   name: 'setting-info',
   data() {
     return{
+      account: 'pu971954596@qq.com',
       info:{
         name: '',
         sex: '男',
@@ -51,10 +52,10 @@ export default {
   methods:{
     load(){
       var vm = this
-      vm.$http.get(this.GLOBAL.baseUrl + '/option')
+      vm.$http.get(this.GLOBAL.baseUrl + '/option?account=' + this.account)
         .then((response) => {
             if (response.body.status){
-              var item = response.body.item
+              var item = response.body.user
               this.info.name = item.name,
               this.info.sex = item.sex,
               this.info.city = item.city,
@@ -84,6 +85,7 @@ export default {
               .then((response) => {
                 if (response.body.status){
                     console.log('setting success')
+                    this.load()
                 } else {
                     this.$message({
                     message: response.body.msg,
@@ -91,7 +93,6 @@ export default {
                     })
                 }
           },(response) => {
-              console.log("没通过验证")
           });
           } else {
               console.log('error submit!!');
