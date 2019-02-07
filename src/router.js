@@ -58,7 +58,7 @@ const router = new Router({
             component: setting
         },
         {
-            path: '/reset',
+            path: '/reset*',
             component: reset
         }
     ]
@@ -66,3 +66,4 @@ const router = new Router({
 // router.push('/');    //设置默认打开页面
 // 5.导出路由
 export default router
+

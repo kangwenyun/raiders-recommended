@@ -15,7 +15,7 @@
           <el-input v-model="info.city"></el-input>
         </el-form-item>
         <el-form-item label="出生日期">
-          <el-date-picker type="date" placeholder="选择日期" v-model="info.birthday" ></el-date-picker>
+          <el-date-picker type="date" placeholder="选择日期" v-model="info.birthday" format="yyyy 年 MM 月 dd 日"></el-date-picker>
         </el-form-item>
         <el-form-item label="个人简介">
           <el-input
@@ -25,7 +25,7 @@
           </el-input>
         </el-form-item>
         <el-form-item class="save">
-          <el-button type="primary" @click="save">保存</el-button>
+          <el-button type="primary" @click="save(info)">保存</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -52,7 +52,7 @@ export default {
   methods:{
     load(){
       var vm = this
-      vm.$http.get(this.GLOBAL.baseUrl + '/option?account=' + this.account)
+      vm.$http.get(this.GLOBAL.baseUrl + '/option', {credentials: true})
         .then((response) => {
             if (response.body.status){
               var item = response.body.user
@@ -63,42 +63,41 @@ export default {
               this.info.introduct = item.introduction
             } else {
               this.$message({
-                message: response.body.msg,
+                message: response.body.message,
                 type: 'error'
               })
             }
       },(response) => {});
     },
-    save() {
-      this.$refs[form].validate((valid, {}) => {
-        if (valid) {
+    save(form) {
+      // this.$refs[form].validate((valid, {}) => {
+        // if (valid) {
           var vm = this
           var item = {
-            account: '123',
-            name: info.name,
-            sex: info.sex,
-            city: info.city,
-            birthday: info.birthday,
-            introduction: info.introduct
+            name: this.info.name,
+            sex: this.info.sex,
+            city: this.info.city,
+            birthday: this.info.birthday,
+            introduction: this.info.introduct
           }
           vm.$http.post(this.GLOBAL.baseUrl + '/option', item)
               .then((response) => {
-                if (response.body.status){
+                if (response.body.status == 200){
                     console.log('setting success')
                     this.load()
                 } else {
                     this.$message({
-                    message: response.body.msg,
+                    message: response.body.message,
                     type: 'error'
                     })
                 }
           },(response) => {
           });
-          } else {
-              console.log('error submit!!');
-              return false;
-          }
-          });
+          // } else {
+          //     console.log('error submit!!');
+          //     return false;
+          // }
+          // });
     }
   }
 }

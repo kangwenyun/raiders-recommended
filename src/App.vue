@@ -11,27 +11,13 @@ import top_head from './components/top_head.vue'
 
 export default {
   name: 'app',
-  provide() { // 目的：页面跳转后刷新
-      return{
-          reload: this.reload
-      }
-  },
   data() {
     return{
-        isRouterAlive: true
+        
     };
   },
   components: {
     'v-head': top_head
-  },
-  methods: {
-      // 通过声明reload方法，控制router-view的显示或隐藏，从而控制页面的再次加载
-      reload() {
-          this.isRouterAlive = false
-          this.$nextTick(function(){
-              this.isRouterAlive = true
-          })
-      }
   }
 }
 </script>
@@ -98,6 +84,10 @@ dd a{
 
 a:hover{
     color: #ff9d00;
+}
+
+li {
+    list-style: none;
 }
 
 </style>

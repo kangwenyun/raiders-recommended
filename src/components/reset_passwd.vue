@@ -9,10 +9,10 @@
                     <span>邮件验证码已下发，请注意查收。</span>
                 </el-form-item>
                 <el-form-item class="form-field" prop="passwd">
-                    <el-input v-model="resetPasswd.passwd" placeholder="您的密码" autocomplete="off"/>
+                    <el-input type="password" v-model="resetPasswd.passwd" placeholder="您的密码" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item class="form-field" prop="passwdAgain">
-                    <el-input v-model="resetPasswd.passwdAgain" placeholder="确认密码" autocomplete="off"/>
+                    <el-input type="password" v-model="resetPasswd.passwdAgain" placeholder="确认密码" autocomplete="off"/>
                 </el-form-item>
                 <el-form-item class="form-field" prop="code">
                     <el-input v-model="resetPasswd.code" placeholder="邮件验证码" autocomplete="off"/>
@@ -74,9 +74,7 @@ export default {
     },
     methods: {
         reset(form){
-            console.log('000')
             this.$refs[form].validate((valid, {}) => {
-                console.log('111')
                 if (valid) {
                     var vm = this
                     var item = {
@@ -85,11 +83,9 @@ export default {
                         'passwd': vm.resetPasswd.passwd,
                         'code': vm.resetPasswd.code
                     }
-                    console.log('333')
-                    vm.$http.post(this.GLOBAL.baseUrl + '/resetPasswd', item)
+                    vm.$http.post(this.GLOBAL.baseUrl + '/option', item)
                         .then((response) => {
-                            console.log('222222')
-                        if (response.body.status == 200){
+                        if (response.body.status === 200){
                             console.log('resetPasswd success')
                             this.$router.push({
                                 path: '/login'

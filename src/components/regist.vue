@@ -50,7 +50,6 @@ export default {
         };
         return {
             registForm: {
-                email: 'pu971954596@qq.com',
                 account: '',
                 passwd: '',
                 passwdAgain: '',
@@ -78,7 +77,6 @@ export default {
                 if (valid) {
                     var vm = this
                     var item = {
-                        'account': this.registForm.email,
                         'name': vm.registForm.account,
                         'passwd': vm.registForm.passwd,
                         'code': vm.registForm.code

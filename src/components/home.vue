@@ -3,7 +3,8 @@
     <el-carousel :interval="5000" arrow="always" class="carousel">
       <el-carousel-item v-for="item in dataimg" :key="item.index">
         <img :src="item.src" class="header_img"/>
-        <p class="txt_same txt1_pos">{{ item.txt1 }}</p><p class="txt_same txt2_pos"> {{ item.txt2 }}</p>
+        <p class="txt_same txt1_pos">{{ item.txt1 }}</p>
+        <p class="txt_same txt2_pos">/{{ item.txt2 }}</p>
         <p class="txt_same txt3_pos">{{ item.txt3 }}</p>
         <el-form :inline="true" :model="search" class="txt_same form_pos">
           <el-radio-group v-model="search.radio">
@@ -318,7 +319,7 @@ export default {
 
 .txt2_pos{
   position: absolute;
-  left: 160px;
+  left: 145px;
   top: 30px;
   font-size: 20px;
 }

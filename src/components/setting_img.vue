@@ -5,7 +5,8 @@
         :action="upload_url"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
-        :before-upload="beforeAvatarUpload">
+        :before-upload="beforeAvatarUpload"
+        :with-credentials='true'>
         <img v-if="imageUrl" :src="imageUrl" class="avatar">
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         <div slot="tip" class="el-upload__tip">只能上传jpg文件，且不超过2M</div>
@@ -18,8 +19,8 @@ export default {
   name: 'setting-img',
   data() {
     return{
-      upload_url: '',
-      imageUrl: 'https://p3-q.mafengwo.net/s12/M00/41/7E/wKgED1vqorqAH93BAAMvIC6AvhM62.jpeg?imageMogr2%2Fthumbnail%2F%21120x120r%2Fgravity%2FCenter%2Fcrop%2F%21120x120%2Fquality%2F90'
+      upload_url: this.GLOBAL.baseUrl + '/user_img_up',
+      imageUrl: '' //https://p3-q.mafengwo.net/s12/M00/41/7E/wKgED1vqorqAH93BAAMvIC6AvhM62.jpeg?imageMogr2%2Fthumbnail%2F%21120x120r%2Fgravity%2FCenter%2Fcrop%2F%21120x120%2Fquality%2F90'
     };
   },
   created() {
@@ -43,10 +44,10 @@ export default {
       },
       load(){
         var vm = this
-        vm.$http.get(this.GLOBAL.baseUrl + '/option')
+        vm.$http.get(this.GLOBAL.baseUrl + '/user_img')
           .then((response) => {
-            if (response.body.status){
-              this.imageUrl = response.body.imageUrl
+            if (response.body.status === 200){
+              this.imageUrl = response.body.user.imageUrl
             } else {
               this.$message({
                 message: response.body.msg,

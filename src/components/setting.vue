@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return{
-        account: 'pu971954596@qq.com',
+        account: '123',
         title: {
             'info': '我的信息',
             'img': '我的头像',
@@ -85,9 +85,8 @@ export default {
   methods:{
     load(){
         var vm = this
-        vm.$http.get(this.GLOBAL.baseUrl + '/percentage?account=' + this.account)
+        vm.$http.get(this.GLOBAL.baseUrl + '/percentage', {credentials: true})
             .then((response) => {
-                console.log(response)
                 if (response.body.status){
                     this.percentage = response.body.percentage
                 } else {

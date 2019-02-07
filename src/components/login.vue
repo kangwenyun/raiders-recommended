@@ -7,10 +7,10 @@
                     <div v-if="page == 'regist'">
                         <el-form ref="regist" :model="regist" :rules="regist_rules">
                             <el-form-item class="form-field" prop="account">
-                                <el-input v-model="regist.account" placeholder="您的手机号码"/>
+                                <el-input v-model="regist.account" placeholder="您的邮箱"/>
                             </el-form-item>
                             <el-form-item class="form-field" prop="phone1" style="display: none">
-                                <el-input v-model="regist.phone1" placeholder="您的手机号码"/>
+                                <el-input v-model="regist.phone1" placeholder="您的邮箱"/>
                             </el-form-item>
                             <el-form-item class="submit-btn">
                                 <el-button @click="regist_now('regist')">立即注册</el-button>
@@ -23,10 +23,10 @@
                     <div v-else>
                         <el-form ref="login" :model="login" :rules="login_rules">
                             <el-form-item class="form-field" prop="account">
-                                <el-input v-model="login.account" placeholder="您的手机号码"/>
+                                <el-input v-model="login.account" placeholder="您的邮箱"/>
                             </el-form-item>
                             <el-form-item class="form-field" prop="passwd">
-                                <el-input v-model="login.passwd" placeholder="您的密码"/>
+                                <el-input type="password" v-model="login.passwd" placeholder="您的密码"/>
                             </el-form-item>
                             <div class="form-link"><a href="/forget">忘记密码</a></div>
                             <el-form-item class="submit-btn">
@@ -63,13 +63,13 @@ export default {
     name: 'login',
     data() {
         return {
-            page: 'regist',
+            page: 'login',
             regist: {
                 account: ''
             },
             regist_rules:{
                 account: [
-                    { required: true, message: '手机号码不能为空', trigger: 'blur'}
+                    { required: true, message: '邮箱不能为空', trigger: 'blur'}
                 ]
             },
             login: {
@@ -141,7 +141,7 @@ export default {
                     }
                     vm.$http.post(this.GLOBAL.baseUrl + '/user_login', item)
                         .then((response) => {
-                            if (response.body.status == 200){
+                            if (response.body.status === 200){
                                 console.log('login success')
                                 this.$router.push({
                                     path: '/home',
@@ -151,8 +151,8 @@ export default {
                                 })
                             } else {
                                 this.$message({
-                                message: response.body.msg,
-                                type: 'error'
+                                    message: response.body.message,
+                                    type: 'error'
                                 })
                             }
                         },(response) => {
@@ -168,14 +168,14 @@ export default {
             this.$refs[form].resetFields();
             this.page = 'regist'
         },
-        getParams() {
-            // 取到路由带过来的参数,放在当前组件的数据内
-            this.page = this.$route.query.page
-        }
+        // getParams() {
+        //     // 取到路由带过来的参数,放在当前组件的数据内
+        //     this.page = this.$route.query.page
+        // }
     },
-    created(){
-        this.getParams()
-    }
+    // created(){
+    //     this.getParams()
+    // }
 }
 </script>
 
