@@ -26,6 +26,7 @@ export default {
     return {
       status: 'gonglve',
       hot_data:[ // 下面的推荐攻略
+        // 只包括：游记，自由行攻略，问答
         // { id: 0,  // 从0/1开始都ok
         //   from_pinyin: 'youji', //“来自”后面的字的全拼
         //   from_hanzi: "游记", //“来自”后面的字

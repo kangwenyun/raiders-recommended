@@ -1,5 +1,5 @@
 <template>
-  <div class="article_head">
+  <div class="content_head">
     <div class="head_img">
         <img :src=title_img_url>
     </div>
@@ -7,7 +7,7 @@
         <div class="title_bg"></div>
         <div class="view_info">
             <div class="vi_con">
-                <h1  class="headtext lh80">{{ article_title }}</h1>
+                <h1  class="headtext lh80">{{ content_title }}</h1>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
             </a>
             <a :href=per_home_url target="_blank" class="per_name" :title=per_name>{{ per_name }}</a>
             <a :href=per_home_url target="_blank" class="per_grade" :title=per_grade>{{ per_grade }}</a>
-            <a :href=vip_url target="_blank" class="vip_img">
+            <a :href=vip_url target="_blank" class="vip_img" v-show="vip">
                 <img :src=vip_img_url alt="">
             </a>
             <div class="vc_time">
@@ -55,17 +55,18 @@
 
 <script>
 export default {
-  name: 'article_head',
+  name: 'content_head',
   props: ['data'],
   data() {
     return{
-        article_title: this.data.article_title,
+        content_title: this.data.content_title,
         title_img_url: this.data.title_img_url,
         num_ding: this.data.num_ding,
         per_home_url: this.data.per_home_url,
         per_pic_url: this.data.per_pic_url,
         per_name: this.data.per_name,
         per_grade: this.data.per_grade,
+        vip: this.data.vip,
         vip_url: this.data.vip_url,
         vip_img_url: this.data.vip_img_url,
         time: this.data.time,
@@ -100,7 +101,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    top: 295px;
+    top: 292px;
     opacity: .5;
 }
 

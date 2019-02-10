@@ -547,7 +547,35 @@ export default {
       ]
     }
   },
+  created() {
+    //   this.load()
+  },
   methods: {
+    load() {
+      var vm = this
+      vm.$http.get(this.GLOBAL.baseUrl + '/mdd', {credentials: true})
+        .then((response) => {
+            if (response.body.status === 200){
+                var season = response.body.season_recommend
+                season.forEach(element => {
+                    element.forEach(ele => {
+                        var data = {
+                            father_id: element,
+                            id: string(element) + string(ele),
+                            name: ele.title[0],
+                            src: ele.src
+                        }
+                        this.gonglve.push(data)
+                    }, this);
+                }, this);
+            } else {
+                this.$message({
+                message: response.body.msg,
+                type: 'error'
+                })
+            }
+      },(response) => {});
+    },
     set_now_month(key) {
         this.now_month = key
     },

@@ -178,7 +178,7 @@ export default {
       var vm = this
       vm.$http.get(this.GLOBAL.baseUrl + '/home?page=')
               .then((response) => {
-                if (response.body.status){
+                if (response.body.status === 200){
                   response.body.dataimg.forEach(element => {
                     var data = {
                       index: element.index,
@@ -217,9 +217,9 @@ export default {
     home_new(status){
       if(status == 'new'){
         var vm = this
-        vm.$http.get(this.baseUrl + '/home_new?page=')
+        vm.$http.get(this.GLOBAL.baseUrl + '/home_new?page=')
                 .then((response) => {
-                  if (response.body.status){
+                  if (response.body.status === 200){
                     response.body.new_data.forEach(element => {
                       var data = {
                         index: element.index, 
@@ -308,6 +308,7 @@ export default {
 .txt_same{
   z-index: 2;
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.9);
 }
 
 .txt1_pos{

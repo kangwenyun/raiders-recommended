@@ -79,10 +79,9 @@ export default {
   methods: {
     load(){
       var vm = this
-      vm.$http.get(this.GLOBAL.baseUrl + '/mdd')
+      vm.$http.get(this.GLOBAL.baseUrl + '/mdd', {credentials: true})
         .then((response) => {
-            if (response.body.status){
-                console.log(response.body)
+            if (response.body.status === 200){
                 var head = response.body.head
                 this.ziyouxing = head.ziyouxing
                 this.bgr_url = head.bgr_url

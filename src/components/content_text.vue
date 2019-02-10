@@ -1,5 +1,5 @@
 <template>
-  <div class="article_text">
+  <div class="content_text">
     <div class="travel_directory">
         <div class="tarvel_dir_list">
             <ul>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'article_text',
+  name: 'content_text',
   props: ['data'],
   data() {
     return{
@@ -30,10 +30,10 @@ export default {
 }
 </script>
 
-<style scope>
-.article_text {
+<style lang="less" scope>
+.content_text {
     width: 680px;
-    float: left;
+    position: static;
 }
 
 .travel_directory{
