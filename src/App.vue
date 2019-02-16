@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-head v-show="this.$route.path != '/login'"></v-head>
+    <v-head v-if="show_top()"></v-head>
     <!-- 路由匹配到的组件将渲染在这里 -->
     <router-view></router-view>
   </div>
@@ -18,6 +18,17 @@ export default {
   },
   components: {
     'v-head': top_head
+  },
+  methods: {
+    show_top() {
+      var arr = ['/login', '/regist']
+      for(var i = 0; i < arr.length; i++){
+        if(this.$route.path == arr[i]){
+          return false
+        }
+      }
+      return true
+    }
   }
 }
 </script>

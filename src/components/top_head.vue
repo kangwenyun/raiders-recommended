@@ -123,8 +123,8 @@ export default {
                 confirmButtonText: '确定',
                 callback: action => {
                   this.$message({
-                    type: 'info',
-                    message: `action: ${ action }`
+                    type: 'error',
+                    message: response.body.message
                   });
                 }
               });
@@ -133,8 +133,8 @@ export default {
                 confirmButtonText: '确定',
                 callback: action => {
                   this.$message({
-                    type: 'info',
-                    message: `action: ${ action }`
+                    type: 'error',
+                    message: response.body.message
                   });
                 }
               });
@@ -156,8 +156,14 @@ export default {
         .then(response => {
             if (response.body.status === 200) {
               this.login = false;
+              this.$router.push({
+                path: "/home"
+              });
             } else { //401
-              this.login = true;
+              this.$message({
+                type: 'error',
+                message: '退出失败'
+              });
             }
           }
         );

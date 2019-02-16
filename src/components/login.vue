@@ -86,7 +86,15 @@ export default {
             }
         };
     },
+    created() {
+        this.load()
+    },
     methods: {
+        load() {
+            if(window.location.href.indexOf('=')){
+                this.page = window.location.href.split('=')[1]
+            }
+        },
         regist_now(form){
             this.$refs[form].validate((valid) => {
                 if (valid) {
@@ -145,9 +153,9 @@ export default {
                                 console.log('login success')
                                 this.$router.push({
                                     path: '/home',
-                                    query: {
-                                        account: this.login.account
-                                    }
+                                    // query: {
+                                    //     account: this.login.account
+                                    // }
                                 })
                             } else {
                                 this.$message({

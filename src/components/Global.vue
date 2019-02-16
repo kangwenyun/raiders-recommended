@@ -1,5 +1,5 @@
 <script>
-const baseUrl = 'http://172.18.27.151:3333';
+const baseUrl = 'http://172.18.22.173:3333';
 export default
 {
     baseUrl

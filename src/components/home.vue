@@ -192,7 +192,7 @@ export default {
                   response.body.hot_data.forEach(element => {
                     var data = {
                       index: element.index, 
-                      raiders_url: 'content?id=' + element.raiders_url.split('/')[2].split('.')[0],
+                      raiders_url: 'youji?id=' + element.raiders_url.split('/')[2].split('.')[0],
                       title: element.title,
                       img_url: element.img_url,
                       abstract: element.abstract,

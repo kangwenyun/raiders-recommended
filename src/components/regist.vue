@@ -84,13 +84,20 @@ export default {
                     vm.$http.post(this.GLOBAL.baseUrl + '/regist', item)
                         .then((response) => {
                         if (response.body.status == 200){
-                            console.log('regist success')
-                            this.$router.push({
-                                path: '/login'
-                            })
+                            if (response.body.args == 1){
+                                console.log('regist success')
+                                this.$router.push({
+                                    path: '/login'
+                                })
+                            }else{
+                                this.$message({
+                                    message: response.body.message,
+                                    type: 'error'
+                                })
+                            }
                         } else {
                             this.$message({
-                                message: response.body.msg,
+                                message: response.body.message,
                                 type: 'error'
                             })
                         }
@@ -111,7 +118,7 @@ export default {
                     console.log('get_code success')
                 } else {
                     this.$message({
-                        message: response.body.msg,
+                        message: response.body.message,
                         type: 'error'
                     })
                 }

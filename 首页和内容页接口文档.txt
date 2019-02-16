@@ -50,7 +50,7 @@ http://172.18.25.255:3000/indexApi?page=
 
 【游记内容接口】:
 地址:
-	http://172.18.25.255:3000/content?id=
+	http://172.18.25.255:3000/youji?id=
 
 返回结果
 	{'status': 200, 'data': [{'title': 写在开头的话},{'p': '一段文字'},{'src': '图片链接'},{},{}..........]}
@@ -65,10 +65,10 @@ http://172.18.25.255:3000/indexApi?page=
 
 
 游记：
-接口：content/id
+youji/id
 从上到下
-contentHead:{
-	content_title: '还差一场雪，也许真的可以到白头。',   //游记标题
+youjiHead:{
+	youji_title: '还差一场雪，也许真的可以到白头。',   //游记标题
 	title_img_url: "http://p3-q.mafengwo.net/s12/M00/26/FF/wKgED1wmMbyARMvZAAsHdb5BJao19.jpeg?imageMogr2%2Fstrip",  //游记标题背景图
 	num_ding: 324, //顶的数量
 	per_home_url: "http://www.mafengwo.cn/u/57633488.html", //点用户头像和用户名进入的链接
@@ -83,16 +83,16 @@ contentHead:{
 	num_share: 8,  //已分享数量
 	num_collect: 32 //收藏数
 },
-contentText:{
+youjiText:{
 	time: '2018-12-16',  //出发时间
 	day: '7', //出行天数
 	people: '和朋友',  //人物
 	cost: '2000RMB' //人均费用
 }
-将整篇游记内容作为一个整体进行爬取 contentDetail:
+将整篇游记内容作为一个整体进行爬取 youjiDetail:
 //新增
 游记内容右侧的相关推荐：
-接口：/content_related
+接口：/youji_related
 返回：mdd: { //相关目的地
         href: 'https://www.mafengwo.cn/travel-scenic-spot/mafengwo/10180.html', //a标签的链接
         title: '越南',  //a标签的title
@@ -232,12 +232,3 @@ title: "春节在家呆久了爸妈会嫌你吗？有啥和谐相处之道？", 
           answer: '<div class="_j_answer_html">在家待久了，爸妈會各種嫌棄，我從還沒過年到過年期間到現在，天天都被爸媽嫌棄。。。<br><br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="height:525px;width:700px;background:#FCF2DC" data-src="http://p3-q.mafengwo.net/s1/M00/87/2B/wKgIC1xeLX-AVRkDABrckzBDj7s17.jpeg?imageView2%2F2%2Fw%2F700%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL24xLXEubWFmZW5nd28ubmV0L3MxMS9NMDAvOTEvNzAvd0tnQkVGcF9faTZBUHYtZEFBQUwxMzg3aE0wNjk5LnBuZw%3D%3D%2Fgravity%2FSouthEast%2Fdx%2F10%2Fdy%2F11" data-originalpic="http://p3-q.mafengwo.net/s1/M00/87/2B/wKgIC1xeLX-AVRkDABrckzBDj7s17.jpeg?imageView2%2F2%2Fw%2F1920%2Fq%2F100%7Cwatermark%2F1%2Fimage%2FaHR0cDovL24xLXEubWFmZW5nd28ubmV0L3MxMS9NMDAvOTEvNzAvd0tnQkVGcF9faTZBUHYtZEFBQUwxMzg3aE0wNjk5LnBuZw%3D%3D%2Fgravity%2FSouthEast%2Fdx%2F10%2Fdy%2F11" data-file="mfwStorage1/M00/87/2B/wKgIC1xeLX-AVRkDABrckzBDj7s17.jpeg" class="_j_lazyload _js_answerPic _j_show_original">其實現在很多年輕人，都不喜歡回家待太久，尤其最討厭的就是過年。<br><br>過年就代表：必須待在家裡跟爸媽大眼瞪小眼，而自己長期住外面，作息、生活習慣都與爸媽大不相同，几几天年假使這些「不同」浮上檯面，增加自己與父母的摩擦。<br><br>加上，回到「父母的家」，自己感覺，已經三十歲的自己，好像又變回小孩，回到那個得唯父母命是從的年紀：事事要按父母的規定走；父母要靠許多詢問確認「你現在是否過得好/過得不好」，而過的好與否的標準，是父母訂定的。如果發現你不符合那些標準，「碎碎念」的招式就會出現。<br><br>討厭極了碎碎念，於是，每次回家，有时讓自己待在房間裡，能不跟父母互動就盡量不接觸，以免讓他們有機會念自己。<br><br>但是當每次出來上廁所，看著爸媽坐在客廳看電視的背影時，忍不住覺得感傷，自己不是沒有罪惡感的<br><br>何嘗不想跟爸媽聊天、講一些五四三，或講一些自己的煩惱...家是自己的避風港，不是嗎？<br><br>📢成年人愛父母的方式📢<br>父母覺得孩子冷漠，不在乎他們；<br>孩子也覺得父母不了解、不在乎自己的感受，只想要像小時候一樣掌控自己。<br><br>於是，親子之間顯得疏離，有的只是應個卯、忍耐，或是表面應和。但其實並不是不愛彼此，也在乎對方。<br><br>只是，並不了解。<br><br>年假最後一天，鼓起勇氣，第一次跟爸媽提起：「我想跟你們好好聊聊。」<br><br>可以试着跟父母表達著：「我不是不在乎你們，我也會想念你們，但是，回家，常常要面對你們對我的期望，或是說我哪裡做的不夠、不對......可是，我已經長大，我有自己的想法、有我自己的人生，我要學著對自己的人生負責...所以，你們可以學著尊重我、信任我，尊重我有我自己的生活方式，信任我可以自己負責，信任我就算做我自己、不按照你們的方式去做，也不代表我不愛你們...對我來說，我感覺到你有多尊重我，我就會知道你有多愛我。」<br><br>或許，你期待我與你相同，或與你的理想相同；當你發現我變成另外一個人，那樣陌生，你會覺得不安，覺得孤單，甚至覺得有些害怕，恐懼。<br><br>只是，我想請你，相信一件事：<br><br>我做我自己，不代表我不愛你，也不代表我就不會獲得幸福。<br><br>我做我自己，仍然可以愛你，仍然可以獲得幸福。<br><br><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" style="height:525px;width:700px;background:#FCF2DC" data-src="http://n2-q.mafengwo.net/s11/M00/AF/02/wKgBEFxeZC6AY7qeABp7ss6B_Hg93.jpeg?imageView2%2F2%2Fw%2F700%2Fq%2F90%7Cwatermark%2F1%2Fimage%2FaHR0cDovL24xLXEubWFmZW5nd28ubmV0L3MxMS9NMDAvOTEvNzAvd0tnQkVGcF9faTZBUHYtZEFBQUwxMzg3aE0wNjk5LnBuZw%3D%3D%2Fgravity%2FSouthEast%2Fdx%2F10%2Fdy%2F11" data-originalpic="http://n2-q.mafengwo.net/s11/M00/AF/02/wKgBEFxeZC6AY7qeABp7ss6B_Hg93.jpeg?imageView2%2F2%2Fw%2F1920%2Fq%2F100%7Cwatermark%2F1%2Fimage%2FaHR0cDovL24xLXEubWFmZW5nd28ubmV0L3MxMS9NMDAvOTEvNzAvd0tnQkVGcF9faTZBUHYtZEFBQUwxMzg3aE0wNjk5LnBuZw%3D%3D%2Fgravity%2FSouthEast%2Fdx%2F10%2Fdy%2F11" data-file="mfwStorage11/M00/AF/02/wKgBEFxeZC6AY7qeABp7ss6B_Hg93.jpeg" class="_j_lazyload _js_answerPic _j_show_original"><br>==========<br><br>如果你觉得TA的回答不错，快来给TA点个赞吧！<br>你的支持是对作者莫大的鼓励~</div>' // 回答的具体信息
         }
       ]
-
-
-旅游攻略下的推荐攻略：
-自由行攻略链接修改：改到我们自己的页面上
-游记url为空
-
-1.'/home?page='接口 ding为空
-2.ding成了字符串拼接了，应该是数字+1
-3.问答详情页 css

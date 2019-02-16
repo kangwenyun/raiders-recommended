@@ -1,6 +1,5 @@
 <template>
   <div class="raiders_head">
-      {{ data }}
     <div class="left">
          <a :href="raiders_url" target="_blank">
             <img :src="img_url" :href="raiders_url" target="_blank"/>
@@ -93,6 +92,7 @@ export default {
   },
   methods: {
       vote: function() {
+          console.log('1:', this.ding)
           this.ding = this.ding + 1
           this.$emit('votes', this.ding)
       }
