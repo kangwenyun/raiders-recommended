@@ -1,5 +1,5 @@
 <template>
-  <div class="content_head">
+  <div class="youji_head">
     <div class="head_img">
         <img :src=title_img_url>
     </div>
@@ -7,7 +7,7 @@
         <div class="title_bg"></div>
         <div class="view_info">
             <div class="vi_con">
-                <h1  class="headtext lh80">{{ content_title }}</h1>
+                <h1  class="headtext lh80">{{ youji_title }}</h1>
             </div>
         </div>
     </div>
@@ -34,14 +34,14 @@
         </div>
         <div class="bar_share">
             <div class="bs_share">
-                <a href="javascript:void(0);" title="分享" class="bs_btn">
+                <a href="javascript:;" title="分享" class="bs_btn">
                     <i></i>
                     <span>{{ num_share }}</span>
                     <strong>分享</strong>
                 </a>
             </div>
             <div class="bs_collect">
-                <a href="javascript:void(0);" title="收藏" class="bs_btn" :class="collect ? 'collected' : ''" @click="collect = collect ? false : true">
+                <a href="javascript:;" title="收藏" class="bs_btn" :class="collect ? 'collected' : ''" @click="collect = collect ? false : true">
                     <i></i>
                     <span>{{ num_collect }}</span>
                     <strong>收藏</strong>
@@ -55,11 +55,11 @@
 
 <script>
 export default {
-  name: 'content_head',
+  name: 'youji_head',
   props: ['data'],
   data() {
     return{
-        content_title: this.data.content_title,
+        youji_title: this.data.youji_title,
         title_img_url: this.data.title_img_url,
         num_ding: this.data.num_ding,
         per_home_url: this.data.per_home_url,

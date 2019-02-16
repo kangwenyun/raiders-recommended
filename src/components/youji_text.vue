@@ -1,5 +1,5 @@
 <template>
-  <div class="content_text">
+  <div class="youji_text">
     <div class="travel_directory">
         <div class="tarvel_dir_list">
             <ul>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'content_text',
+  name: 'youji_text',
   props: ['data'],
   data() {
     return{
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="less" scope>
-.content_text {
+.youji_text {
     width: 680px;
     position: static;
 }

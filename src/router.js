@@ -7,10 +7,12 @@ import gonglve from './components/gonglve.vue'
 import login from './components/login.vue'
 import regist from './components/regist.vue'
 import write_gonglve from './components/write_gonglve.vue'
-import content_detail from './components/content_detail.vue'
+import youji_detail from './components/youji_detail.vue'
 import setting from './components/setting.vue'
 import reset from './components/reset_passwd.vue'
 import ziyouxing from './components/ziyouxing.vue'
+import wenda from './components/wenda.vue'
+import wenda_detail from './components/wenda_detail.vue'
 
 // 2.通过Vue的use方法注入Router
 Vue.use(Router)
@@ -51,8 +53,8 @@ const router = new Router({
             component: write_gonglve
         },
         {
-            path: '/content*',
-            component: content_detail
+            path: '/youji*',
+            component: youji_detail
         },
         {
             path: '/setting',
@@ -65,6 +67,14 @@ const router = new Router({
         {
             path: '/ziyouxing*',
             component: ziyouxing
+        },
+        {
+            path: '/wenda',
+            component: wenda
+        },
+        {
+            path: '/wenda/*',
+            component: wenda_detail
         }
     ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="content_related">
+  <div class="youji_related">
     <div>
       <div class="relation_mdd">相关目的地：</div>
       <div class="mdd_info">
@@ -20,7 +20,7 @@
     </div>
     <div class="notes_gonglve">
       <div class="side_title">相关攻略</div>
-      <el-carousel class="gs_content">
+      <el-carousel class="gs_youji">
         <el-carousel-item v-for="item in gonglve" :key="item.key">
             <a :href="item.href"
             target="_blank"
@@ -38,7 +38,7 @@
     <div class="split"></div>
     <div class="notes_gonglve">
       <div class="side_title">相关游记</div>
-      <el-carousel class="gs_content">
+      <el-carousel class="gs_youji">
         <el-carousel-item v-for="item in youji" :key="item.key">
             <a :href="item.href"
             target="_blank"
@@ -58,7 +58,7 @@
 
 <script>
 export default {
-  name: "content_related",
+  name: "youji_related",
   data() {
     return {
       mdd: {
@@ -120,7 +120,7 @@ export default {
 </script>
 
 <style lang="less" scope>
-.content_related {
+.youji_related {
     position: relative;
     top: 10px;
     float: right;
@@ -187,7 +187,7 @@ export default {
             line-height: 1;
         }
 
-        .gs_content {
+        .gs_youji {
             height: 160px;
 
             .bg {

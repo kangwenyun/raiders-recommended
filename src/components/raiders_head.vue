@@ -1,5 +1,6 @@
 <template>
   <div class="raiders_head">
+      {{ data }}
     <div class="left">
          <a :href="raiders_url" target="_blank">
             <img :src="img_url" :href="raiders_url" target="_blank"/>
@@ -16,7 +17,7 @@
         </dl>
         <div class="tn-extra">
             <span class="tn-ding">
-                {{ ding }}<a class="btn-ding" href="javascript:;" target="_blank" @click="vote"></a>
+                {{ ding }}<a class="btn-ding" href="javascript:;" @click="vote"></a>
             </span>
             <span class="tn-place">
                 <i></i>

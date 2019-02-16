@@ -18,15 +18,15 @@
         <template slot="title">
           <img :src="user_img">
         </template>
-        <el-menu-item index="1">
+        <el-menu-item index="1" class="money">
           <i class="el-icon-loading"></i>
           蜂蜜 {{ honey }} /金币 {{ coin }}
         </el-menu-item>
         <el-menu-item index="write_gonglve">
           <i class="el-icon-edit"></i>写游记
         </el-menu-item>
-        <el-menu-item index="myself">
-          <i class="el-icon-goods"></i>我的
+        <el-menu-item index="wenda">
+          <i class="el-icon-question"></i>问答
         </el-menu-item>
         <el-menu-item index="setting">
           <i class="el-icon-setting"></i>设置
@@ -95,7 +95,7 @@ export default {
             if (response.body.status === 200) {
               this.login = true;
             } else { //401
-              this.login = true;
+              this.login = false;
             }
           }
         );
@@ -282,5 +282,18 @@ a {
   text-decoration: none;
   color: #ff9d00;
   cursor: pointer;
+}
+
+.el-menu-item {
+  color: #000;
+}
+
+.money > i {
+  color: #fff !important;
+}
+
+.money {
+  background-color: #ff9d00 !important;
+  color: #fff !important;
 }
 </style>

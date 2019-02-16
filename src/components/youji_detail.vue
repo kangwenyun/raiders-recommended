@@ -1,29 +1,29 @@
 <template>
-  <div class="content_detail">
-    <content-head :data="contentHead"></content-head>
-    <content-text :data="contentText"></content-text>
-    <div class="detail" v-html="contentDetail">{{ contentDetail }}</div>
-    <content-related></content-related>
+  <div class="youji_detail">
+    <youji-head :data="youjiHead"></youji-head>
+    <youji-text :data="youjiText"></youji-text>
+    <div class="detail" v-html="youjiDetail">{{ youjiDetail }}</div>
+    <youji-related></youji-related>
   </div>
 </template>
 
 <script>
 
-import content_head from './content_head.vue'
-import content_text from './content_text.vue'
-import content_related from './content_related.vue'
+import youji_head from './youji_head.vue'
+import youji_text from './youji_text.vue'
+import youji_related from './youji_related.vue'
 
 export default {
-  name: 'content_detail',
+  name: 'youji_detail',
   components: {
-    "content-head": content_head,
-    "content-text": content_text,
-    "content-related": content_related,
+    "youji-head": youji_head,
+    "youji-text": youji_text,
+    "youji-related": youji_related,
   },
   data() {
     return {
-        contentHead:{
-          content_title: '还差一场雪，也许真的可以到白头。',   //游记标题
+        youjiHead:{
+          youji_title: '还差一场雪，也许真的可以到白头。',   //游记标题
           title_img_url: "http://p3-q.mafengwo.net/s12/M00/26/FF/wKgED1wmMbyARMvZAAsHdb5BJao19.jpeg?imageMogr2%2Fstrip",  //游记标题背景图
           num_ding: 324, //顶的数量
           per_home_url: "http://www.mafengwo.cn/u/57633488.html", //点用户头像和用户名进入的链接
@@ -38,13 +38,13 @@ export default {
           num_share: 8,  //已分享数量
           num_collect: 32 //收藏数
         },
-        contentText:{
+        youjiText:{
           time: '2018-12-16',  //出发时间
           day: '7', //出行天数
           people: '和朋友',  //人物
           cost: '2000RMB' //人均费用
         },
-        contentDetail: '<p class="_j_note_content _j_seqitem" data-seq="424976778">我是个文字功底一般还有点懒的人。<br>但是时隔很久却还是很想用自己拙劣的文笔去记录这场美好的行程。<br>这第一次境外自由行。<br>很多人都说<a href="/travel-scenic-spot/mafengwo/10180.html" class="link _j_keyword_mdd" data-kw="越南" target="_blank">越南</a>很穷，很乱，很危险。<br>出发之前有很多好心的劝阻。whaterer，还是要去。<br>从决定自由行到出发不足1周的时间<br>2个女生👧说走就走<br>订机票，备衣服，换钱签证，做攻略......<br>我是个把生活过得七零八落的人，出门忘记带钥匙，取钱忘拔卡。但每次外出却像七大姑八大姨附身一样，有条不紊，面面俱到。大概就是喜爱的力量。</p>',
+        youjiDetail: '<p class="_j_note_youji _j_seqitem" data-seq="424976778">我是个文字功底一般还有点懒的人。<br>但是时隔很久却还是很想用自己拙劣的文笔去记录这场美好的行程。<br>这第一次境外自由行。<br>很多人都说<a href="/travel-scenic-spot/mafengwo/10180.html" class="link _j_keyword_mdd" data-kw="越南" target="_blank">越南</a>很穷，很乱，很危险。<br>出发之前有很多好心的劝阻。whaterer，还是要去。<br>从决定自由行到出发不足1周的时间<br>2个女生👧说走就走<br>订机票，备衣服，换钱签证，做攻略......<br>我是个把生活过得七零八落的人，出门忘记带钥匙，取钱忘拔卡。但每次外出却像七大姑八大姨附身一样，有条不紊，面面俱到。大概就是喜爱的力量。</p>',
     };
   },
   created() {
@@ -57,9 +57,9 @@ export default {
               .then((response) => {
                 if (response.body.status === 200){
                   console.log(response)
-                  head = response.body.contentHead
-                  this.contentHead = {
-                    content_title: head.content_title,   //游记标题
+                  head = response.body.youjiHead
+                  this.youjiHead = {
+                    youji_title: head.youji_title,   //游记标题
                     title_img_url: head.title_img_url,  //游记标题背景图
                     num_ding: head.num_ding, //顶的数量
                     per_home_url: head.per_home_url, //点用户头像和用户名进入的链接
@@ -74,14 +74,14 @@ export default {
                     num_share: head.num_share,  //已分享数量
                     num_collect: head.num_collect //收藏数
                   },
-                  text = response.body.contentText
-                  this.contentText = {
+                  text = response.body.youjiText
+                  this.youjiText = {
                     time: text.time,  //出发时间
                     day: text.day, //出行天数
                     people: text.people,  //人物
                     cost: text.cost //人均费用
                   },
-                  this.contentDetail = response.body.contentDetail
+                  this.youjiDetail = response.body.youjiDetail
                 } else {
                   this.$message({
                     message: response.body.msg,
@@ -96,7 +96,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-.content_detail {
+.youji_detail {
   margin-top: 70px;
 
   .detail {

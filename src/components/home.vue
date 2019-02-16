@@ -320,7 +320,7 @@ export default {
 
 .txt2_pos{
   position: absolute;
-  left: 145px;
+  left: 160px;
   top: 30px;
   font-size: 20px;
 }
