@@ -1,66 +1,71 @@
 <template>
   <div class="wenda_detail">
-    <div class="mt-nav">
-      <a href="/wenda/">问答详情</a>
-      > {{ title }}
-    </div>
-    <div class="q-content">
-      <a :href="mdd_href" target="_blank" class="location">
-        <i></i>
-        {{ mdd }}
-      </a>
-      <h1>{{ title }}</h1>
-      <div class="q-desc" v-html="detail">{{ detail }}</div>
-      <div class="q-info1">
-        <el-tag v-for="tag in tags" :key="tag.name" type="info" class="tags">
-          <a :href="tag.href">{{ tag.name }}</a>
-        </el-tag>
-        <div class="pub-bar fr">
-          <a :href="user_href" class="photo" target="_blank">
-            <img :src="user_img">
-          </a>
-          <a class="name" :href="user_href" target="_blank">{{ user_name }}</a>
-          <span class="time">
-            <span>{{ time }}</span>
+    <div class="detail">
+      <div class="mt-nav">
+        <a href="/wenda/">问答详情</a>
+        > {{ title }}
+      </div>
+      <div class="q-content">
+        <a :href="mdd_href" target="_blank" class="location">
+          <i></i>
+          {{ mdd }}
+        </a>
+        <h1>{{ title }}</h1>
+        <div class="q-desc" v-html="detail">{{ detail }}</div>
+        <div class="q-info1">
+          <el-tag v-for="tag in tags" :key="tag.name" type="info" class="tags">
+            <a :href="tag.href">{{ tag.name }}</a>
+          </el-tag>
+          <div class="pub-bar fr">
+            <a :href="user_href" class="photo" target="_blank">
+              <img :src="user_img">
+            </a>
+            <a class="name" :href="user_href" target="_blank">{{ user_name }}</a>
+            <span class="time">
+              <span>{{ time }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="q-operate">
+        <div class="fr">
+          <span class="atten-num">{{ liulan_num }}浏览</span>
+          <span class="atten-num">
+            <span class="_j_same_num">{{ guanzhu_num }}</span>人关注
           </span>
+          <!-- <a class="btn-atten _j_same_question" rel="nofollow" data-status="1">
+              <span>关注</span>
+            </a>
+          <a class="btn-answer _j_btn_goanswer" rel="nofollow">回答</a>-->
+        </div>
+      </div>
+      <div class="answer-wrap">
+        <div class="hd">
+          <span>{{ num }}</span>个回答
+        </div>
+        <div class="answer_list">
+          <wenda-answer
+              v-for="item in answer_list"
+              :data="item"
+              :key="item.key">
+          </wenda-answer>
         </div>
       </div>
     </div>
-    <div class="q-operate">
-      <div class="fr">
-        <span class="atten-num">{{ liulan_num }}浏览</span>
-        <span class="atten-num">
-          <span class="_j_same_num">{{ guanzhu_num }}</span>人关注
-        </span>
-        <!-- <a class="btn-atten _j_same_question" rel="nofollow" data-status="1">
-            <span>关注</span>
-          </a>
-        <a class="btn-answer _j_btn_goanswer" rel="nofollow">回答</a>-->
-      </div>
-    </div>
-    <div class="answer-wrap">
-      <div class="hd">
-        <span>{{ num }}</span>个回答
-      </div>
-      <div class="answer_list">
-        <wenda-answer
-            v-for="item in answer_list"
-            :data="item"
-            :key="item.key">
-        </wenda-answer>
-      </div>
-    </div>
+    <wenda-related></wenda-related>
   </div>
 </template>
 
 <script>
 
 import wenda_answer from './wenda_answer.vue'
+import wenda_related from './wenda_related.vue'
 
 export default {
   name: "wenda_detail",
   components: {
-      "wenda-answer": wenda_answer
+      "wenda-answer": wenda_answer,
+      "wenda-related": wenda_related,
   },
   data() {
     return {
@@ -95,7 +100,60 @@ export default {
       ]
     };
   },
-  methods: {}
+  created() {
+      // this.load()
+  },
+  methods: {
+    load() {
+      var vm = this
+      vm.$http.get(this.GLOBAL.baseUrl + '/wenda')
+              .then((response) => {
+                  if (response.body.status === 200){
+                    var tmp = response.body
+                    title = tmp.title
+                    mdd_href = tmp.mdd_href
+                    mdd = tmp.mdd
+                    detail = tmp.detail
+                    tags: [ // 问答详情底下的标签
+                      { name: "春节", href: "http://www.mafengwo.cn/wenda/area-10466.html" }, // 标签， 标签链接
+                      { name: "文化", href: "http://www.mafengwo.cn/wenda/area-10466.html" }
+                    ],
+                    user_href = tmp.user_href
+                    user_img = tmp.user_img
+                    user_name = tmp.user_name
+                    time = tmp.time
+                    liulan_num = tmp.liulan_num
+                    guanzhu_num = tmp.guanzhu_num
+                    num = tmp.num
+                    tmp.tags.forEach(element => {
+                        var data = {
+                            name: element.name,
+                            href: href
+                        }
+                        this.tags.push(data)
+                    }, this);
+                    tmp.answer_list.forEach(element => {
+                        var data = {
+                            key: element.key,
+                            user_href: user_href,
+                            user_img: element.user_img, // 用户头像图片地址
+                            user_name: element.user_name,
+                            user_level: element.user_level,
+                            guide: element.guide,
+                            gold: element.gold,
+                            answer: element.answer
+                        }
+                        this.answer_list.push(data)
+                    }, this);
+                  } else {
+                  this.$message({
+                      message: response.body.msg,
+                      type: 'error'
+                  })
+                  }
+      },(response) => {});
+    }
+  }
 };
 </script>
 
@@ -103,154 +161,163 @@ export default {
 .wenda_detail {
   color: #666;
   width: 80%;
+  min-width: 993px;
   margin: 70px auto;
 
-  a:hover {
-    color: #ff9d00 !important;
-    text-decoration: underline;
-  }
+  .detail {
+    float: left;
+    width: 70%;
+    max-width: 850px;
+    min-width: 700px;
+    margin-left: 20px;
 
-  .mt-nav {
-    padding: 20px 0;
-    line-height: 30px;
-
-    a {
-      font-weight: 600;
-      color: #ff9d00;
-      display: inline;
-    }
-  }
-
-  .q-content {
-    margin-bottom: 40px;
-
-    .location {
-      display: inline-block;
-      font-size: 18px;
-      color: #ff9d00;
-      margin-right: 8px;
-      font-weight: 600;
-
-      i {
-        float: left;
-        width: 14px;
-        height: 16px;
-        margin: 7px 6px 0 0;
-        background-position: 0 -285px !important;
-      }
-
-      i {
-        background: url(http://css.mafengwo.net/images/wenda/mfwask-2016sprite_v9.png)
-          no-repeat;
-      }
+    a:hover {
+      color: #ff9d00 !important;
+      text-decoration: underline;
     }
 
-    h1 {
-      display: inline;
-      font-size: 18px;
-      color: #333;
-    }
-
-    .q-desc {
-      margin-top: 10px;
+    .mt-nav {
+      padding: 20px 0;
+      line-height: 30px;
 
       a {
+        font-weight: 600;
         color: #ff9d00;
-        text-decoration: none;
-        cursor: pointer;
+        display: inline;
       }
     }
 
-    .q-info1 {
-      margin-top: 16px;
+    .q-content {
+      margin-bottom: 40px;
 
-      .tags {
-        height: 22px;
-        margin-top: 14px;
-        margin-right: 10px;
+      .location {
+        display: inline-block;
+        font-size: 18px;
+        color: #ff9d00;
+        margin-right: 8px;
+        font-weight: 600;
 
-        a {
-          display: block;
+        i {
           float: left;
-          padding: 0 15px;
-          font-size: 12px;
-          line-height: 22px;
-          white-space: nowrap;
-          color: #666;
+          width: 14px;
+          height: 16px;
+          margin: 7px 6px 0 0;
+          background-position: 0 -285px !important;
+        }
+
+        i {
+          background: url(http://css.mafengwo.net/images/wenda/mfwask-2016sprite_v9.png)
+            no-repeat;
         }
       }
 
-      .el-tag {
-        background-color: #f6f6f6;
-        border: 1px solid #e5e5e5;
-        border-radius: 10px;
-        padding: 0 0px;
-
-        a:hover {
-          background-color: #ff9d00;
-          color: #fff !important;
-          border-radius: 10px;
-          text-decoration: none;
-        }
+      h1 {
+        display: inline;
+        font-size: 18px;
+        color: #333;
       }
 
-      .pub-bar {
-        line-height: 23px;
-        margin-top: 40px;
+      .q-desc {
+        margin-top: 10px;
 
         a {
-          color: #666;
-          font-size: 12px;
-          display: inline;
+          color: #ff9d00;
+          text-decoration: none;
+          cursor: pointer;
         }
+      }
 
-        .photo img {
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          margin-right: 6px;
-          vertical-align: middle;
-        }
+      .q-info1 {
+        margin-top: 16px;
 
-        .name {
+        .tags {
+          height: 22px;
+          margin-top: 14px;
           margin-right: 10px;
-          font-size: 12px;
+
+          a {
+            display: block;
+            float: left;
+            padding: 0 15px;
+            font-size: 12px;
+            line-height: 22px;
+            white-space: nowrap;
+            color: #666;
+          }
         }
 
-        .time {
-          font-size: 12px;
+        .el-tag {
+          background-color: #f6f6f6;
+          border: 1px solid #e5e5e5;
+          border-radius: 10px;
+          padding: 0 0px;
+
+          a:hover {
+            background-color: #ff9d00;
+            color: #fff !important;
+            border-radius: 10px;
+            text-decoration: none;
+          }
+        }
+
+        .pub-bar {
+          line-height: 23px;
+          margin-top: 40px;
+
+          a {
+            color: #666;
+            font-size: 12px;
+            display: inline;
+          }
+
+          .photo img {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+          }
+
+          .name {
+            margin-right: 10px;
+            font-size: 12px;
+          }
+
+          .time {
+            font-size: 12px;
+          }
         }
       }
     }
-  }
 
-  .q-operate {
-    padding-top: 18px;
-    height: 36px;
-    border-top: 1px solid #e5e5e5;
+    .q-operate {
+      padding-top: 18px;
+      height: 36px;
+      border-top: 1px solid #e5e5e5;
 
-    .atten-num {
-      font-size: 12px;
-      color: #999;
-      margin-right: 10px;
-    }
-  }
-
-  .fr {
-    float: right;
-  }
-
-  .answer-wrap {
-    margin-top: 20px;
-
-    .hd {
-        padding-bottom: 5px;
-        border-bottom: 1px solid #e5e5e5;
-        color: #333;
+      .atten-num {
+        font-size: 12px;
+        color: #999;
+        margin-right: 10px;
+      }
     }
 
-    .answer_list {
+    .fr {
+      float: right;
+    }
+
+    .answer-wrap {
       margin-top: 20px;
+
+      .hd {
+          padding-bottom: 5px;
+          border-bottom: 1px solid #e5e5e5;
+          color: #333;
+      }
+
+      .answer_list {
+        margin-top: 20px;
+      }
     }
   }
 }

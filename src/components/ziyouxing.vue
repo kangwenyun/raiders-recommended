@@ -101,7 +101,39 @@ export default {
       }
     };
   },
-  methods: {}
+  created() {
+    this.load()
+  },
+  methods: {
+    load() {
+      var vm = this
+      // '/ziyouxing?id=...'
+      vm.$http.get(this.GLOBAL.baseUrl + '/' + location.href.split('/')[3], { credentials: true })
+              .then((response) => {
+                if (response.body.status === 200){
+                  this.location = response.body.location
+                  this.ziyouxingl = response.body.ziyouxingl
+                  this.ziyouxingr = response.body.ziyouxingr
+                  this.ziyouxing_related = response.body.ziyouxing_related
+                  // response.body.gonglve.forEach(element => {
+                  //   var data = {
+                  //     key: element.key, 
+                  //     href: element.href,
+                  //     title: element.title,
+                  //     src: element.src,
+                  //     view: element.view
+                  //   }
+                  //   this.gonglve.push(data)
+                  // }, this);
+                } else {
+                  this.$message({
+                    message: response.body.message,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    }
+  }
 };
 </script>
 

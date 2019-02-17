@@ -56,7 +56,8 @@
           @click="showInput"
         />
       </div>
-      <el-button class="daka" @click="daka">打卡</el-button>
+      <el-button class="daka" @click="daka" v-if="!daka_al">打卡</el-button>
+      <el-button class="daka" v-else>已打卡</el-button>
     </div>
     <div v-else class="login-out">
       <a class="weibo-login" href="https://passport.mafengwo.cn/weibo" title="微博登录"></a>
@@ -80,6 +81,7 @@ export default {
       showImg: true,
       show: false,
       search: "",
+      daka_al: false,
       honey: 31,
       coin: 2
     };
@@ -94,6 +96,7 @@ export default {
         .then(response => {
             if (response.body.status === 200) {
               this.login = true;
+              this.daka_al = response.body.daka;
             } else { //401
               this.login = false;
             }
@@ -122,10 +125,6 @@ export default {
               this.$alert('恭喜你！蜂蜜+'+response.body.num, '打卡成功', {
                 confirmButtonText: '确定',
                 callback: action => {
-                  this.$message({
-                    type: 'error',
-                    message: response.body.message
-                  });
                 }
               });
             } else {

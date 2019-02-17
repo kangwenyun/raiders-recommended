@@ -56,7 +56,7 @@ export default {
             hot_question: [
                 {
                     key: 11,
-                    wenda_url: "http://www.mafengwo.cn/wenda/detail-11794417-11794446.html",
+                    wenda_url: "/wenda/detail-11794417-11794446.html",
                     title: "长沙坡子街是怎么一步步成为著名美食街的？",
                     user_href: "/wenda/u/63486413/answer.html", // 头像里a标签的href
                     user_img:
@@ -148,7 +148,101 @@ export default {
             ]
         };
     },
+    created() {
+        // this.load()
+    },
     methods: {
+        load(){
+            var vm = this
+            vm.$http.get(this.GLOBAL.baseUrl + '/wenda')
+                    .then((response) => {
+                        if (response.body.status === 200){
+                            response.body.hot_question.forEach(element => {
+                                var data = {
+                                    key: element.key,
+                                    wenda_url: element.wenda_url.split('-')[1].split('.')[0],
+                                    title: element.title,
+                                    user_href: element.user_href, // 头像里a标签的href
+                                    user_img: element.user_img, // 用户头像图片地址
+                                    guide: element.guide,
+                                    img_url: element.img_url,
+                                    abstract: element.abstract,
+                                    tags: [],
+                                    zan_num: element.zan_num,
+                                    mdd_href: element.mdd_href,
+                                    mdd: element.mdd,
+                                    comment_num: element.comment_num,
+                                    date: element.date
+                                }
+                                element.tags.forEach(ele => {
+                                    var tag = {
+                                        name: ele.name,
+                                        href: ele.href
+                                    }
+                                    data.tags.push(tag)
+                                }, this)
+                                this.hot_question.push(data)
+                            }, this);
+                            response.body.new_question.forEach(element => {
+                                var data = {
+                                    key: element.key,
+                                    wenda_url: element.wenda_url.split('-')[1].split('.')[0],
+                                    title: element.title,
+                                    user_href: element.user_href, // 头像里a标签的href
+                                    user_img: element.user_img, // 用户头像图片地址
+                                    guide: element.guide,
+                                    img_url: element.img_url,
+                                    abstract: element.abstract,
+                                    tags: [],
+                                    zan_num: element.zan_num,
+                                    mdd_href: element.mdd_href,
+                                    mdd: element.mdd,
+                                    comment_num: element.comment_num,
+                                    date: element.date
+                                }
+                                element.tags.forEach(ele => {
+                                    var tag = {
+                                        name: ele.name,
+                                        href: ele.href
+                                    }
+                                    data.tags.push(tag)
+                                }, this)
+                                this.new_question.push(data)
+                            }, this);
+                            response.body.wait_question.forEach(element => {
+                                var data = {
+                                    key: element.key,
+                                    wenda_url: element.wenda_url.split('-')[1].split('.')[0],
+                                    title: element.title,
+                                    user_href: element.user_href, // 头像里a标签的href
+                                    user_img: element.user_img, // 用户头像图片地址
+                                    guide: element.guide,
+                                    img_url: element.img_url,
+                                    abstract: element.abstract,
+                                    tags: [],
+                                    zan_num: element.zan_num,
+                                    mdd_href: element.mdd_href,
+                                    mdd: element.mdd,
+                                    comment_num: element.comment_num,
+                                    date: element.date
+                                }
+                                element.tags.forEach(ele => {
+                                    var tag = {
+                                        name: ele.name,
+                                        href: ele.href
+                                    }
+                                    data.tags.push(tag)
+                                }, this)
+                                this.wait_question.push(data)
+                            }, this);
+                        } else {
+                        this.$message({
+                            message: response.body.msg,
+                            type: 'error'
+                        })
+                        }
+            },(response) => {});
+        },
         select_title(index) {
             this.now_title = index
         }

@@ -40,7 +40,7 @@ export default {
         },
         youjiText:{
           time: '2018-12-16',  //出发时间
-          day: '7', //出行天数
+          day: '7天', //出行天数
           people: '和朋友',  //人物
           cost: '2000RMB' //人均费用
         },
@@ -48,18 +48,19 @@ export default {
     };
   },
   created() {
-    // this.load()
+    this.load()
   },
   methods: {
     load(){
       var vm = this
-      vm.$http.get(this.GLOBAL.baseUrl + '/' + location.href.split('/')[3])
-              .then((response) => {
+      // 接口： /youji/id=
+      vm.$http.get(this.GLOBAL.baseUrl + '/' + location.href.split('/')[3], { credentials: true }).then((response) => {
                 if (response.body.status === 200){
-                  console.log(response)
-                  head = response.body.youjiHead
+                  var head = response.body.contentHead
+                  var text = response.body.contentText
+                  console.log(head.content_title)
                   this.youjiHead = {
-                    youji_title: head.youji_title,   //游记标题
+                    youji_title: head.content_title,   //游记标题
                     title_img_url: head.title_img_url,  //游记标题背景图
                     num_ding: head.num_ding, //顶的数量
                     per_home_url: head.per_home_url, //点用户头像和用户名进入的链接
@@ -67,21 +68,19 @@ export default {
                     per_name: head.per_name, //用户名
                     per_grade: head.per_grade, //用户等级
                     vip: head.vip, //是否是vip
-                    vip_url: "http://www.mafengwo.cn/home/vip_show.php", //不需要
-                    vip_img_url: "http://images.mafengwo.net/images/home/vip/vip1.gif",   //不需要
                     time: head.time,  //vip右侧的时间
                     view: head.view, //时间右侧
                     num_share: head.num_share,  //已分享数量
                     num_collect: head.num_collect //收藏数
-                  },
-                  text = response.body.youjiText
+                  }
+                  console.log(this.youjiHead.youji_title)
                   this.youjiText = {
                     time: text.time,  //出发时间
                     day: text.day, //出行天数
                     people: text.people,  //人物
                     cost: text.cost //人均费用
                   },
-                  this.youjiDetail = response.body.youjiDetail
+                  this.youjiDetail = response.body.contentDetail
                 } else {
                   this.$message({
                     message: response.body.msg,

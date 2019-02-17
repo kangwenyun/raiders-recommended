@@ -68,54 +68,92 @@ export default {
         num: '1037836'
       },
       gonglve: [
-        {
-            key: 11,
-            href: 'https://www.mafengwo.cn/gonglve/ziyouxing/41254.html?cid=1010608',
-            title: '芽庄珍珠岛游乐园 深度攻略（全面详解）',
-            src: 'https://n2-q.mafengwo.net/s10/M00/38/AB/wKgBZ1oYTvKALA9vAAJV63ED4LI52.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F90',
-            view: '319868'
-        },
-        {
-            key: 12,
-            href: 'https://www.mafengwo.cn/gonglve/ziyouxing/108962.html?cid=1010608',
-            title: '预算3k起,暑期海岛旅行推荐',
-            src: 'https://p3-q.mafengwo.net/s11/M00/9A/B9/wKgBEFsU3ieAERFDABK2XNKoCY846.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F90',
-            view: '158334'
-        },
-        {
-            key: 13,
-            href: 'https://www.mafengwo.cn/gonglve/ziyouxing/124238.html?cid=1010608',
-            title: '越南行前扫盲，超实用的胡志明+美奈+大叻攻略！',
-            src: 'https://p2-q.mafengwo.net/s11/M00/02/70/wKgBEFs9-MaAT5QHAAI5EKzRHO487.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F90',
-            view: '139956'
-        },
+        // {
+        //     key: 11,
+        //     href: 'https://www.mafengwo.cn/gonglve/ziyouxing/41254.html?cid=1010608',
+        //     title: '芽庄珍珠岛游乐园 深度攻略（全面详解）',
+        //     src: 'https://n2-q.mafengwo.net/s10/M00/38/AB/wKgBZ1oYTvKALA9vAAJV63ED4LI52.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F90',
+        //     view: '319868'
+        // },
+        // {
+        //     key: 12,
+        //     href: 'https://www.mafengwo.cn/gonglve/ziyouxing/108962.html?cid=1010608',
+        //     title: '预算3k起,暑期海岛旅行推荐',
+        //     src: 'https://p3-q.mafengwo.net/s11/M00/9A/B9/wKgBEFsU3ieAERFDABK2XNKoCY846.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F90',
+        //     view: '158334'
+        // },
+        // {
+        //     key: 13,
+        //     href: 'https://www.mafengwo.cn/gonglve/ziyouxing/124238.html?cid=1010608',
+        //     title: '越南行前扫盲，超实用的胡志明+美奈+大叻攻略！',
+        //     src: 'https://p2-q.mafengwo.net/s11/M00/02/70/wKgBEFs9-MaAT5QHAAI5EKzRHO487.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F90',
+        //     view: '139956'
+        // },
       ],
       youji: [
-        {
-            key: 21,
-            href: 'http://www.mafengwo.cn/i/11324210.html',
-            title: '越南|城市漫游记 遇见未知的美好',
-            src: 'https://p2-q.mafengwo.net/s12/M00/23/AC/wKgED1wA6JaAZmh5AAuHBrrgiTs49.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F100',
-            view: '16451'
-        },
-        {
-            key: 22,
-            href: 'http://www.mafengwo.cn/i/11189294.html',
-            title: '左手滴漏咖啡，右手国民米粉，我们在越南谈恋爱',
-            src: 'https://b3-q.mafengwo.net/s12/M00/31/DA/wKgED1vO75KATSW_AAYLqrCFcyk08.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F100',
-            view: '15578'
-        },
-        {
-            key: 23,
-            href: 'http://www.mafengwo.cn/i/11554390.html',
-            title: '越南·南【胡志明-美奈-大叻】',
-            src: 'https://n2-q.mafengwo.net/s12/M00/F9/72/wKgED1woJ2yAIxMIAANXZAJWeyw53.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F100',
-            view: '619'
-        },
+        // {
+        //     key: 21,
+        //     href: 'http://www.mafengwo.cn/i/11324210.html',
+        //     title: '越南|城市漫游记 遇见未知的美好',
+        //     src: 'https://p2-q.mafengwo.net/s12/M00/23/AC/wKgED1wA6JaAZmh5AAuHBrrgiTs49.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F100',
+        //     view: '16451'
+        // },
+        // {
+        //     key: 22,
+        //     href: 'http://www.mafengwo.cn/i/11189294.html',
+        //     title: '左手滴漏咖啡，右手国民米粉，我们在越南谈恋爱',
+        //     src: 'https://b3-q.mafengwo.net/s12/M00/31/DA/wKgED1vO75KATSW_AAYLqrCFcyk08.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F100',
+        //     view: '15578'
+        // },
+        // {
+        //     key: 23,
+        //     href: 'http://www.mafengwo.cn/i/11554390.html',
+        //     title: '越南·南【胡志明-美奈-大叻】',
+        //     src: 'https://n2-q.mafengwo.net/s12/M00/F9/72/wKgED1woJ2yAIxMIAANXZAJWeyw53.jpeg?imageMogr2%2Fthumbnail%2F%21240x160r%2Fstrip%2Fgravity%2FCenter%2Fcrop%2F%21240x160%2Fquality%2F100',
+        //     view: '619'
+        // },
       ]
     };
   },
-  methods: {}
+  created() {
+    this.load()
+  },
+  methods: {
+    load() {
+      var vm = this
+      vm.$http.get(this.GLOBAL.baseUrl + '/youji_related?' + location.href.split('?')[1], { credentials: true })
+              .then((response) => {
+                if (response.body.status === 200){
+                  this.mdd = response.body.mdd
+                  response.body.gonglve.forEach(element => {
+                    var data = {
+                      key: element.key, 
+                      href: element.href,
+                      title: element.title,
+                      src: element.src,
+                      view: element.view
+                    }
+                    this.gonglve.push(data)
+                  }, this);
+                  response.body.youji.forEach(element => {
+                    var data = {
+                      key: element.key, 
+                      href: element.href,
+                      title: element.title,
+                      src: element.src,
+                      view: element.view
+                    }
+                    this.youji.push(data)
+                  }, this);
+                } else {
+                  this.$message({
+                    message: response.body.message,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    }
+  }
 };
 </script>
 
@@ -124,6 +162,7 @@ export default {
     position: relative;
     top: 10px;
     float: right;
+    width: 260px;
 
     .relation_mdd {
         margin-bottom: 12px;

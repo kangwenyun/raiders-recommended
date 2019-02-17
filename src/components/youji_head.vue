@@ -1,7 +1,7 @@
 <template>
   <div class="youji_head">
     <div class="head_img">
-        <img :src=title_img_url>
+        <img :src="title_img_url">
     </div>
     <div>
         <div class="title_bg"></div>
@@ -17,13 +17,13 @@
             <div class="num">{{ num_ding }}</div>
         </div>
         <div class="person">
-            <a :href=per_home_url target="_blank" class="per_pic">
-                <img :src=per_pic_url alt="" style="width: 120px;height: 120px;">
+            <a :href="per_home_url" target="_blank" class="per_pic">
+                <img :src="per_pic_url" alt="" style="width: 120px;height: 120px;">
             </a>
-            <a :href=per_home_url target="_blank" class="per_name" :title=per_name>{{ per_name }}</a>
-            <a :href=per_home_url target="_blank" class="per_grade" :title=per_grade>{{ per_grade }}</a>
-            <a :href=vip_url target="_blank" class="vip_img" v-show="vip">
-                <img :src=vip_img_url alt="">
+            <a :href="per_home_url" target="_blank" class="per_name" :title="per_name">{{ per_name }}</a>
+            <a :href="per_home_url" target="_blank" class="per_grade" :title="per_grade">{{ per_grade }}</a>
+            <a href="http://www.mafengwo.cn/home/vip_show.php" target="_blank" class="vip_img" v-show="vip">
+                <img src="http://images.mafengwo.net/images/home/vip/vip1.gif" alt="">
             </a>
             <div class="vc_time">
                 <span class="time">{{ time }}</span>
@@ -56,7 +56,9 @@
 <script>
 export default {
   name: 'youji_head',
-  props: ['data'],
+  props: {
+      data: {}
+  },
   data() {
     return{
         youji_title: this.data.youji_title,
@@ -67,8 +69,6 @@ export default {
         per_name: this.data.per_name,
         per_grade: this.data.per_grade,
         vip: this.data.vip,
-        vip_url: this.data.vip_url,
-        vip_img_url: this.data.vip_img_url,
         time: this.data.time,
         view: this.data.view,
         num_share: this.data.num_share,

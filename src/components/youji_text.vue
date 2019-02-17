@@ -4,7 +4,7 @@
         <div class="tarvel_dir_list">
             <ul>
                 <li class="time">出发时间<span>/</span>{{ time }}<i></i></li>
-                <li class="day">出行天数<span>/</span>{{ day }} 天</li>
+                <li class="day">出行天数<span>/</span>{{ day }}</li>
                 <li class="people">人物<span>/</span>{{ people }}</li>
                 <li class="cost">人均费用<span>/</span>{{ cost }}</li>
             </ul>

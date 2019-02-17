@@ -1,7 +1,7 @@
 <template>
   <div class="wenda_item">
     <div class="title">
-      <a :href="wenda_url">{{ title }}</a>
+      <a :href="wenda_url" target="_blank">{{ title }}</a>
     </div>
     <div class="container">
       <div class="avatar">
@@ -23,7 +23,7 @@
         </a>
       </div>
       <el-tag v-for="tag in tags" :key="tag.name" type="info" class="tags">
-        <a :href="tag.href">{{ tag.name }}</a>
+        <a :href="tag.href" target="_blank">{{ tag.name }}</a>
       </el-tag>
       <div class="operate">
         <div class="zan">
@@ -90,6 +90,11 @@ export default {
 
     a {
       color: #333;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #f3a304;
     }
   }
 
@@ -124,6 +129,8 @@ export default {
     .name {
       margin-right: 5px;
       display: inline;
+      color: #ff9d00;
+      font-weight: 600;
     }
 
     .level {
