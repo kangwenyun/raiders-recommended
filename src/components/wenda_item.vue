@@ -209,6 +209,13 @@ export default {
     border: 1px solid #e5e5e5;
     border-radius: 10px;
     padding: 0 0px;
+
+    a:hover {
+      background-color: #ff9d00;
+      color: #fff !important;
+      border-radius: 10px;
+      text-decoration: none;
+    }
   }
 
   .operate {
