@@ -196,7 +196,7 @@ export default {
                       title: element.title,
                       img_url: element.img_url,
                       abstract: element.abstract,
-                      ding: element.ding,
+                      ding: Number(element.ding),
                       place_url: element.place_url,
                       place: element.place,
                       user_url: element.user_url,

@@ -202,7 +202,7 @@ hot_question，new_question，wait_question 三个数组
 }
 
 wenda详情页：
-接口：/wenda/detail-{{id}}
+接口：/wenda/detail?id=
 			title: "春节在家呆久了爸妈会嫌你吗？有啥和谐相处之道？", // 标题
       mdd_href: "/wenda/area-21536.html", // 加粗标题前面的地点链接
       mdd: "中国", // 加粗标题前面的地点
@@ -234,7 +234,7 @@ wenda详情页：
       ]
 			
 问答详情页右边相关推荐
-接口：/wenda_related/detail-{{id}}
+接口：/wenda_related?id=
 			activity: [
         {
             key: 11, //谁拼都行
@@ -252,3 +252,9 @@ wenda详情页：
         } 
 				...
       ]
+
+写攻略：
+接口：/write_gonglve
+传入参数：
+title: ''  //标题
+content: '' //攻略内容

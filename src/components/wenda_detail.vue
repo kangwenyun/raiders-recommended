@@ -101,12 +101,12 @@ export default {
     };
   },
   created() {
-      // this.load()
+      this.load()
   },
   methods: {
     load() {
       var vm = this
-      vm.$http.get(this.GLOBAL.baseUrl + '/wenda')
+      vm.$http.get(location.href)
               .then((response) => {
                   if (response.body.status === 200){
                     var tmp = response.body
@@ -114,10 +114,7 @@ export default {
                     mdd_href = tmp.mdd_href
                     mdd = tmp.mdd
                     detail = tmp.detail
-                    tags: [ // 问答详情底下的标签
-                      { name: "春节", href: "http://www.mafengwo.cn/wenda/area-10466.html" }, // 标签， 标签链接
-                      { name: "文化", href: "http://www.mafengwo.cn/wenda/area-10466.html" }
-                    ],
+                    tags = [],
                     user_href = tmp.user_href
                     user_img = tmp.user_img
                     user_name = tmp.user_name
@@ -127,7 +124,7 @@ export default {
                     num = tmp.num
                     tmp.tags.forEach(element => {
                         var data = {
-                            name: element.name,
+                            name: element.title,
                             href: href
                         }
                         this.tags.push(data)

@@ -88,15 +88,15 @@ export default {
                 response.body.content.forEach(element => {
                   var gonglve_url_tmp = ''
                   if(element.gonglve_url.length > 0) {
-                    console.log(element.gonglve_url)
-                    gonglve_url_tmp = element.gonglve_url.split('/')[5].split('.')[0]
-                    console.log(gonglve_url_tmp)
+                    // console.log(element.gonglve_url)
+                    gonglve_url_tmp = element.gonglve_url.split('/')[4].split('.')[0]
+                    // console.log(gonglve_url_tmp)
                   }
                   var data = {
                     id: element.id,
                     from_pinyin: element.from_pinyin,
                     from_hanzi: element.from_hanzi,
-                    gonglve_url: '/ziyouxing?id=' + gonglve_url_tmp,
+                    gonglve_url: '/' + element.from_pinyin + '?id=' + gonglve_url_tmp,
                     num_zan: element.num_zan,
                     title: element.title,
                     img_url1: element.img_url1,

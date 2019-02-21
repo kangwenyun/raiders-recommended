@@ -163,6 +163,7 @@ export default {
     top: 10px;
     float: right;
     width: 260px;
+    left: 10px;
 
     .relation_mdd {
         margin-bottom: 12px;

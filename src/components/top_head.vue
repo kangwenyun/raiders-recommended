@@ -125,6 +125,7 @@ export default {
               this.$alert('恭喜你！蜂蜜+'+response.body.num, '打卡成功', {
                 confirmButtonText: '确定',
                 callback: action => {
+                  this.get_account()
                 }
               });
             } else {

@@ -46,21 +46,22 @@ export default {
         this.tips = false
         var vm = this
         var item = {
+          title: this.title,
           content: this.editorContent
         }
-        vm.$http.post(this.GLOBAL.baseUrl + '/option', item)
-        .then((response) => {
-          if (response.body.status == 200){
-              console.log('setting success')
-              this.load()
-          } else {
-              this.$message({
-                message: response.body.message,
-                type: 'error'
-              })
-          }
-        },(response) => {
-        });
+        vm.$http.post(this.GLOBAL.baseUrl + '/write_gonglve', item)
+                .then((response) => {
+                  if (response.body.status == 200){
+                      console.log('writting success')
+                      this.load()
+                  } else {
+                      this.$message({
+                        message: response.body.message,
+                        type: 'error'
+                      })
+                  }
+                },(response) => {
+                });
       }
     }
   },

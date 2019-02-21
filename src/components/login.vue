@@ -150,13 +150,20 @@ export default {
                     vm.$http.post(this.GLOBAL.baseUrl + '/user_login', item)
                         .then((response) => {
                             if (response.body.status === 200){
-                                console.log('login success')
-                                this.$router.push({
-                                    path: '/home',
-                                    // query: {
-                                    //     account: this.login.account
-                                    // }
-                                })
+                                if (response.body.args === 1) {
+                                    console.log('login success')
+                                    this.$router.push({
+                                        path: '/home',
+                                        // query: {
+                                        //     account: this.login.account
+                                        // }
+                                    })
+                                } else {
+                                    this.$message({
+                                        message: response.body.message,
+                                        type: 'error'
+                                    })
+                                }
                             } else {
                                 this.$message({
                                     message: response.body.message,
