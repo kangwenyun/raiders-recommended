@@ -160,7 +160,7 @@ export default {
                             response.body.hot_question.forEach(element => {
                                 var data = {
                                     key: element.key,
-                                    wenda_url: 'wenda?id=' + element.wenda_url.split('-')[1].split('.')[0],
+                                    wenda_url: 'wenda_detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
                                     user_img: element.user_img, // 用户头像图片地址
@@ -186,7 +186,7 @@ export default {
                             response.body.new_question.forEach(element => {
                                 var data = {
                                     key: element.key,
-                                    wenda_url: element.wenda_url.split('-')[1].split('.')[0],
+                                    wenda_url: 'wenda/detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
                                     user_img: element.user_img, // 用户头像图片地址
@@ -212,7 +212,7 @@ export default {
                             response.body.wait_question.forEach(element => {
                                 var data = {
                                     key: element.key,
-                                    wenda_url: element.wenda_url.split('-')[1].split('.')[0],
+                                    wenda_url: 'wenda/detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
                                     user_img: element.user_img, // 用户头像图片地址

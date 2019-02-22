@@ -2,10 +2,12 @@
   <div class="home">
     <el-carousel :interval="5000" arrow="always" class="carousel">
       <el-carousel-item v-for="item in dataimg" :key="item.index">
-        <img :src="item.src" class="header_img"/>
-        <p class="txt_same txt1_pos">{{ item.txt1 }}</p>
-        <p class="txt_same txt2_pos">/{{ item.txt2 }}</p>
-        <p class="txt_same txt3_pos">{{ item.txt3 }}</p>
+        <a :href="item.href">
+          <img :src="item.src" class="header_img"/>
+          <p class="txt_same txt1_pos">{{ item.txt1 }}</p>
+          <p class="txt_same txt2_pos">/{{ item.txt2 }}</p>
+          <p class="txt_same txt3_pos">{{ item.txt3 }}</p>
+        </a>
         <el-form :inline="true" :model="search" class="txt_same form_pos">
           <el-radio-group v-model="search.radio">
             <el-radio v-for="item in radio" :key="item.label" :label="item.label">{{ item.msg }}</el-radio>
@@ -182,6 +184,7 @@ export default {
                   response.body.dataimg.forEach(element => {
                     var data = {
                       index: element.index,
+                      href: 'youji?id=' + element.href.split('/')[2].split('.')[0],
                       src: element.src,
                       txt1: element.txt1,
                       txt2: element.txt2,

@@ -73,7 +73,7 @@ const router = new Router({
             component: wenda
         },
         {
-            path: '/wenda/detail?id=',
+            path: '/wenda_detail*',
             component: wenda_detail
         }
     ]

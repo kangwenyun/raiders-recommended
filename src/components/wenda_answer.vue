@@ -34,8 +34,7 @@ export default {
         gold: this.data.gold,
         answer: this.data.answer
     };
-  },
-  methods: {}
+  }
 };
 </script>
 <style lang="less" scoped>

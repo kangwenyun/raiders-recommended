@@ -32,41 +32,41 @@ export default {
   data() {
     return {
       activity: [
-        {
-            key: 11,
-            href: 'http://www.mafengwo.cn/i/11229838.html',
-            src: 'http://p2-q.mafengwo.net/s12/M00/BA/6B/wKgED1v3qo6AZ_5BAADecMeJWIo38.jpeg',
-        },
-        {
-            key: 12,
-            href: 'http://www.mafengwo.cn/wenda/detail-12948661-13121180.html',
-            src: 'http://n4-q.mafengwo.net/s12/M00/AD/19/wKgED1u7Dz2Af3AGAADIIpXjeuo88.jpeg'
-        },
-        {
-            key: 13,
-            href: '',
-            src: ''
-        },
+        // {
+        //     key: 11,
+        //     href: 'http://www.mafengwo.cn/i/11229838.html',
+        //     src: 'http://p2-q.mafengwo.net/s12/M00/BA/6B/wKgED1v3qo6AZ_5BAADecMeJWIo38.jpeg',
+        // },
+        // {
+        //     key: 12,
+        //     href: 'http://www.mafengwo.cn/wenda/detail-12948661-13121180.html',
+        //     src: 'http://n4-q.mafengwo.net/s12/M00/AD/19/wKgED1u7Dz2Af3AGAADIIpXjeuo88.jpeg'
+        // },
+        // {
+        //     key: 13,
+        //     href: '',
+        //     src: ''
+        // },
       ],
       related_questions: [
-        {
-            key: 21,
-            href: '/wenda/detail-602133.html',
-            title: '长沙坡子街美食一条街好吃吗？长沙坡子街美食一条街味道如何？',
-            answer: '2 回答'
-        },
-        {
-            key: 22,
-            href: '/wenda/detail-602133.html',
-            title: '长沙坡子街美食一条街菜怎么样',
-            answer: '1 回答'
-        },
-        {
-            key: 23,
-            href: '/wenda/detail-602133.html',
-            title: '去长沙坡子街，有什么值得推荐的美食？',
-            answer: '40 回答'
-        },
+        // {
+        //     key: 21,
+        //     href: '/wenda/detail-602133.html',
+        //     title: '长沙坡子街美食一条街好吃吗？长沙坡子街美食一条街味道如何？',
+        //     answer: '2 回答'
+        // },
+        // {
+        //     key: 22,
+        //     href: '/wenda/detail-602133.html',
+        //     title: '长沙坡子街美食一条街菜怎么样',
+        //     answer: '1 回答'
+        // },
+        // {
+        //     key: 23,
+        //     href: '/wenda/detail-602133.html',
+        //     title: '去长沙坡子街，有什么值得推荐的美食？',
+        //     answer: '40 回答'
+        // },
       ]
     };
   },
