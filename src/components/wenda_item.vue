@@ -18,7 +18,7 @@
       </div>
       <div class="desc">
         <a :href="wenda_url" target="_blank" style="color: #666;">
-          <img :src="img_url">
+          <img :src="img_url" v-show="type=='hot'">
           <p>{{ abstract }}</p>
         </a>
       </div>
@@ -55,6 +55,7 @@ export default {
   data() {
     return {
       wenda_url: this.data.wenda_url,
+      type: this.data.type,
       title: this.data.title,
       user_href: this.data.user_href, // 头像里a标签的href
       user_img: this.data.user_img, // 用户头像图片地址

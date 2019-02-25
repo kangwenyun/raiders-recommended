@@ -12,9 +12,9 @@
             @select="select_title" 
             active-text-color="#fff"
             class="bd">
-            <el-menu-item index="1" :class="now_title == 1 ? 'on': ''">热门问题</el-menu-item>
-            <el-menu-item index="2" :class="now_title == 2 ? 'on': ''">最新问题</el-menu-item>
-            <el-menu-item index="3" :class="now_title == 3 ? 'on': ''">待回答问题</el-menu-item>
+            <el-menu-item index="1" :class="now_title == 1 ? 'on': ''" @click="get_hot()">热门问题</el-menu-item>
+            <el-menu-item index="2" :class="now_title == 2 ? 'on': ''" @click="get_new()">最新问题</el-menu-item>
+            <el-menu-item index="3" :class="now_title == 3 ? 'on': ''" @click="get_wait()">待回答问题</el-menu-item>
         </el-menu>
         <div v-if="now_title == 1">
             <wenda-item
@@ -149,17 +149,18 @@ export default {
         };
     },
     created() {
-        this.load()
+        this.get_hot()
     },
     methods: {
-        load(){
+        get_hot(){
             var vm = this
-            vm.$http.get(this.GLOBAL.baseUrl + '/wenda')
+            vm.$http.get(this.GLOBAL.baseUrl + '/wenda/hot')
                     .then((response) => {
                         if (response.body.status === 200){
                             response.body.hot_question.forEach(element => {
                                 var data = {
                                     key: element.key,
+                                    type: 'hot',
                                     wenda_url: 'wenda_detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
@@ -183,13 +184,26 @@ export default {
                                 }, this)
                                 this.hot_question.push(data)
                             }, this);
+                        } else {
+                        this.$message({
+                            message: response.body.msg,
+                            type: 'error'
+                        })
+                        }
+            },(response) => {});
+        },
+        get_new(){
+            var vm = this
+            vm.$http.get(this.GLOBAL.baseUrl + '/wenda/new')
+                    .then((response) => {
+                        if (response.body.status === 200){
                             response.body.new_question.forEach(element => {
                                 var data = {
                                     key: element.key,
+                                    type: 'new',
                                     wenda_url: 'wenda/detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
-                                    user_img: element.user_img, // 用户头像图片地址
                                     guide: element.guide,
                                     img_url: element.img_url,
                                     abstract: element.abstract,
@@ -209,13 +223,26 @@ export default {
                                 }, this)
                                 this.new_question.push(data)
                             }, this);
+                        } else {
+                        this.$message({
+                            message: response.body.msg,
+                            type: 'error'
+                        })
+                        }
+            },(response) => {});
+        },
+        get_wait(){
+            var vm = this
+            vm.$http.get(this.GLOBAL.baseUrl + '/wenda/wait')
+                    .then((response) => {
+                        if (response.body.status === 200){
                             response.body.wait_question.forEach(element => {
                                 var data = {
                                     key: element.key,
+                                    type: 'wait',
                                     wenda_url: 'wenda/detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
-                                    user_img: element.user_img, // 用户头像图片地址
                                     guide: element.guide,
                                     img_url: element.img_url,
                                     abstract: element.abstract,
