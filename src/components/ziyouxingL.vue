@@ -50,21 +50,48 @@
 <script>
 export default {
   name: 'ziyouxingL',
-  props: ['data'],
   data() {
     return{
-        title: this.data.title,
-        time: this.data.time,
-        read_num: this.data.read_num,
-        author_href: this.data.author_href,
-        author_src: this.data.author_src,
-        author_name: this.data.author_name,
-        author_identity: this.data.author_identity,
-        author_introduction: this.data.author_introduction,
-        gonglveDetail: this.data.gonglveDetail,
+        title: '',
+        time: '',
+        read_num: '',
+        author_href: '',
+        author_src: '',
+        author_name: '',
+        author_identity: '',
+        author_introduction: '',
+        gonglveDetail: '',
     };
   },
-  methods:{
+  created() {
+    this.load()
+  },
+  methods: {
+    load() {
+      var vm = this
+      // '/ziyouxinggonglvel?id=...'
+      var tmp = location.href.split('/')[3]
+      vm.$http.get(this.GLOBAL.baseUrl + '/' + tmp.split('?')[0] + 'l?' + tmp.split('?')[1], { credentials: true })
+              .then((response) => {
+                if (response.body.status === 200){
+                    var data = response.body.ziyouxingl
+                    title = data.title,
+                    time = data.time,
+                    read_num = data.read_num,
+                    author_href = data.author_href,
+                    author_src = data.author_src,
+                    author_name = data.author_name,
+                    author_identity = data.author_identity,
+                    author_introduction = data.author_introduction,
+                    gonglveDetail = data.gonglveDetail
+                } else {
+                  this.$message({
+                    message: response.body.message,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    }
   }
 }
 </script>

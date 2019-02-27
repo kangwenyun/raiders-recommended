@@ -45,18 +45,48 @@
 <script>
 export default {
   name: 'ziyouxingR',
-  props: ['data'],
   data() {
     return{
-        comment_num: this.data.comment_num,
-        collect_num: this.data.collect_num,
-        share_num: this.data.share_num,
-        zan_num: this.data.zan_num,
-        catalogue: this.data.catalogue,
-        now_title: this.data.now_title,
+        comment_num: '',
+        collect_num: '',
+        share_num: '',
+        zan_num: '',
+        catalogue: [],
+        now_title: '',
     };
   },
-  methods:{
+  created() {
+    this.load()
+  },
+  methods: {
+    load() {
+      var vm = this
+      // '/ziyouxinggonglver?id=...'
+      var tmp = location.href.split('/')[3]
+      vm.$http.get(this.GLOBAL.baseUrl + '/' + tmp.split('?')[0] + 'r?' + tmp.split('?')[1], { credentials: true })
+              .then((response) => {
+                if (response.body.status === 200){
+                    var data = response.body.ziyouxingr
+                    comment_num = data.comment_num,
+                    collect_num = data.comment_num,
+                    share_num = data.share_num,
+                    zan_num = data.zan_num,
+                    now_title = data.now_title
+                    data.catalogue.forEach(ele => {
+                        var item = {
+                            key: ele.key,
+                            title: ele.title
+                        }
+                        this.catalogue.push(item)
+                    }, this)
+                } else {
+                  this.$message({
+                    message: response.body.message,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    }
   }
 }
 </script>

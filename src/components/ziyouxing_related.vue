@@ -25,14 +25,13 @@
 <script>
 export default {
   name: "ziyouxing_related",
-  props: ['data'],
   data() {
     return {
       enter: false,
       now_item: 0,
-      location: this.data.location,
-      more_href: this.data.more_href,
-      gonglve: this.data.gonglve,
+      location: '',
+      more_href: '',
+      gonglve: [],
     //   related_title: this.data.related_title,
     //   related_href: this.data.related_href,
     //   related_src: this.data.related_src,
@@ -40,11 +39,43 @@ export default {
     //   related_p2: this.data.related_p2,
     };
   },
+  created() {
+    this.load()
+  },
   methods: {
-      enter_pic(key) {
-          this.enter=true
-          this.now_item = key
-      }
+      load() {
+      var vm = this
+      // '/ziyouxinggonglve_related?id=...'
+      var tmp = location.href.split('/')[3]
+      vm.$http.get(this.GLOBAL.baseUrl + '/' + tmp.split('?')[0] + '_related?' + tmp.split('?')[1], { credentials: true })
+              .then((response) => {
+                if (response.body.status === 200){
+                    var data = response.body.ziyouxing_related
+                    location = data.location,
+                    more_href = data.more_href,
+                    data.gonglve.forEach(ele => {
+                        var item = {
+                            key: ele.key,
+                            related_title: ele.related_title,
+                            related_href: ele.related_href,
+                            related_src: ele.related_src,
+                            related_p1: ele.related_p1,
+                            related_p2: ele.related_p2,
+                        }
+                        this.gonglve.push(item)
+                    }, this)
+                } else {
+                  this.$message({
+                    message: response.body.message,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    },
+    enter_pic(key) {
+        this.enter=true
+        this.now_item = key
+    }
   }
 };
 </script>
