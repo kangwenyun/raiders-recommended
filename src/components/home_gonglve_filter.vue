@@ -210,6 +210,10 @@ export default {
     margin: 30px 20px;
 }
 
+.section .hot-place a {
+  margin-right: 20px;
+}
+
 .label {
     float: left;
     width: 80px;
@@ -242,8 +246,6 @@ export default {
 }
 
 .hot-place a {
-    display: inline-block;
-    margin-right: 30px;
     color: #666;
 }
 

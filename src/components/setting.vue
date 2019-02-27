@@ -56,6 +56,7 @@ export default {
   },
   data() {
     return{
+        login: false,
         account: '123',
         title: {
             'info': '我的信息',
@@ -84,18 +85,28 @@ export default {
   },
   methods:{
     load(){
-        var vm = this
-        vm.$http.get(this.GLOBAL.baseUrl + '/percentage', {credentials: true})
-            .then((response) => {
-                if (response.body.status){
-                    this.percentage = response.body.percentage
-                } else {
-                    this.$message({
-                        message: response.body.msg,
-                        type: 'error'
-                    })
+        console.log(this.login)
+        if(this.login) {
+            var vm = this
+            vm.$http.get(this.GLOBAL.baseUrl + '/percentage', {credentials: true})
+                .then((response) => {
+                    if (response.body.status){
+                        this.percentage = response.body.percentage
+                    } else {
+                        this.$message({
+                            message: response.body.msg,
+                            type: 'error'
+                        })
+                    }
+            },(response) => {});
+        }else{
+            this.$router.push({
+                path: "/login",
+                query: {
+                    page: 'login'
                 }
-        },(response) => {});
+            });
+        }
     },
     selectPage(index) {
         this.active_index = index

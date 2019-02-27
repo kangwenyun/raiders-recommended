@@ -89,7 +89,7 @@ export default {
                   var gonglve_url_tmp = ''
                   if(element.gonglve_url.length > 0) {
                     // console.log(element.gonglve_url)
-                    gonglve_url_tmp = element.gonglve_url.split('/')[4].split('.')[0]
+                    gonglve_url_tmp = element.gonglve_url.split('/')[5].split('.')[0]
                     // console.log(gonglve_url_tmp)
                   }
                   var data = {

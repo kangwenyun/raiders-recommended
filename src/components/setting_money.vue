@@ -125,9 +125,7 @@ export default {
     font-size: 12px;
     color: #ff9d00;
     line-height: 48px;
-    position: absolute;
-    right: 0;
-    top: 40%;
+    margin-top: -30px;
   }
 
   table {

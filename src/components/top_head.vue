@@ -95,8 +95,12 @@ export default {
       vm.$http.get(this.GLOBAL.baseUrl + "/login_success", { credentials: true })
         .then(response => {
             if (response.body.status === 200) {
-              this.login = true;
-              this.daka_al = response.body.daka;
+              this.login = true
+              this.daka_al = response.body.daka
+              var user = response.body.user
+              this.user_img = user.src
+              this.honey = user.honey
+              this.coin = user.coin
             } else { //401
               this.login = false;
             }
@@ -173,7 +177,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 .top_head {
   margin-top: 10px;
   position: fixed;
@@ -240,6 +244,12 @@ export default {
 .my {
   margin-right: 200px;
   float: right;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+  }
 }
 
 .login-out {
