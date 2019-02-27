@@ -9,9 +9,9 @@
           <img :src="user_img">
         </a>
       </div>
-      <div class="user-info">
-        <a class="name" :href="user_href" target="_blank">好吃不胖</a>
-        <a class="level" href="javascript:;" target="_blank">LV.18</a>
+      <div class="user-info" v-show="type=='hot'">
+        <a class="name" :href="user_href" target="_blank">{{ user_name }}</a>
+        <a class="level" href="javascript:;" target="_blank">{{ user_lv }}</a>
       </div>
       <div class="identity" v-show="guide">
         <a class="guide" href="http://www.mafengwo.cn/qa/expert_apply.php?type=1" target="_blank">指路人</a>
@@ -22,7 +22,7 @@
           <p>{{ abstract }}</p>
         </a>
       </div>
-      <el-tag v-for="tag in tags" :key="tag.name" type="info" class="tags">
+      <el-tag v-for="tag in tags" :key="tag.name" type="info" class="tags" v-show="tags.length > 1">
         <a :href="tag.href" target="_blank">{{ tag.name }}</a>
       </el-tag>
       <div class="operate">
@@ -40,9 +40,9 @@
           <a>分享</a>
         </div>
         <a :href="wenda_url" target="_blank">
-          <span class="reply">评论 ({{ comment_num}})</span>
+          <span class="reply">{{ comment_num}}</span>
         </a>
-        <span class="date">发布于{{ date }}</span>
+        <span class="date">{{ date }}</span>
       </div>
     </div>
   </div>
@@ -57,6 +57,8 @@ export default {
       wenda_url: this.data.wenda_url,
       type: this.data.type,
       title: this.data.title,
+      user_name: this.user_name,
+      user_lv: this.user_lv,
       user_href: this.data.user_href, // 头像里a标签的href
       user_img: this.data.user_img, // 用户头像图片地址
       guide: this.data.guide,

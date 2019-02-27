@@ -1,7 +1,7 @@
 <template>
   <div class="youji_detail">
-    <youji-head :data="youjiHead"></youji-head>
-    <youji-text :data="youjiText"></youji-text>
+    <youji-head></youji-head>
+    <youji-text></youji-text>
     <div class="detail" v-html="youjiDetail">{{ youjiDetail }}</div>
     <youji-related></youji-related>
   </div>
@@ -23,7 +23,7 @@ export default {
   data() {
     return {
         youjiHead:{
-          youji_title: '还差一场雪，也许真的可以到白头。',   //游记标题
+          youji_title: '',//'还差一场雪，也许真的可以到白头。',   //游记标题
           title_img_url: "http://p3-q.mafengwo.net/s12/M00/26/FF/wKgED1wmMbyARMvZAAsHdb5BJao19.jpeg?imageMogr2%2Fstrip",  //游记标题背景图
           num_ding: 324, //顶的数量
           per_home_url: "http://www.mafengwo.cn/u/57633488.html", //点用户头像和用户名进入的链接
@@ -54,39 +54,38 @@ export default {
     load(){
       var vm = this
       // 接口： /youji/id=
-      vm.$http.get(this.GLOBAL.baseUrl + '/' + location.href.split('/')[3], { credentials: true }).then((response) => {
-                if (response.body.status === 200){
-                  var head = response.body.contentHead
-                  var text = response.body.contentText
-                  console.log(head.content_title)
-                  this.youjiHead = {
-                    youji_title: head.content_title,   //游记标题
-                    title_img_url: head.title_img_url,  //游记标题背景图
-                    num_ding: head.num_ding, //顶的数量
-                    per_home_url: head.per_home_url, //点用户头像和用户名进入的链接
-                    per_pic_url: head.per_pic_url,  //用户头像
-                    per_name: head.per_name, //用户名
-                    per_grade: head.per_grade, //用户等级
-                    vip: head.vip, //是否是vip
-                    time: head.time,  //vip右侧的时间
-                    view: head.view, //时间右侧
-                    num_share: head.num_share,  //已分享数量
-                    num_collect: head.num_collect //收藏数
-                  }
-                  console.log(this.youjiHead.youji_title)
-                  this.youjiText = {
-                    time: text.time,  //出发时间
-                    day: text.day, //出行天数
-                    people: text.people,  //人物
-                    cost: text.cost //人均费用
-                  },
-                  this.youjiDetail = response.body.contentDetail
-                } else {
-                  this.$message({
-                    message: response.body.msg,
-                    type: 'error'
-                  })
-                }
+      vm.$http.get(this.GLOBAL.baseUrl + '/' + location.href.split('/')[3], { credentials: true })
+        .then((response) => {
+          if (response.body.status === 200){
+            // var head = response.body.contentHead
+            // var text = response.body.contentText
+            // this.youjiHead = {
+            //   youji_title: head.content_title,   //游记标题
+            //   title_img_url: head.title_img_url,  //游记标题背景图
+            //   num_ding: head.num_ding, //顶的数量
+            //   per_home_url: head.per_home_url, //点用户头像和用户名进入的链接
+            //   per_pic_url: head.per_pic_url,  //用户头像
+            //   per_name: head.per_name, //用户名
+            //   per_grade: head.per_grade, //用户等级
+            //   vip: head.vip, //是否是vip
+            //   time: head.time,  //vip右侧的时间
+            //   view: head.view, //时间右侧
+            //   num_share: head.num_share,  //已分享数量
+            //   num_collect: head.num_collect //收藏数
+            // }
+            // this.youjiText = {
+            //   time: text.time,  //出发时间
+            //   day: text.day, //出行天数
+            //   people: text.people,  //人物
+            //   cost: text.cost //人均费用
+            // },
+            this.youjiDetail = response.body.contentDetail
+          } else {
+            this.$message({
+              message: response.body.msg,
+              type: 'error'
+            })
+          }
       },(response) => {});
     },
   }

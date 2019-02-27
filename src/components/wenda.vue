@@ -163,6 +163,8 @@ export default {
                                     type: 'hot',
                                     wenda_url: 'wenda_detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
+                                    user_name: element.user_name,
+                                    user_lv: element.user_lv,
                                     user_href: element.user_href, // 头像里a标签的href
                                     user_img: element.user_img, // 用户头像图片地址
                                     guide: element.guide,
@@ -186,7 +188,7 @@ export default {
                             }, this);
                         } else {
                         this.$message({
-                            message: response.body.msg,
+                            message: response.body.message,
                             type: 'error'
                         })
                         }
@@ -204,8 +206,8 @@ export default {
                                     wenda_url: 'wenda/detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
+                                    user_img: element.user_img,
                                     guide: element.guide,
-                                    img_url: element.img_url,
                                     abstract: element.abstract,
                                     tags: [],
                                     zan_num: element.zan_num,
@@ -225,7 +227,7 @@ export default {
                             }, this);
                         } else {
                         this.$message({
-                            message: response.body.msg,
+                            message: response.body.message,
                             type: 'error'
                         })
                         }
@@ -243,8 +245,8 @@ export default {
                                     wenda_url: 'wenda/detail?id=' + element.wenda_url.split('-')[1].split('.')[0],
                                     title: element.title,
                                     user_href: element.user_href, // 头像里a标签的href
+                                    user_img: element.user_img,
                                     guide: element.guide,
-                                    img_url: element.img_url,
                                     abstract: element.abstract,
                                     tags: [],
                                     zan_num: element.zan_num,
@@ -264,7 +266,7 @@ export default {
                             }, this);
                         } else {
                         this.$message({
-                            message: response.body.msg,
+                            message: response.body.message,
                             type: 'error'
                         })
                         }

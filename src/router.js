@@ -65,7 +65,7 @@ const router = new Router({
             component: reset
         },
         {
-            path: '/ziyouxing*',
+            path: '/ziyouxinggonglve*',
             component: ziyouxing
         },
         {

@@ -56,30 +56,58 @@
 <script>
 export default {
   name: 'youji_head',
-  props: {
-      data: {}
-  },
   data() {
     return{
-        youji_title: this.data.youji_title,
-        title_img_url: this.data.title_img_url,
-        num_ding: this.data.num_ding,
-        per_home_url: this.data.per_home_url,
-        per_pic_url: this.data.per_pic_url,
-        per_name: this.data.per_name,
-        per_grade: this.data.per_grade,
-        vip: this.data.vip,
-        time: this.data.time,
-        view: this.data.view,
-        num_share: this.data.num_share,
-        num_collect: this.data.num_collect,
+        youji_title: '',
+        title_img_url: '',
+        num_ding: '',
+        per_home_url: '',
+        per_pic_url: '',
+        per_name: '',
+        per_grade: '',
+        vip: true,
+        time: '',
+        view: '',
+        num_share: '',
+        num_collect: '',
         collect: false
     };
   },
-  methods:{
-      ding(){
-          this.num_ding += 1
-      }
+  created() {
+    this.load()
+  },
+  methods: {
+    load(){
+      var vm = this
+      // 接口： /youji_head/id=
+      var tmp = location.href.split('/')[3]
+      vm.$http.get(this.GLOBAL.baseUrl + '/youji_head?' + tmp.split('?')[1], { credentials: true })
+        .then((response) => {
+                if (response.body.status === 200){
+                    var head = response.body.contentHead
+                    youji_title = head.content_title,   //游记标题
+                    title_img_url = head.title_img_url,  //游记标题背景图
+                    num_ding = head.num_ding, //顶的数量
+                    per_home_url = head.per_home_url, //点用户头像和用户名进入的链接
+                    per_pic_url = head.per_pic_url,  //用户头像
+                    per_name = head.per_name, //用户名
+                    per_grade = head.per_grade, //用户等级
+                    vip = head.vip, //是否是vip
+                    time = head.time,  //vip右侧的时间
+                    view = head.view, //时间右侧
+                    num_share = head.num_share,  //已分享数量
+                    num_collect = head.num_collect //收藏数
+                } else {
+                  this.$message({
+                    message: response.body.message,
+                    type: 'error'
+                  })
+                }
+      },(response) => {});
+    },
+    ding(){
+        this.num_ding += 1
+    }
   }
 }
 </script>

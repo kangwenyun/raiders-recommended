@@ -88,9 +88,11 @@ export default {
                 response.body.content.forEach(element => {
                   var gonglve_url_tmp = ''
                   if(element.gonglve_url.length > 0) {
-                    // console.log(element.gonglve_url)
-                    gonglve_url_tmp = element.gonglve_url.split('/')[5].split('.')[0]
-                    // console.log(gonglve_url_tmp)
+                    if(element.from_pinyin === 'ziyouxinggonglve'){
+                      gonglve_url_tmp = element.gonglve_url.split('/')[5].split('.')[0]
+                    }else{
+                      gonglve_url_tmp = element.gonglve_url.split('/')[4].split('.')[0]
+                    }
                   }
                   var data = {
                     id: element.id,

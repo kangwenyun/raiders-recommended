@@ -16,16 +16,38 @@
 <script>
 export default {
   name: 'youji_text',
-  props: ['data'],
   data() {
     return{
-        time: this.data.time,
-        day: this.data.day,
-        people: this.data.people,
-        cost: this.data.cost
+        time: '',
+        day: '',
+        people: '',
+        cost: ''
     };
   },
-  methods:{
+  created() {
+    this.load()
+  },
+  methods: {
+    load(){
+      var vm = this
+      // 接口： /youji/id=
+      var tmp = location.href.split('/')[3]
+      vm.$http.get(this.GLOBAL.baseUrl + '/youji_text?' + tmp.split('?')[1], { credentials: true })
+        .then((response) => {
+          if (response.body.status === 200){
+              var text = response.body.contentText
+              time = text.time,  //出发时间
+              day = text.day, //出行天数
+              people = text.people,  //人物
+              cost = text.cost //人均费用
+          } else {
+            this.$message({
+              message: response.body.message,
+              type: 'error'
+            })
+          }
+      },(response) => {});
+    },
   }
 }
 </script>
