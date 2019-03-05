@@ -36,13 +36,13 @@ export default {
         .then((response) => {
           if (response.body.status === 200){
               var text = response.body.contentText
-              time = text.time,  //出发时间
-              day = text.day, //出行天数
-              people = text.people,  //人物
-              cost = text.cost //人均费用
+              this.time = text.time,  //出发时间
+              this.day = text.day, //出行天数
+              this.people = text.people,  //人物
+              this.cost = text.cost //人均费用
           } else {
             this.$message({
-              message: response.body.message,
+              message: 'youji_text' + response.body.message,
               type: 'error'
             })
           }

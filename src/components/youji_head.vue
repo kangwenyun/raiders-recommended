@@ -85,21 +85,21 @@ export default {
         .then((response) => {
                 if (response.body.status === 200){
                     var head = response.body.contentHead
-                    youji_title = head.content_title,   //游记标题
-                    title_img_url = head.title_img_url,  //游记标题背景图
-                    num_ding = head.num_ding, //顶的数量
-                    per_home_url = head.per_home_url, //点用户头像和用户名进入的链接
-                    per_pic_url = head.per_pic_url,  //用户头像
-                    per_name = head.per_name, //用户名
-                    per_grade = head.per_grade, //用户等级
-                    vip = head.vip, //是否是vip
-                    time = head.time,  //vip右侧的时间
-                    view = head.view, //时间右侧
-                    num_share = head.num_share,  //已分享数量
-                    num_collect = head.num_collect //收藏数
+                    this.youji_title = head.content_title,   //游记标题
+                    this.title_img_url = head.title_img_url,  //游记标题背景图
+                    this.num_ding = head.num_ding, //顶的数量
+                    this.per_home_url = head.per_home_url, //点用户头像和用户名进入的链接
+                    this.per_pic_url = head.per_pic_url,  //用户头像
+                    this.per_name = head.per_name, //用户名
+                    this.per_grade = head.per_grade, //用户等级
+                    this.vip = head.vip, //是否是vip
+                    this.time = head.time,  //vip右侧的时间
+                    this.view = head.view, //时间右侧
+                    this.num_share = head.num_share,  //已分享数量
+                    this.num_collect = head.num_collect //收藏数
                 } else {
                   this.$message({
-                    message: response.body.message,
+                    message: 'youji_head' + response.body.message,
                     type: 'error'
                   })
                 }
@@ -129,7 +129,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    top: 292px;
+    top: 397px;
     opacity: .5;
 }
 

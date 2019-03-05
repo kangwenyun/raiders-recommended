@@ -67,11 +67,11 @@ export default {
               .then((response) => {
                 if (response.body.status === 200){
                     var data = response.body.ziyouxingr
-                    comment_num = data.comment_num,
-                    collect_num = data.comment_num,
-                    share_num = data.share_num,
-                    zan_num = data.zan_num,
-                    now_title = data.now_title
+                    this.comment_num = data.comment_num,
+                    this.collect_num = data.comment_num,
+                    this.share_num = data.share_num,
+                    this.zan_num = data.zan_num,
+                    this.now_title = data.now_title
                     data.catalogue.forEach(ele => {
                         var item = {
                             key: ele.key,

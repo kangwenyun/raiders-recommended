@@ -147,7 +147,7 @@ export default {
                   }, this);
                 } else {
                   this.$message({
-                    message: response.body.message,
+                    message: 'youji_related' + response.body.message,
                     type: 'error'
                   })
                 }

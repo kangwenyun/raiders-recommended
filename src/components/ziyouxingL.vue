@@ -75,15 +75,15 @@ export default {
               .then((response) => {
                 if (response.body.status === 200){
                     var data = response.body.ziyouxingl
-                    title = data.title,
-                    time = data.time,
-                    read_num = data.read_num,
-                    author_href = data.author_href,
-                    author_src = data.author_src,
-                    author_name = data.author_name,
-                    author_identity = data.author_identity,
-                    author_introduction = data.author_introduction,
-                    gonglveDetail = data.gonglveDetail
+                    this.title = data.title,
+                    this.time = data.time,
+                    this.read_num = data.read_num,
+                    this.author_href = data.author_href,
+                    this.author_src = data.author_src,
+                    this.author_name = data.author_name,
+                    this.author_identity = data.author_identity,
+                    this.author_introduction = data.author_introduction,
+                    this.gonglveDetail = data.gonglveDetail
                 } else {
                   this.$message({
                     message: response.body.message,
