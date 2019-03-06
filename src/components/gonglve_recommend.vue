@@ -114,7 +114,7 @@ export default {
                 }, this);
             } else {
                 this.$message({
-                  message: response.body.msg,
+                  message: 'gong_lve' + response.body.msg,
                   type: 'error'
                 })
             }

@@ -11,7 +11,7 @@
         <ziyouxingL></ziyouxingL>
         <ziyouxingR></ziyouxingR>
     </div>
-    <ziyouxing-related></ziyouxing-related>
+    <ziyouxing-related :data=location></ziyouxing-related>
   </div>
 </template>
 
@@ -127,7 +127,7 @@ export default {
                   // }, this);
                 } else {
                   this.$message({
-                    message: response.body.message,
+                    message: 'ziyouxing' + response.body.message,
                     type: 'error'
                   })
                 }

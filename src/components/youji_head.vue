@@ -116,11 +116,11 @@ export default {
 .head_img{
     overflow: hidden;
     width: 100%;
-    height: 100%;
 }
 
 .head_img img{
     width: 100%;
+    height: 325px;
 }
 
 .title_bg{
@@ -129,7 +129,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    top: 397px;
+    top: 295px;
     opacity: .5;
 }
 

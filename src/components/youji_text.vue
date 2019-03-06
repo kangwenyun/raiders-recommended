@@ -3,10 +3,10 @@
     <div class="travel_directory">
         <div class="tarvel_dir_list">
             <ul>
-                <li class="time">出发时间<span>/</span>{{ time }}<i></i></li>
-                <li class="day">出行天数<span>/</span>{{ day }}</li>
-                <li class="people">人物<span>/</span>{{ people }}</li>
-                <li class="cost">人均费用<span>/</span>{{ cost }}</li>
+                <li class="time" v-show="time.length > 0">出发时间<span>/</span>{{ time }}<i></i></li>
+                <li class="day" v-show="day.length > 0">出行天数<span>/</span>{{ day }}</li>
+                <li class="people" v-show="people.length > 0">人物<span>/</span>{{ people }}</li>
+                <li class="cost" v-show="cost.length > 0">人均费用<span>/</span>{{ cost }}</li>
             </ul>
         </div>
     </div>
@@ -61,7 +61,7 @@ export default {
 .travel_directory{
     border: 1px dashed #d7d7d7;
     border-radius: 4px;
-    height: 120px;
+    // height: 120px;
     margin-top: 40px;
     margin-left: 20px;
 }
@@ -79,20 +79,11 @@ export default {
 }
 
 .tarvel_dir_list ul li{
-  background: url(http://css.mafengwo.net/images/post/new_notes/151204sprite2.png) no-repeat;
-  background-size: 44px 88px;
-}
-
-.tarvel_dir_list ul li{
-    width: 170px;
-    margin-top: 18px;
-    float: left;
+    margin-right: 50px;
     display: inline;
-    font-size: 14px;
-    height: 22px;
-    line-height: 22px;
+    line-height: 40px;
     color: #666;
-    padding-left: 5%;
+    padding: 0 0 6px 5%;
     background: url(http://css.mafengwo.net/images/post/new_notes/151204sprite1.png) no-repeat;
     cursor: pointer;
 }

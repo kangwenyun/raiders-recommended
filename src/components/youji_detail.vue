@@ -93,16 +93,20 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less" scoped>
+<style scoped>
+>>> p a {
+    display: inline !important;
+}
 .youji_detail {
   margin-top: 70px;
+}
 
-  .detail {
+.detail {
     float: left;
     width: 70%;
     max-width: 850px;
     margin-left: 20px;
     margin-top: 20px;
-  }
+
 }
 </style>

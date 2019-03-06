@@ -25,11 +25,12 @@
 <script>
 export default {
   name: "ziyouxing_related",
+  props: ['data'],
   data() {
     return {
       enter: false,
       now_item: 0,
-      location: '',
+      location: this.data.location,
       more_href: '',
       gonglve: [],
     //   related_title: this.data.related_title,
@@ -51,9 +52,8 @@ export default {
               .then((response) => {
                 if (response.body.status === 200){
                     var data = response.body.ziyouxing_related
-                    location = data.location,
-                    more_href = data.more_href,
-                    data.gonglve.forEach(ele => {
+                    this.more_href = data.more_href,
+                    data.gong_lve.forEach(ele => {
                         var item = {
                             key: ele.key,
                             related_title: ele.related_title,
@@ -66,7 +66,7 @@ export default {
                     }, this)
                 } else {
                   this.$message({
-                    message: response.body.message,
+                    message: 'ziyouxinggonglve_related' + response.body.message,
                     type: 'error'
                   })
                 }
