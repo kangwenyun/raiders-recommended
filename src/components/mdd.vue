@@ -137,7 +137,7 @@ img {
     border: 0;
     vertical-align: middle;
     width: 100%;
-    margin-top: -10%;
+    height: 500px;
 }
 
 .show-info {
