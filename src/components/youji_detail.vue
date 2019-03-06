@@ -94,9 +94,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
->>> p a {
-    display: inline !important;
-}
 .youji_detail {
   margin-top: 70px;
 }
@@ -108,5 +105,30 @@ export default {
     margin-left: 20px;
     margin-top: 20px;
 
+}
+
+>>> a{
+  display: inline;
+  background-color: transparent;
+  text-decoration: none;
+  color: #ff9d00;
+  cursor: pointer;
+}
+
+>>> a.link {
+    text-decoration: none;
+    color: #4d4d4d;
+    border-bottom: 1px solid #948e8e;
+}
+
+>>> .pic_tag {
+    margin: 8px 0 18px 0;
+    line-height: 24px;
+    display: block;
+}
+
+>>> .pic_tag, .pic_tag a {
+    color: #999 !important;
+    font-size: 12px !important;
 }
 </style>

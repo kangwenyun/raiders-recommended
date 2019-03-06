@@ -137,13 +137,70 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .ziyouxing {
   margin: 90px auto;
   width: 1000px;
+}
 
-  .top_title {
-    color: #ff9d00 !important;
-  }
+.top_title {
+  color: #ff9d00 !important;
+}
+
+>>> .f-block .p-section {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 13px 0 28px;
+    word-break: break-all;
+}
+
+>>> .raiders {
+    margin: 30px 0;
+    position: relative;
+}
+
+>>> .raiders a {
+    display: block;
+    width: 680px;
+    height: 153px;
+    position: relative;
+}
+
+>>> .raiders .img {
+    width: 236px;
+    height: 153px;
+    float: left;
+    margin-right: 15px;
+    overflow: hidden;
+    position: relative;
+    z-index: 7;
+}
+
+>>> .raiders .img img {
+    width: 100%;
+}
+
+>>> .raiders .info {
+    float: left;
+    width: 424px;
+    height: 153px;
+    position: relative;
+    z-index: 7;
+}
+
+>>> .raiders .info h2 {
+    font-size: 18px;
+    color: #333;
+    font-weight: normal;
+    line-height: 24px;
+}
+
+>>> .view_poi_info p {
+    color: #666;
+    font-size: 14px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
 }
 </style>

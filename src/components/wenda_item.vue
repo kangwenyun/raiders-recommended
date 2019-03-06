@@ -57,8 +57,8 @@ export default {
       wenda_url: this.data.wenda_url,
       type: this.data.type,
       title: this.data.title,
-      user_name: this.user_name,
-      user_lv: this.user_lv,
+      user_name: this.data.user_name,
+      user_lv: this.data.user_lv,
       user_href: this.data.user_href, // 头像里a标签的href
       user_img: this.data.user_img, // 用户头像图片地址
       guide: this.data.guide,

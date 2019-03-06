@@ -43,6 +43,8 @@ export default {
     font-size: 16px;
     color: #444;
     line-height: 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e5e5;
 
     a {
         color: #ff9d00;
@@ -156,5 +158,24 @@ export default {
         border: 0;
         vertical-align: middle;
     }
+}
+</style>
+<style scoped>
+>>> .answer-item .answer-content {
+    word-break: break-all;
+    font-size: 16px;
+    color: #444;
+    line-height: 32px;
+}
+
+>>> ._j_answer_html img, ._j_answer_html video {
+    display: block;
+    max-width: 700px;
+    margin: 8px 0 25px;
+}
+
+>>> img {
+    border: 0;
+    vertical-align: middle;
 }
 </style>

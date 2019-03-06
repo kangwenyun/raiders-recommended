@@ -70,10 +70,6 @@ export default {
     margin-left: 20px;
 }
 
-.tarvel_dir_list ul {
-    width: 100%;
-}
-
 .tarvel_dir_list ul li.time {
     background-position: -22px 0;
 }
