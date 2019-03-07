@@ -69,23 +69,23 @@ export default {
   },
   data() {
     return {
-      title: "春节在家呆久了爸妈会嫌你吗？有啥和谐相处之道？", // 标题
-      mdd_href: "/wenda/area-21536.html", // 加粗标题前面的地点链接
-      mdd: "中国", // 加粗标题前面的地点
+      title: '',// "春节在家呆久了爸妈会嫌你吗？有啥和谐相处之道？", // 标题
+      mdd_href: '',//"/wenda/area-21536.html", // 加粗标题前面的地点链接
+      mdd: '',//"中国", // 加粗标题前面的地点
       detail:
-        '爸妈就那种你不在家盼着你回来，呆超过五天就开始嫌弃你不干活起的晚不交际，还各种催婚聊未来，你有这种感受没<br>在家久了你都怎么跟爸妈<div class="area_tags _j_tip_mdd" data-mddid="66290"><a data-cs-p="qa_mdd" class="at_link" href="/travel-scenic-spot/mafengwo/66290.html" target="_blank">和平</a> <div class="at_info" style="display:none;"></div> </div>相处？来聊聊 <br>——春节答题大赛—— <br><br>本问题收录在【拯救无趣春节】答题大赛中<br>现在参与, 不仅有机会赢取锦鲤福利（行李箱等）<br>还有 新年"猪事顺利"大礼包 在等你！<br><br>活动时间：2019.1.28—2.11<br>活动链接：<a href="https://m.mafengwo.cn/mc/activity/find_traveler/67" target="_blank">https://m.mafengwo.cn/mc/activity/find_traveler/67</a>', // 问答详情，作为一个整体
+        '',//'爸妈就那种你不在家盼着你回来，呆超过五天就开始嫌弃你不干活起的晚不交际，还各种催婚聊未来，你有这种感受没<br>在家久了你都怎么跟爸妈<div class="area_tags _j_tip_mdd" data-mddid="66290"><a data-cs-p="qa_mdd" class="at_link" href="/travel-scenic-spot/mafengwo/66290.html" target="_blank">和平</a> <div class="at_info" style="display:none;"></div> </div>相处？来聊聊 <br>——春节答题大赛—— <br><br>本问题收录在【拯救无趣春节】答题大赛中<br>现在参与, 不仅有机会赢取锦鲤福利（行李箱等）<br>还有 新年"猪事顺利"大礼包 在等你！<br><br>活动时间：2019.1.28—2.11<br>活动链接：<a href="https://m.mafengwo.cn/mc/activity/find_traveler/67" target="_blank">https://m.mafengwo.cn/mc/activity/find_traveler/67</a>', // 问答详情，作为一个整体
       tags: [ // 问答详情底下的标签
         // { name: "春节", href: "http://www.mafengwo.cn/wenda/area-10466.html" }, // 标签， 标签链接
         // { name: "文化", href: "http://www.mafengwo.cn/wenda/area-10466.html" }
       ],
-      user_href: "/wenda/u/51213557/answer.html", // 右下角用户链接
+      user_href: '',//"/wenda/u/51213557/answer.html", // 右下角用户链接
       user_img:
-        "http://p1-q.mafengwo.net/s5/M00/D3/23/wKgB3FICDHaAIB_dAAB15xkKCak34.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90", // 用户头像图片链接
-      user_name: "tracymax", // 用户名
-      time: "2019-01-23 20:51:38", // 时间
-      liulan_num: "108762", // 浏览数
-      guanzhu_num: "65", // 关注数
-      num: 4527, // 多少个回答
+        '',//"http://p1-q.mafengwo.net/s5/M00/D3/23/wKgB3FICDHaAIB_dAAB15xkKCak34.jpeg?imageMogr2%2Fthumbnail%2F%2148x48r%2Fgravity%2FCenter%2Fcrop%2F%2148x48%2Fquality%2F90", // 用户头像图片链接
+      user_name: '',//"tracymax", // 用户名
+      time: '',//"2019-01-23 20:51:38", // 时间
+      liulan_num: '',//"108762", // 浏览数
+      guanzhu_num: '',//"65", // 关注数
+      num: '',//4527, // 多少个回答
       answer_list: [ // 回答列表
         // {
         //   key: 1, // 谁拼都行
