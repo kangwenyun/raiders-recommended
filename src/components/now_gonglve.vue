@@ -563,7 +563,7 @@ export default {
                         var data = {
                             father_id: element.key,
                             id: String(element.key) + String(i),
-                            name: ele.title[0],
+                            name: ele.title,
                             src: ele.src
                         }
                         i += 1
@@ -572,7 +572,7 @@ export default {
                 }, this);
             } else {
                 this.$message({
-                message: response.body.msg,
+                message: response.body.message,
                 type: 'error'
                 })
             }

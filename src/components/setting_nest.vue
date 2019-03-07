@@ -1,6 +1,6 @@
 <template>
     <div class="setting-nest">
-      <p>我的域名：www.mafengwo.cn<span>{{ address }}</span>
+      <p>我的域名：<span>{{ address }}</span>
       </p>
     </div>
 </template>

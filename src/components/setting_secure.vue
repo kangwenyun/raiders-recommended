@@ -50,7 +50,7 @@
           <br>
           <p>
             请发邮件至 :
-            <a href="mailto:mfwyouji@mafengwo.com">mfwyouji@mafengwo.com</a>
+            <a href="mailto:798218157@qq.com">798218157@qq.com</a>
           </p>
           <br>
           <p>邮件内请说明 :</p>

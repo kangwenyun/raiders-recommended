@@ -1,7 +1,7 @@
 <template>
     <div class="setting-info">
       <el-form ref="form" :model="info" label-width="80px">
-        <el-form-item label="名号">
+        <el-form-item label="昵称">
           <el-input v-model="info.name"></el-input>
         </el-form-item>
         <el-form-item label="性别">
