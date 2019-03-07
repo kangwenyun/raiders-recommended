@@ -39,7 +39,7 @@ export default {
       account: 'pu971954596@qq.com',
       info:{
         name: '',
-        sex: '男',
+        sex: '',
         city: '',
         birthday: '',
         introduct: ''
