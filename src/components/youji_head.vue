@@ -181,8 +181,9 @@ export default {
     line-height: 35px;
     background: url(http://css.mafengwo.net/images/post/new_notes/sprite_v35.png) -293px -236px no-repeat;
     font-size: 18px;
-    color: #fff;
+    color: #fff !important;
     text-shadow: 1px 0 1px #fcaf54;
+    display: block !important;
 }
 
 .num {

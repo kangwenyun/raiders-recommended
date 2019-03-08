@@ -42,7 +42,7 @@ export default {
   name: 'setting-email',
   data() {
     return{
-        active_index: 2,
+        active_index: 0,
         new_email: '',
         email: '798218157@qq.com',
     };
