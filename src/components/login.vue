@@ -17,7 +17,7 @@
                             </el-form-item>
                         </el-form>
                         <div class="agreement">
-                            注册视为同意<a target="_blank" href="http://www.mafengwo.cn/s/agreement.html">《马蜂窝用户使用协议》</a>
+                            注册视为同意<a target="_blank" href="http://www.mafengwo.cn/s/agreement.html">《用户使用协议》</a>
                         </div>
                     </div>
                     <div v-else>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="inner_right">
                     <img src="https://images.mafengwo.net/mobile/images/omc/login-omc/code.jpg">
-                    <p>扫一扫<br>下载马蜂窝APP</p>
+                    <p>扫一扫<br>下载APP</p>
                 </div>
             </div>
             <div class="bottom-link" v-if="page == 'regist'">
@@ -63,7 +63,7 @@ export default {
     name: 'login',
     data() {
         return {
-            page: 'login',
+            page: '',
             regist: {
                 account: ''
             },
@@ -138,6 +138,7 @@ export default {
         regist_reset(form) {
             this.$refs[form].resetFields();
             this.page = 'login'
+            window.$router.push(window.location.host + '?page=login')
         },
         login_now(form){
             this.$refs[form].validate((valid, {}) => {

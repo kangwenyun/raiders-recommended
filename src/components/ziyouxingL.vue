@@ -39,7 +39,7 @@
         </div>
         <div class="detail" v-html="gonglveDetail">{{ gonglveDetail }}</div>
         <div class="copyRight">
-            <p style="text-align: left;">本文著作权归 @{{ author_name }} 所有，任何形式转载请联系作者。©2019 马蜂窝自由行
+            <p style="text-align: left;">本文著作权归 @{{ author_name }} 所有，任何形式转载请联系作者。
                 <a>举报</a>
             </p>
         </div>
@@ -267,5 +267,14 @@ export default {
             }
         }
     }
+}
+</style>
+<style scoped>
+>>> a{
+  display: inline;
+  background-color: transparent;
+  text-decoration: none;
+  color: #ff9d00;
+  cursor: pointer;
 }
 </style>

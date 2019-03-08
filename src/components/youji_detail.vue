@@ -1,9 +1,11 @@
 <template>
   <div class="youji_detail">
     <youji-head></youji-head>
-    <youji-text></youji-text>
-    <div class="detail" v-html="youjiDetail">{{ youjiDetail }}</div>
-    <youji-related></youji-related>
+    <div class="content">
+      <youji-text></youji-text>
+      <div class="detail" v-html="youjiDetail">{{ youjiDetail }}</div>
+      <youji-related></youji-related>
+    </div>
   </div>
 </template>
 
@@ -105,6 +107,11 @@ export default {
     margin-left: 20px;
     margin-top: 20px;
 
+}
+
+.content {
+  width: 1000px;
+  margin: 0 auto
 }
 
 >>> a{

@@ -54,8 +54,7 @@ export default {
 
 <style lang="less" scope>
 .youji_text {
-    width: 680px;
-    position: static;
+    width: 720px;
 }
 
 .travel_directory{
@@ -63,10 +62,6 @@ export default {
     border-radius: 4px;
     // height: 120px;
     margin-top: 40px;
-    margin-left: 20px;
-}
-
-.tarvel_dir_list{
     margin-left: 20px;
 }
 
@@ -99,5 +94,7 @@ export default {
 
 .tarvel_dir_list ul li.cost{
   background-position: -22px -66px;
+  display: block;
+  line-height: 22px;
 }
 </style>
